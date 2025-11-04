@@ -184,7 +184,7 @@ const Navbar = () => {
               )}
             </div>
 
-            <Link href="team" className="hover:text-red-500 transition">
+            <Link href="/team" className="hover:text-red-500 transition">
               Team
             </Link>
 
@@ -268,7 +268,7 @@ const Navbar = () => {
                   </Link>
 
                   <a
-                    href="#"
+                    href="/services"
                     className="text-white hover:text-red-600 transition"
                   >
                     Services
