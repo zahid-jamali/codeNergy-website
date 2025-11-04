@@ -13,6 +13,7 @@ import {
 import { FaLocationDot } from "react-icons/fa6";
 import { SiGmail } from "react-icons/si";
 import { IoIosArrowDown } from "react-icons/io";
+import Link from "next/link";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -102,13 +103,15 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-10 text-white text-lg">
             <div
               className="relative group"
-              onMouseEnter={() => setDropdownOpen("home")}
-              onMouseLeave={() => setDropdownOpen(null)}
+              // onMouseEnter={() => setDropdownOpen("home")}
+              // onMouseLeave={() => setDropdownOpen(null)}
             >
-              <button className="flex items-center gap-1 hover:text-red-500 transition">
-                Home <IoIosArrowDown className="text-sm" />
-              </button>
-              {dropdownOpen === "home" && (
+              <Link href={"/"}>
+                <button className="flex items-center gap-1 hover:text-red-500 transition">
+                  Home
+                </button>
+              </Link>
+              {/* {dropdownOpen === "home" && (
                 <div className="absolute top-full mt-2 left-0 bg-black border border-red-500 rounded shadow-lg flex flex-col min-w-[160px]">
                   <a
                     href="#"
@@ -123,59 +126,74 @@ const Navbar = () => {
                     Home Style 2
                   </a>
                 </div>
-              )}
+              )} */}
             </div>
 
-            <a href="#" className="hover:text-red-500 transition">
+            <Link href="/aboutus" className="hover:text-red-500 transition">
               About Us
-            </a>
+            </Link>
 
-            <a href="#" className="hover:text-red-500 transition">
+            <Link href="/services" className="hover:text-red-500 transition">
               Services
-            </a>
+            </Link>
 
             <div
-              className="relative group"
+              className="relative group z-50"
               onMouseEnter={() => setDropdownOpen("pages")}
               onMouseLeave={() => setDropdownOpen(null)}
             >
               <button className="flex items-center gap-1 hover:text-red-500 transition">
-                Pages +
+                Solutions +
               </button>
+
               {dropdownOpen === "pages" && (
-                <div className="absolute top-full mt-2 left-0 bg-black border border-red-500 rounded shadow-lg flex flex-col min-w-[160px]">
-                  <a
-                    href="#"
+                <div
+                  onMouseEnter={() => setDropdownOpen("pages")} // keeps dropdown open
+                  onMouseLeave={() => setDropdownOpen(null)} // closes only when leaving dropdown
+                  className="absolute top-full left-0 bg-black border border-red-500 rounded shadow-lg flex flex-col min-w-[180px] z-[9999]"
+                  style={{
+                    backgroundColor: "rgba(0,0,0,1)",
+                    isolation: "isolate",
+                  }}
+                >
+                  <Link
+                    href="/portfolio"
                     className="px-4 py-2 text-white hover:bg-red-500 hover:text-white transition"
                   >
                     Portfolio
-                  </a>
-                  <a
-                    href="#"
+                  </Link>
+                  <Link
+                    href="/pricing"
                     className="px-4 py-2 text-white hover:bg-red-500 hover:text-white transition"
                   >
                     Pricing
-                  </a>
-                  <a
-                    href="#"
+                  </Link>
+                  <Link
+                    href="/blog"
+                    className="px-4 py-2 text-white hover:bg-red-500 hover:text-white transition"
+                  >
+                    Blogs
+                  </Link>
+                  <Link
+                    href="/faq"
                     className="px-4 py-2 text-white hover:bg-red-500 hover:text-white transition"
                   >
                     FAQ
-                  </a>
+                  </Link>
                 </div>
               )}
             </div>
 
-            <a href="#" className="hover:text-red-500 transition">
+            <Link href="team" className="hover:text-red-500 transition">
               Team
-            </a>
+            </Link>
 
-            <a
-              href="#"
+            <Link
+              href="/contactus"
               className="bg-red-600 border-2 border-black text-white px-6 py-3 rounded-none hover:bg-black hover:text-white hover:border-2 hover:border-red-600 transition"
             >
               Contact Us
-            </a>
+            </Link>
           </div>
 
           {/* Toggle Button (Mobile) */}
@@ -220,15 +238,17 @@ const Navbar = () => {
 
                   {/* Home Dropdown */}
                   <div className="flex flex-col text-white">
-                    <button
-                      onClick={() =>
-                        setDropdownOpen(dropdownOpen === "home" ? null : "home")
-                      }
-                      className="flex items-center justify-between w-full pr-6 hover:text-red-600 transition"
-                    >
-                      Home <IoIosArrowDown className="text-sm" />
-                    </button>
-                    {dropdownOpen === "home" && (
+                    <Link href={"/"}>
+                      <button
+                        // onClick={() =>
+                        //   setDropdownOpen(dropdownOpen === "home" ? null : "home")
+                        // }
+                        className="flex items-center justify-between w-full pr-6 hover:text-red-600 transition"
+                      >
+                        Home <IoIosArrowDown className="text-sm" />
+                      </button>
+                    </Link>
+                    {/* {dropdownOpen === "home" && (
                       <div className="flex flex-col ml-4 mt-2 space-y-2 text-red-500">
                         <a href="#" className="hover:text-white transition">
                           Home Style 1
@@ -237,15 +257,15 @@ const Navbar = () => {
                           Home Style 2
                         </a>
                       </div>
-                    )}
+                    )} */}
                   </div>
 
-                  <a
-                    href="#"
+                  <Link
+                    href="/aboutus"
                     className="text-white hover:text-red-600 transition"
                   >
                     About Us
-                  </a>
+                  </Link>
 
                   <a
                     href="#"
@@ -264,29 +284,51 @@ const Navbar = () => {
                       }
                       className="flex items-center justify-between w-full pr-6 hover:text-red-600 transition"
                     >
-                      Pages <IoIosArrowDown className="text-sm" />
+                      Solutions +
                     </button>
                     {dropdownOpen === "pages" && (
                       <div className="flex flex-col ml-4 mt-2 space-y-2 text-red-500">
-                        <a href="#" className="hover:text-white transition">
+                        <Link
+                          href="/portfolio"
+                          className="hover:text-white transition"
+                        >
                           Portfolio
-                        </a>
-                        <a href="#" className="hover:text-white transition">
+                        </Link>
+                        <Link
+                          href="/pricing"
+                          className="hover:text-white transition"
+                        >
                           Pricing
-                        </a>
-                        <a href="#" className="hover:text-white transition">
+                        </Link>
+                        <Link
+                          href="/blog"
+                          className="hover:text-white transition"
+                        >
+                          Blogs
+                        </Link>
+                        <Link
+                          href="/faq"
+                          className="hover:text-white transition"
+                        >
                           FAQ
-                        </a>
+                        </Link>
                       </div>
                     )}
                   </div>
 
-                  <a
-                    href="#"
+                  <Link
+                    href="/team"
+                    className="text-white hover:text-red-600 transition"
+                  >
+                    Team
+                  </Link>
+
+                  <Link
+                    href="/contactus"
                     className="bg-red-600 text-white px-6 py-3 hover:bg-black hover:border-2 hover:border-red-600 hover:text-white transition rounded-none"
                   >
                     Contact Us
-                  </a>
+                  </Link>
                 </motion.div>
               </>
             )}

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { FaDollarSign, FaArrowRight } from "react-icons/fa"; // react-icons for $ and arrow
 
 export default function PricingTeaser() {
@@ -106,13 +107,13 @@ export default function PricingTeaser() {
                   Scalable infrastructure
                 </li>
               </ul>
-              <a
+              <Link
                 href="/pricing"
                 className="inline-flex items-center bg-red-600 text-white font-bold py-4 px-8 rounded-lg hover:bg-red-500 transition-all duration-300 shadow-lg hover:shadow-red-500/50"
               >
                 View Full Pricing
                 <FaArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-              </a>
+              </Link>
             </motion.div>
 
             {/* Right: Starting price card */}

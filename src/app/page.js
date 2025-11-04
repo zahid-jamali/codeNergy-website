@@ -1,20 +1,19 @@
 import Image from "next/image";
-import AboutSection from "./components/AboutSections";
-import ContactSection from "./components/ContactSection";
-import FeaturedService from "./components/FeaturedService";
-import Footer from "./components/Footer";
-import HeroSlider from "./components/HeroSlider";
-import Navbar from "./components/Navbar";
-import PricingTeaser from "./components/PricingTeaser";
-import ServiceCards from "./components/ServiceCards";
-import StatsSection from "./components/StatsSection";
-import TestimonialsSection from "./components/TestinomialSection";
-import WhyChooseUs from "./components/WhyChooseUs";
+import AboutSection from "../components/landings/AboutSections";
+import ContactSection from "../components/landings/ContactSection";
+import FeaturedService from "../components/landings/FeaturedService";
+import Footer from "../components/landings/Footer";
+import HeroSlider from "../components/landings/HeroSlider";
+import Navbar from "../components/landings/Navbar";
+import PricingTeaser from "../components/landings/PricingTeaser";
+import ServiceCards from "../components/landings/ServiceCards";
+import StatsSection from "../components/landings/StatsSection";
+import TestimonialsSection from "../components/landings/TestinomialSection";
+import WhyChooseUs from "../components/landings/WhyChooseUs";
 
 export default function Home() {
   return (
     <>
-      <Navbar />
       <HeroSlider />
       <ServiceCards />
       <FeaturedService />
@@ -24,8 +23,6 @@ export default function Home() {
       <TestimonialsSection />
       <PricingTeaser />
       <ContactSection />
-      <Footer />
-      <h1 className="text-2xl text-white">Home page</h1>
     </>
   );
 }
