@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import {
@@ -18,6 +18,26 @@ import Link from "next/link";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(null);
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    const update = () => {
+      const now = new Date();
+      // Format the time in UAE timezone (Gulf Standard Time)
+      const formatted = now.toLocaleString("en-AE", {
+        timeZone: "Asia/Dubai",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+      });
+      setTime(formatted);
+    };
+
+    update(); // Run once
+    const interval = setInterval(update, 1000); // Update every second
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
@@ -52,7 +72,17 @@ const Navbar = () => {
 
               <div className="flex items-center gap-2">
                 <FaClock className="text-white" />
-                <span>24/7</span>
+                <span className="flex flex-row">
+                  <Image
+                    src={"/images/ae.png"}
+                    alt="UAE Flag"
+                    width={25}
+                    height={7}
+                    className=" border-2rounded-sm shadow-md"
+                  />{" "}
+                  {"          "}
+                  Current Time (UAE): {time}
+                </span>
               </div>
             </div>
           </div>
@@ -240,12 +270,10 @@ const Navbar = () => {
                   <div className="flex flex-col text-white">
                     <Link href={"/"}>
                       <button
-                        // onClick={() =>
-                        //   setDropdownOpen(dropdownOpen === "home" ? null : "home")
-                        // }
+                        onClick={() => setMenuOpen(false)}
                         className="flex items-center justify-between w-full pr-6 hover:text-red-600 transition"
                       >
-                        Home <IoIosArrowDown className="text-sm" />
+                        Home
                       </button>
                     </Link>
                     {/* {dropdownOpen === "home" && (
@@ -260,19 +288,23 @@ const Navbar = () => {
                     )} */}
                   </div>
 
-                  <Link
-                    href="/aboutus"
-                    className="text-white hover:text-red-600 transition"
-                  >
-                    About Us
+                  <Link href="/aboutus">
+                    <button
+                      onClick={() => setMenuOpen(false)}
+                      className="text-white hover:text-red-600 transition"
+                    >
+                      About Us
+                    </button>
                   </Link>
 
-                  <a
-                    href="/services"
-                    className="text-white hover:text-red-600 transition"
-                  >
-                    Services
-                  </a>
+                  <Link href="/services">
+                    <button
+                      className="text-white hover:text-red-600 transition"
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      Services
+                    </button>
+                  </Link>
 
                   {/* Pages Dropdown */}
                   <div className="flex flex-col text-white">
@@ -288,29 +320,37 @@ const Navbar = () => {
                     </button>
                     {dropdownOpen === "pages" && (
                       <div className="flex flex-col ml-4 mt-2 space-y-2 text-red-500">
-                        <Link
-                          href="/portfolio"
-                          className="hover:text-white transition"
-                        >
-                          Portfolio
+                        <Link href="/portfolio">
+                          <button
+                            className="hover:text-white transition"
+                            onClick={() => setMenuOpen(false)}
+                          >
+                            Portfolio
+                          </button>
                         </Link>
-                        <Link
-                          href="/pricing"
-                          className="hover:text-white transition"
-                        >
-                          Pricing
+                        <Link href="/pricing">
+                          <button
+                            className="hover:text-white transition"
+                            onClick={() => setMenuOpen(false)}
+                          >
+                            Pricing
+                          </button>
                         </Link>
-                        <Link
-                          href="/blog"
-                          className="hover:text-white transition"
-                        >
-                          Blogs
+                        <Link href="/blog">
+                          <button
+                            className="hover:text-white transition"
+                            onClick={() => setMenuOpen(false)}
+                          >
+                            Blogs
+                          </button>
                         </Link>
-                        <Link
-                          href="/faq"
-                          className="hover:text-white transition"
-                        >
-                          FAQ
+                        <Link href="/faq">
+                          <button
+                            className="hover:text-white transition"
+                            onClick={() => setMenuOpen(false)}
+                          >
+                            FAQ
+                          </button>
                         </Link>
                       </div>
                     )}
@@ -320,7 +360,7 @@ const Navbar = () => {
                     href="/team"
                     className="text-white hover:text-red-600 transition"
                   >
-                    Team
+                    <button onClick={() => setMenuOpen(false)}>Team</button>
                   </Link>
 
                   <Link

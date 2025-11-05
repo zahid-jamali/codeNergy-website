@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import {
   FaPhone,
@@ -10,13 +10,46 @@ import {
 
 const Contactus = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [msg, setMsg] = useState({ text: null, type: null });
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (
+      formData.name === "" ||
+      formData.email === "" ||
+      formData.message === ""
+    ) {
+      return alert("Please fill all the fields");
+    }
+    const res = await fetch("/api/messages", {
+      method: "POST",
+      body: JSON.stringify(formData),
+    });
+    if (res.ok) {
+      setMsg({ text: "Successfully done", type: "success" });
+      setLoading(false);
+    } else {
+      setMsg({ text: "An error occured!", type: "error" });
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById("contact-section");
       if (element) {
         const rect = element.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.8) {
+        if (rect.top < window.innerHeight * 0.5) {
           setIsVisible(true);
         }
       }
@@ -87,7 +120,7 @@ const Contactus = () => {
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           >
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label
                   htmlFor="name"
@@ -98,6 +131,8 @@ const Contactus = () => {
                 <input
                   type="text"
                   id="name"
+                  name="name"
+                  onChange={handleChange}
                   className="w-full px-4 py-3 bg-gray-900/60 border border-red-800/50 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-500/50 text-white placeholder-gray-500 transition-all duration-300"
                   placeholder="John Doe"
                   required
@@ -114,6 +149,8 @@ const Contactus = () => {
                 <input
                   type="email"
                   id="email"
+                  name="email"
+                  onChange={handleChange}
                   className="w-full px-4 py-3 bg-gray-900/60 border border-red-800/50 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-500/50 text-white placeholder-gray-500 transition-all duration-300"
                   placeholder="john@example.com"
                   required
@@ -125,22 +162,57 @@ const Contactus = () => {
                   htmlFor="message"
                   className="block text-white font-medium mb-2"
                 >
-                  Your Message (optional)
+                  Your Message
                 </label>
                 <textarea
                   id="message"
+                  name="message"
+                  onChange={handleChange}
                   rows={5}
                   className="w-full px-4 py-3 bg-gray-900/60 border border-red-800/50 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-500/50 text-white placeholder-gray-500 transition-all duration-300 resize-none"
                   placeholder="Tell us how we can help..."
                 />
               </div>
 
+              <AnimatePresence>
+                {msg.text && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className={`text-center font-semibold px-4 py-3 rounded-lg shadow-md ${
+                      msg.type === "success"
+                        ? "bg-green-600/20 text-green-400 border border-green-600/50"
+                        : "bg-red-600/20 text-red-400 border border-red-600/50"
+                    }`}
+                  >
+                    {msg.text}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full sm:w-auto inline-flex items-center justify-center bg-red-600 text-white font-bold py-4 px-12 rounded-lg hover:bg-red-500 transition-all duration-300 shadow-lg hover:shadow-red-500/50"
+                disabled={loading}
+                className={`w-full sm:w-auto inline-flex items-center justify-center font-bold py-4 px-12 rounded-lg transition-all duration-300 shadow-lg 
+          ${
+            loading
+              ? "bg-gray-500 cursor-not-allowed text-white"
+              : "bg-red-600 hover:bg-red-500 hover:shadow-red-500/50 text-white"
+          }`}
               >
-                Send Message
-                <FaPaperPlane className="w-5 h-5 ml-2" />
+                {loading ? (
+                  <>
+                    <FaSpinner className="w-5 h-5 mr-2 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <FaPaperPlane className="w-5 h-5 ml-2" />
+                  </>
+                )}
               </button>
             </form>
           </motion.div>
