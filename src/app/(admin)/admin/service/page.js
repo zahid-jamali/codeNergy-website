@@ -2,8 +2,12 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { FaTrashAlt, FaPlusCircle } from "react-icons/fa";
+import { verifyAdmin } from "@/lib/verifyToken";
+import { redirect } from "next/dist/server/api-utils";
 
-export default function ServicesPage() {
+export const dynamic = "force-dynamic";
+
+export default async function ServicesPage() {
   const [services, setServices] = useState([]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -14,6 +18,11 @@ export default function ServicesPage() {
   useEffect(() => {
     fetchServices();
   }, []);
+
+  const user = await verifyAdmin();
+  if (!user) {
+    redirect("/login");
+  }
 
   const fetchServices = async () => {
     const res = await fetch("/api/services");

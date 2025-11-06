@@ -74,7 +74,7 @@ export default function AdminPanelLayoutClient({ children, user }) {
             icon={<FaServicestack size={20} />}
             label="Services"
             open={isSidebarOpen}
-            href="/admin/services"
+            href="/admin/service"
           />
           <SidebarLink
             icon={<FaEnvelope size={20} />}

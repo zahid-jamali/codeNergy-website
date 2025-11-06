@@ -3,6 +3,8 @@ import { redirect } from "next/navigation";
 import { verifyAdmin } from "@/lib/verifyToken";
 import AdminPanelLayoutClient from "@/components/admin/AdminLayout";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminLayout({ children }) {
   const user = await verifyAdmin();
   if (user?.role !== "admin") redirect("/login");
