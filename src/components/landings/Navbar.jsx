@@ -50,14 +50,14 @@ const Navbar = () => {
         </div>
 
         {/* --------- Desktop Header --------- */}
-        <div className="hidden lg:flex justify-between text-white bg-red-600 items-center px-16 py-6">
+        <div className="hidden lg:flex justify-between text-white bg-red-600 items-center px-16 py-4">
           <div className="flex flex-col gap-2 text-sm">
-            <div className="flex items-center gap-2">
+            {/* <div className="flex items-center gap-2">
               <FaLocationDot className="text-white" />
               <span>
                 Business Center, Sharjah Publishing City Free Zone, Sharjah, UAE
               </span>
-            </div>
+            </div> */}
 
             <div className="flex items-center gap-3 flex-wrap">
               <div className="flex items-center gap-2">
@@ -116,15 +116,15 @@ const Navbar = () => {
         </div>
 
         {/* --------- Navbar --------- */}
-        <div className="bg-black w-full flex items-center justify-between px-6 md:px-16 py-2 relative">
+        <div className="bg-black w-full flex items-center justify-between px-6 md:px-16 py-1 relative">
           {/* Logo */}
-          <div className="w-1/3 md:w-1/4 flex justify-start">
+          <div className="  w-1/3 md:w-1/9  ">
             <Image
               src="/logo.jpeg"
               alt="CodeNergy"
               width={400}
-              height={200}
-              className="w-full h-auto max-h-20 object-contain"
+              height={400}
+              className="w-full h-auto max-h-30 object-contain "
               priority
             />
           </div>

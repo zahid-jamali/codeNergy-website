@@ -26,7 +26,7 @@ export default function PricingTeaser() {
   return (
     <section
       id="pricing-teaser"
-      className="relative py-16 sm:py-24 overflow-hidden "
+      className="relative py-16 sm:py-24 overflow-hidden md:px-12 "
       aria-labelledby="pricing-heading"
     >
       {/* Subtle circuit background for theme consistency */}
@@ -67,7 +67,7 @@ export default function PricingTeaser() {
             <span className="text-white">Flexible Plans </span>
             <span className="text-red-600">Starting Low</span>
           </h2>
-          <p className="mt-6 max-w-3xl mx-auto text-gray-400 text-sm sm:text-base leading-relaxed">
+          <p className="mt-6 max-w-3xl mx-auto text-center text-gray-400 text-sm sm:text-base leading-relaxed">
             We offer competitive pricing tailored to your needs. No hidden fees,
             just transparent value.
           </p>

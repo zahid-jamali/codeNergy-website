@@ -1,4 +1,5 @@
 "use client";
+import "./style.css";
 import { useState } from "react";
 import {
   FaTachometerAlt,
@@ -9,9 +10,14 @@ import {
   FaEnvelope,
   FaServicestack,
   FaQuestionCircle,
+  FaCalendarCheck,
 } from "react-icons/fa";
+import { MdGroups, MdPeople } from "react-icons/md";
+
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+
+export const dynamic = "force-dynamic";
 
 export default function AdminPanelLayoutClient({ children, user }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -21,7 +27,23 @@ export default function AdminPanelLayoutClient({ children, user }) {
   const handleLogout = async () => {
     try {
       setLoading(true);
-      const res = await fetch("/api/auth/logout", { method: "GET" });
+
+      const res = await fetch("/api/auth/logout", {
+        method: "GET",
+        credentials: "include",
+      });
+
+      document.cookie.split(";").forEach((c) => {
+        document.cookie = c
+          .replace(/^ +/, "")
+          .replace(/=.*/, `=;expires=${new Date(0).toUTCString()};path=/`);
+      });
+
+      localStorage.removeItem("userInfo");
+      localStorage.removeItem("token");
+      sessionStorage.clear();
+
+      // ✅ 4. Redirect
       if (res.ok) {
         router.push("/login");
       } else {
@@ -29,6 +51,7 @@ export default function AdminPanelLayoutClient({ children, user }) {
       }
     } catch (error) {
       console.error("Logout error:", error);
+      alert("Error during logout. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -65,10 +88,10 @@ export default function AdminPanelLayoutClient({ children, user }) {
             href="/admin/dashboard"
           />
           <SidebarLink
-            icon={<FaUsers size={20} />}
+            icon={<MdPeople size={20} />}
             label="Users"
             open={isSidebarOpen}
-            href="/admin/users"
+            href="/admin/user"
           />
           <SidebarLink
             icon={<FaServicestack size={20} />}
@@ -81,6 +104,20 @@ export default function AdminPanelLayoutClient({ children, user }) {
             label="Messages"
             open={isSidebarOpen}
             href="/admin/messages"
+          />
+
+          <SidebarLink
+            icon={<FaUsers size={20} />}
+            label="Teams"
+            open={isSidebarOpen}
+            href="/admin/team"
+          />
+
+          <SidebarLink
+            icon={<FaCalendarCheck size={20} />}
+            label="Appointments"
+            open={isSidebarOpen}
+            href="/admin/appointments"
           />
           <SidebarLink
             icon={<FaQuestionCircle size={20} />}

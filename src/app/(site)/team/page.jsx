@@ -1,48 +1,39 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-const team = [
-  {
-    name: "Aadil Khan",
-    role: "Chief Executive Officer",
-    image: "/team/ceo.jpg",
-    description:
-      "Founder & visionary behind CodeNergy. Aadil leads the innovation frontier, ensuring every product carries our signature excellence and impact.",
-  },
-  {
-    name: "Zahid Jamali",
-    role: "Lead Full Stack Developer",
-    image: "/team/zahid.jpg",
-    description:
-      "Specializing in MERN and AI integrations, Zahid ensures our products merge performance with intelligence and scalability.",
-  },
-  {
-    name: "Aqib Jamali",
-    role: "Frontend Engineer",
-    image: "/team/aqib.jpg",
-    description:
-      "Focused on creating immersive, interactive, and pixel-perfect UI/UX experiences that define the modern web.",
-  },
-  {
-    name: "Ali Khan",
-    role: "Mobile App Developer",
-    image: "/team/ali.jpg",
-    description:
-      "Expert in Flutter and React Native, Ali transforms user needs into smooth, responsive mobile applications.",
-  },
-  {
-    name: "Sara Ahmed",
-    role: "UI/UX Designer",
-    image: "/team/sara.jpg",
-    description:
-      "Designs intuitive interfaces that blend aesthetics with functionality, ensuring an unforgettable digital experience.",
-  },
-];
-
 export default function TeamPage() {
+  const [team, setTeam] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchTeam() {
+      try {
+        const res = await fetch("/api/team");
+        const data = await res.json();
+        setTeam(data);
+      } catch (err) {
+        console.error("Error fetching team:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchTeam();
+  }, []);
+
+  // 🔴 Loader shown until API completes
+  if (loading) {
+    return (
+      <div className="flex flex-col justify-center items-center h-screen bg-black text-white">
+        <div className="w-16 h-16 border-4 border-red-600 border-t-transparent rounded-full animate-spin"></div>
+        <p className="mt-4 text-lg tracking-wide">Loading team members...</p>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-black text-white min-h-screen py-20 px-6 md:px-16">
       {/* Header */}
@@ -52,12 +43,14 @@ export default function TeamPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <h1 className="text-5xl md:text-6xl font-extrabold text-red-600">
-          Meet Our Team
+        <h1 className="text-5xl md:text-6xl font-extrabold ">
+          Meet Our
+          <span className="text-red-600"> Team</span>
         </h1>
         <p className="text-gray-300 mt-4 max-w-2xl mx-auto text-lg">
-          The brilliant minds powering CodeNergy — transforming ideas into
-          cutting-edge digital realities.
+          The brilliant minds powering
+          <span className="text-red-600"> CodeNergy </span>
+          transforming ideas into cutting-edge digital realities.
         </p>
       </motion.div>
 
@@ -65,7 +58,7 @@ export default function TeamPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
         {team.map((member, index) => (
           <motion.div
-            key={member.name}
+            key={member._id}
             className="relative group rounded-2xl bg-gradient-to-b from-[#111] to-[#000] border border-red-600/30 shadow-lg hover:shadow-red-600/40 transition duration-500 overflow-hidden"
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -75,7 +68,7 @@ export default function TeamPage() {
             {/* Image Section */}
             <div className="relative h-64 w-full overflow-hidden">
               <Image
-                src={"/images/hashir.jpeg"}
+                src={member.image}
                 alt={member.name}
                 fill
                 className="object-cover group-hover:scale-110 transition duration-700"
@@ -88,7 +81,7 @@ export default function TeamPage() {
               <h2 className="text-2xl font-bold text-red-500 mb-1">
                 {member.name}
               </h2>
-              <p className="text-sm text-gray-400 mb-3">{member.role}</p>
+              <p className="text-sm text-gray-400 mb-3">{member.designation}</p>
               <p className="text-gray-300 text-sm leading-relaxed">
                 {member.description}
               </p>

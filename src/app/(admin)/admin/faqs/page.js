@@ -4,10 +4,11 @@ export const dynamic = "force-dynamic";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaPlus, FaEdit, FaTrash, FaCheck, FaTimes } from "react-icons/fa";
-import { verifyAdmin } from "@/lib/verifyToken";
 import { redirect } from "next/dist/server/api-utils";
 
-export default async function FaqsAdminPage() {
+// export const dynamic = "force-dynamic";
+
+export default function FaqsAdminPage() {
   const [faqs, setFaqs] = useState([]);
   const [q, setQ] = useState("");
   const [loading, setLoading] = useState(false);
@@ -20,9 +21,6 @@ export default async function FaqsAdminPage() {
   });
   const [editingId, setEditingId] = useState(null);
   const [msg, setMsg] = useState("");
-
-  const user = await verifyAdmin();
-  if (!user) redirect("/login");
 
   useEffect(() => {
     fetchFaqs();

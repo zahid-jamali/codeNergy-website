@@ -20,6 +20,7 @@ export async function POST(req) {
   const file = formData.get("image");
   const title = formData.get("title");
   const description = formData.get("description");
+  const longDescription = formData.get("longDescription");
 
   if (!file || !title || !description)
     return NextResponse.json(
@@ -40,6 +41,7 @@ export async function POST(req) {
     image: imageUrl,
     title,
     description,
+    longDescription,
   });
 
   return NextResponse.json(newService, { status: 201 });

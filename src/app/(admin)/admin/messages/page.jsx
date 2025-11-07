@@ -3,17 +3,13 @@ import { useState, useEffect } from "react";
 import { BiMessageDetail, BiSearch, BiCheckDouble } from "react-icons/bi";
 import { FaEnvelopeOpenText } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { verifyAdmin } from "@/lib/verifyToken";
-import { redirect } from "next/dist/server/api-utils";
 
 export const dynamic = "force-dynamic";
 
-export default async function MessagesPage() {
+export default function MessagesPage() {
   const [messages, setMessages] = useState([]);
   const [search, setSearch] = useState("");
 
-  const user = await verifyAdmin();
-  if (!user) redirect("/login");
   useEffect(() => {
     async function fetchMessages() {
       try {

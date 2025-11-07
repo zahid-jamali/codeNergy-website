@@ -20,6 +20,9 @@ const serviceSchema = new mongoose.Schema(
       trim: true,
       maxlength: 500,
     },
+    longDescription: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

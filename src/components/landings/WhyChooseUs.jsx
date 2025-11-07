@@ -71,7 +71,7 @@ export default function WhyChooseUs() {
   return (
     <section
       id="why-choose-us"
-      className="relative py-16 sm:py-24 overflow-hidden "
+      className="relative py-16 sm:py-24 overflow-hidden m-auto md:px-12 "
       aria-labelledby="why-heading"
     >
       {/* Subtle circuit background */}

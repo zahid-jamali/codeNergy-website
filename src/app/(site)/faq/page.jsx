@@ -1,42 +1,46 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaQuestionCircle } from "react-icons/fa";
 
-const faqs = [
-  {
-    question: "What services does CodeNergy provide?",
-    answer:
-      "CodeNergy offers cutting-edge digital solutions including custom web applications, mobile apps, AI integrations, cloud deployments, and enterprise automation — all designed for scalability and innovation.",
-  },
-  {
-    question: "How long does it take to complete a project?",
-    answer:
-      "The timeline depends on the project's complexity and requirements. Typically, small projects take 2–4 weeks, while larger enterprise systems can range from 1–3 months. We always maintain transparent progress updates.",
-  },
-  {
-    question: "Can CodeNergy handle global clients?",
-    answer:
-      "Absolutely. We operate globally, providing remote solutions to clients across the US, Europe, Middle East, and Asia through our digital collaboration systems.",
-  },
-  {
-    question: "Do you provide post-launch support?",
-    answer:
-      "Yes, every CodeNergy client receives complimentary technical support for an initial period. We also offer affordable long-term maintenance and upgrade packages to ensure your software stays future-proof.",
-  },
-  {
-    question: "How can I get a project quote?",
-    answer:
-      "Simply visit our Contact page and share your project requirements — our business team will respond within 24 hours with a detailed quote and proposal.",
-  },
-];
-
 export default function FAQPage() {
+  const [faqs, setFaqs] = useState([]);
   const [openIndex, setOpenIndex] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+
+  useEffect(() => {
+    async function fetchFaqs() {
+      try {
+        const res = await fetch("/api/faqs");
+        const data = await res.json();
+        setFaqs(data);
+      } catch (error) {
+        console.error("Error fetching FAQs:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchFaqs();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-black">
+        <div className="flex flex-col items-center">
+          <motion.div
+            className="w-16 h-16 border-4 border-red-600 border-t-transparent rounded-full animate-spin"
+            animate={{ rotate: 360 }}
+            transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+          />
+          <p className="text-gray-400 mt-4 text-lg">Loading FAQs...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-black min-h-screen text-white px-6 md:px-16 py-20">

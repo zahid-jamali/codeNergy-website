@@ -3,56 +3,76 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaQuoteLeft, FaStar } from "react-icons/fa";
+// const testimonials = [
+//   {
+//     name: "John Doe",
+//     role: "CEO, TechCorp",
+//     content:
+//       "Outstanding IT solutions! They transformed our infrastructure with seamless integration and top-notch support. Highly recommended for any enterprise.",
+//     rating: 5,
+//   },
+//   {
+//     name: "Jane Smith",
+//     role: "CTO, InnovateCo",
+//     content:
+//       "The team delivered beyond expectations. Reliable, innovative, and always on time. Our network has never been stronger.",
+//     rating: 5,
+//   },
+//   {
+//     name: "Mike Johnson",
+//     role: "Director, GlobalSystems",
+//     content:
+//       "Certified experts with quality products. Their system provider services saved us countless hours and boosted efficiency.",
+//     rating: 5,
+//   },
+//   {
+//     name: "Emily Davis",
+//     role: "Manager, NetSecure",
+//     content:
+//       "Best partner we've worked with. Strong network and trusted company – they handle everything with professionalism.",
+//     rating: 4,
+//   },
+//   {
+//     name: "Chris Lee",
+//     role: "Founder, StartupHub",
+//     content:
+//       "Amazing certified solutions. Quality products and exceptional service. Our ongoing projects are thriving thanks to them.",
+//     rating: 5,
+//   },
+//   {
+//     name: "Sarah Wilson",
+//     role: "IT Lead, EnterpriseX",
+//     content:
+//       "Flawless execution on complex projects. Their expertise in IT solutions is unmatched in the industry.",
+//     rating: 5,
+//   },
+// ];
 
-const testimonials = [
-  {
-    name: "John Doe",
-    role: "CEO, TechCorp",
-    content:
-      "Outstanding IT solutions! They transformed our infrastructure with seamless integration and top-notch support. Highly recommended for any enterprise.",
-    rating: 5,
-  },
-  {
-    name: "Jane Smith",
-    role: "CTO, InnovateCo",
-    content:
-      "The team delivered beyond expectations. Reliable, innovative, and always on time. Our network has never been stronger.",
-    rating: 5,
-  },
-  {
-    name: "Mike Johnson",
-    role: "Director, GlobalSystems",
-    content:
-      "Certified experts with quality products. Their system provider services saved us countless hours and boosted efficiency.",
-    rating: 5,
-  },
-  {
-    name: "Emily Davis",
-    role: "Manager, NetSecure",
-    content:
-      "Best partner we've worked with. Strong network and trusted company – they handle everything with professionalism.",
-    rating: 4,
-  },
-  {
-    name: "Chris Lee",
-    role: "Founder, StartupHub",
-    content:
-      "Amazing certified solutions. Quality products and exceptional service. Our ongoing projects are thriving thanks to them.",
-    rating: 5,
-  },
-  {
-    name: "Sarah Wilson",
-    role: "IT Lead, EnterpriseX",
-    content:
-      "Flawless execution on complex projects. Their expertise in IT solutions is unmatched in the industry.",
-    rating: 5,
-  },
-];
-
-export default function TestimonialsSection() {
+export default function TestimonialsSection(Comments) {
+  const [testinomials, setTestinomials] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    if (Comments !== undefined) {
+      setTestinomials(Comments.Comments);
+      // console.log(Comments);
+    }
+  }, [Comments]);
+
+  // const fetchTestinomials = async () => {
+  //   try {
+  //     const res = await fetch("/api/testinomials/", { method: "GET" });
+  //     if (res.ok) {
+  //       let data = await res.json();
+  //       setTestinomials(data);
+  //     }
+  //   } catch (err) {
+  //     alert("Error occured while fetching testinomials");
+  //   }
+  // };
+
+  useEffect(() => {
+    // fetchTestinomials();
     const handleScroll = () => {
       const element = document.getElementById("testimonials-section");
       if (element) {
@@ -118,9 +138,9 @@ export default function TestimonialsSection() {
         </div>
 
         {/* 80% centered wrapper */}
-        <div className="w-full lg:w-[80%] mx-auto">
+        <div className="w-full lg:w-[90%] mx-auto">
           <TestimonialCarousel
-            testimonials={testimonials}
+            testimonials={testinomials}
             isVisible={isVisible}
           />
         </div>
@@ -168,7 +188,7 @@ function TestimonialCarousel({ testimonials, isVisible }) {
             >
               <FaQuoteLeft className="w-10 h-10 text-red-500 mb-4 opacity-70" />
               <p className="text-white text-base sm:text-lg leading-relaxed mb-6 italic">
-                "{t.content}"
+                "{t.comment}"
               </p>
               <div className="flex mb-4">
                 {[...Array(5)].map((_, i) => (
