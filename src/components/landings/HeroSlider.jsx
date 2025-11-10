@@ -4,24 +4,25 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaPlay } from "react-icons/fa";
 import Modal from "react-modal";
 import Image from "next/image";
+// Modal.setAppElement("#__next");
 
 const slides = [
   {
     id: 1,
-    title: "IT Solutions For Your Company",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.",
+    title: "Innovative IT Solutions",
+    text: "We provide cutting-edge IT solutions tailored to your business needs, helping you stay ahead in the digital world.",
     image: "/images/slider1.jpg",
   },
   {
     id: 2,
-    title: "Empowering Digital Growth",
-    text: "We deliver smart and reliable IT solutions to elevate your business digitally.",
+    title: "Driving Digital Transformation",
+    text: "Our expert team empowers businesses to embrace digital transformation with reliable and scalable technology solutions.",
     image: "/images/slider2.jpg",
   },
   {
     id: 3,
-    title: "Transform Ideas Into Reality",
-    text: "From concept to code, we create impactful solutions for your company success.",
+    title: "From Ideas to Impact",
+    text: "We turn your ideas into real-world applications, delivering impactful solutions that drive growth and efficiency.",
     image: "/images/slider3.jpg",
   },
 ];
@@ -36,6 +37,13 @@ export default function HeroSlider() {
       setCurrent((prev) => (prev + 1) % slides.length);
     }, 6000);
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    // Set app element safely in client-side
+    if (typeof window !== "undefined") {
+      Modal.setAppElement("body");
+    }
   }, []);
 
   const currentSlide = slides[current];
@@ -79,7 +87,7 @@ export default function HeroSlider() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-5xl md:text-7xl font-extrabold leading-tight"
+          className="text-3xl md:text-6xl font-extrabold leading-tight"
         >
           {currentSlide.title.split(" ").map((word, i) => (
             <span key={i} className={word === "Company" ? "text-red-500" : ""}>
@@ -116,26 +124,24 @@ export default function HeroSlider() {
       {/* YouTube Modal */}
       <Modal
         isOpen={isOpen}
-        onRequestClose={() => setIsOpen(false)}
-        className="flex justify-center items-center h-full"
-        overlayClassName="fixed inset-0 bg-black/80 flex justify-center items-center"
+        onRequestClose={() => setIsOpen(false)} // correct prop
+        className="relative mx-auto my-auto w-[90%] md:w-[60%] aspect-video bg-black rounded-xl overflow-hidden"
+        overlayClassName="fixed inset-0 bg-black/80 flex justify-center items-center z-50"
       >
-        <div className="relative w-[90%] md:w-[60%] aspect-video">
-          <iframe
-            width="100%"
-            height="100%"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-            title="YouTube video"
-            frameBorder="0"
-            allowFullScreen
-          ></iframe>
-          <button
-            className="absolute -top-10 right-0 text-white text-2xl"
-            onClick={() => setIsOpen(false)}
-          >
-            ✕
-          </button>
-        </div>
+        <iframe
+          width="100%"
+          height="100%"
+          src="https://www.youtube.com/embed/ad79nYk2keg?si=SZptekjesS8OS729"
+          title="YouTube video"
+          frameBorder="0"
+          allowFullScreen
+        />
+        <button
+          className="absolute -top-10 right-0 text-2xl text-white text-2xl"
+          onClick={() => setIsOpen(false)}
+        >
+          ✕
+        </button>
       </Modal>
     </div>
   );

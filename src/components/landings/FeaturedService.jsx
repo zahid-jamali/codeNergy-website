@@ -5,15 +5,15 @@ import Image from "next/image";
 
 export default function FeaturedService() {
   const featuresLeft = [
-    "IT Management",
-    "System Integration",
-    "Experience Design",
+    "Comprehensive IT Management",
+    "Seamless System Integration",
+    "User-Centric Experience Design",
   ];
 
   const featuresRight = [
-    "Servers & Storage",
-    "Network & Access Point",
-    "Data Security",
+    "Robust Servers & Storage Solutions",
+    "Secure Network & Access Point Setup",
+    "Advanced Data Security & Compliance",
   ];
 
   return (
@@ -47,17 +47,18 @@ export default function FeaturedService() {
           <div>
             <p className="text-red-500 uppercase tracking-widest font-semibold mb-2 relative inline-block">
               <span className="absolute -left-8 top-1/2 w-6 h-[2px] bg-red-500 -translate-y-1/2"></span>
-              WHAT WE DO
+              WHAT WE OFFER
             </p>
             <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-              Product Featured <span className="text-red-500">Service</span>
+              Our <span className="text-red-500">Premium Services</span>
             </h2>
           </div>
 
           <p className="text-gray-400 max-w-xl">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-            vel ornare odio, eget sagittis nisl. Nullam vulputate risus ut nisi
-            mollis, et euismod augue rhoncus. Donec ut laoreet leo.
+            At codeNergy, we deliver innovative and reliable IT solutions that
+            empower businesses to thrive in the digital era. From strategic
+            planning to cutting-edge technology implementation, we help you
+            achieve operational excellence and sustainable growth.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-8 pt-4">

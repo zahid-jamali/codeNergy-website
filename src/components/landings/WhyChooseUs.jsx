@@ -9,43 +9,43 @@ import {
   FaMicrochip,
   FaBoxOpen,
   FaAward,
-} from "react-icons/fa"; // Using react-icons (Fa prefix for Font Awesome)
+} from "react-icons/fa";
 
 const reasons = [
   {
     icon: FaShieldAlt,
     title: "Trusted Company",
-    desc: "Ut ut sapien nec mi tincidunt sagittis faucibus at eros. In egesta.",
+    desc: "We have built a reputation for delivering reliable and secure IT solutions that businesses can count on.",
     link: "Learn More >",
   },
   {
     icon: FaGlobe,
-    title: "Strong Network",
-    desc: "Ut ut sapien nec mi tincidunt sagittis faucibus at eros. In egesta.",
+    title: "Global Network",
+    desc: "Our extensive network ensures seamless connectivity and support across multiple locations and industries.",
     link: "Learn More >",
   },
   {
     icon: FaComments,
-    title: "Best Partner",
-    desc: "Ut ut sapien nec mi tincidunt sagittis faucibus at eros. In egesta.",
+    title: "Client-Focused",
+    desc: "We prioritize your needs, providing personalized solutions and proactive support to help your business thrive.",
     link: "Learn More >",
   },
   {
     icon: FaMicrochip,
-    title: "System Provider",
-    desc: "Ut ut sapien nec mi tincidunt sagittis faucibus at eros. In egesta.",
+    title: "Advanced Technology",
+    desc: "We leverage the latest technologies and best practices to create innovative solutions for your IT infrastructure.",
     link: "Learn More >",
   },
   {
     icon: FaBoxOpen,
-    title: "Quality Products",
-    desc: "Ut ut sapien nec mi tincidunt sagittis faucibus at eros. In egesta.",
+    title: "Quality Solutions",
+    desc: "From software to hardware, we deliver high-quality IT products and services tailored to your business goals.",
     link: "Learn More >",
   },
   {
     icon: FaAward,
-    title: "Certified",
-    desc: "Ut ut sapien nec mi tincidunt sagittis faucibus at eros. In egesta.",
+    title: "Certified Experts",
+    desc: "Our team consists of certified IT professionals committed to excellence and achieving measurable results.",
     link: "Learn More >",
   },
 ];
@@ -71,7 +71,7 @@ export default function WhyChooseUs() {
   return (
     <section
       id="why-choose-us"
-      className="relative py-16 sm:py-24 overflow-hidden m-auto md:px-12 "
+      className="relative py-16 sm:py-24 overflow-hidden m-auto md:px-12"
       aria-labelledby="why-heading"
     >
       {/* Subtle circuit background */}
@@ -99,7 +99,7 @@ export default function WhyChooseUs() {
       </div>
 
       <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header - Adjusted for mobile centering, desktop left-align */}
+        {/* Header */}
         <div className="text-center lg:text-left mb-12 lg:mb-16">
           <p className="text-red-600 text-sm sm:text-base font-semibold tracking-wider uppercase inline-flex items-center justify-center lg:justify-start">
             <span className="inline-block w-12 h-px bg-red-600 mr-3"></span>
@@ -109,17 +109,18 @@ export default function WhyChooseUs() {
             id="why-heading"
             className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
           >
-            <span className="text-white block sm:inline">Why Should Our </span>
+            <span className="text-white block sm:inline">Why Our </span>
             <span className="text-red-600 block sm:inline">IT Solutions</span>
+            <span className="text-white block sm:inline"> Stand Out</span>
           </h2>
           <p className="mt-6 max-w-3xl mx-auto lg:mx-0 text-gray-400 text-sm sm:text-base leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-            vel ornare odio, eget sagittis nisl. Nullam vulputate risus ut nisi
-            mollis, et euismod augue rhoncus. Donec ut laoreet leo.
+            Partner with codeNergy to empower your business with innovative,
+            secure, and scalable IT services. We combine expertise, technology,
+            and dedication to help your company achieve digital excellence.
           </p>
         </div>
 
-        {/* 80% centered grid on desktop */}
+        {/* Grid of Reasons */}
         <div className="w-full lg:w-[80%] mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
             {reasons.map((reason, index) => {
@@ -127,7 +128,7 @@ export default function WhyChooseUs() {
               return (
                 <motion.div
                   key={reason.title}
-                  className="group relative bg-gradient-to-br from-black to-red-600/60 backdrop-blur-sm border border-red-800/50 rounded-lg p-6 sm:p-8 hover:border-red-500 transition-all  shadow-lg"
+                  className="group relative bg-gradient-to-br from-black to-red-600/60 backdrop-blur-sm border border-red-800/50 rounded-lg p-6 sm:p-8 hover:border-red-500 transition-all shadow-lg"
                   initial={{ opacity: 0, y: 30 }}
                   animate={isVisible ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.3, delay: index * 0.01 }}

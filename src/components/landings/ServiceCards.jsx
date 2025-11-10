@@ -12,25 +12,25 @@ const services = [
     id: 1,
     icon: <FaFileAlt className="text-5xl text-red-500 mb-4" />,
     title: "Consultation",
-    text: "Ut ut sapien nec mi tincidunt sagittis faucibus at eros. In egestas.",
+    text: "Our experts analyze your business requirements to provide tailored IT strategies that drive growth and efficiency.",
   },
   {
     id: 2,
     icon: <FaProjectDiagram className="text-5xl text-red-500 mb-4" />,
     title: "Design",
-    text: "Ut ut sapien nec mi tincidunt sagittis faucibus at eros. In egestas.",
+    text: "We create innovative system architectures and UX designs that enhance user experience and operational effectiveness.",
   },
   {
     id: 3,
     icon: <FaThLarge className="text-5xl text-red-500 mb-4" />,
     title: "Application",
-    text: "Ut ut sapien nec mi tincidunt sagittis faucibus at eros. In egestas.",
+    text: "From web apps to enterprise solutions, we develop high-performance applications that scale with your business needs.",
   },
   {
     id: 4,
     icon: <FaShieldAlt className="text-5xl text-red-500 mb-4" />,
     title: "Maintenance",
-    text: "Ut ut sapien nec mi tincidunt sagittis faucibus at eros. In egestas.",
+    text: "We provide proactive system maintenance and security updates to ensure your IT infrastructure remains reliable and secure.",
   },
 ];
 

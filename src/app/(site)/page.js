@@ -66,7 +66,6 @@ export default function Home() {
       <PricingTeaser />
       <ServiceCards />
       <ContactSection />
-      <Footer />
     </>
   );
 }

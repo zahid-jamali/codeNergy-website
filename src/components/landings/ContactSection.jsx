@@ -30,7 +30,7 @@ export default function ContactSection() {
   return (
     <section
       id="contact-section"
-      className="relative py-16 sm:py-24 overflow-hidden "
+      className="relative py-16 sm:py-24 overflow-hidden"
       aria-labelledby="contact-heading"
     >
       {/* Subtle circuit background */}
@@ -68,17 +68,17 @@ export default function ContactSection() {
             id="contact-heading"
             className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
           >
-            <span className="text-white">Get In </span>
+            <span className="text-white">Get in </span>
             <span className="text-red-600">Touch</span>
           </h2>
           <p className="mt-6 max-w-3xl mx-auto text-gray-400 text-sm sm:text-base leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-            vel ornare odio, eget sagittis nisl. Nullam vulputate risus ut nisi
-            mollis, et euismod augue rhoncus. Donec ut laoreet leo.
+            Have questions or need a custom solution for your business? Our team
+            is ready to assist you with expert IT guidance and tailored
+            services. Reach out today and let's build something great together.
           </p>
         </div>
 
-        {/* 80% centered two-column layout */}
+        {/* Two-column layout */}
         <div className="w-full lg:w-[80%] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Left: Contact Form */}
@@ -98,9 +98,9 @@ export default function ContactSection() {
                   <input
                     type="text"
                     id="name"
-                    className="w-full px-4 py-3 bg-gray-800/50 border border-red-800/50 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-500/50 text-white placeholder-gray-500 transition-all duration-300"
                     placeholder="John Doe"
                     required
+                    className="w-full px-4 py-3 bg-gray-800/50 border border-red-800/50 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-500/50 text-white placeholder-gray-500 transition-all duration-300"
                   />
                 </div>
 
@@ -114,9 +114,9 @@ export default function ContactSection() {
                   <input
                     type="email"
                     id="email"
-                    className="w-full px-4 py-3 bg-gray-800/50 border border-red-800/50 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-500/50 text-white placeholder-gray-500 transition-all duration-300"
                     placeholder="john@example.com"
                     required
+                    className="w-full px-4 py-3 bg-gray-800/50 border border-red-800/50 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-500/50 text-white placeholder-gray-500 transition-all duration-300"
                   />
                 </div>
 
@@ -125,13 +125,13 @@ export default function ContactSection() {
                     htmlFor="message"
                     className="block text-white font-medium mb-2"
                   >
-                    Your Message (optional)
+                    Message
                   </label>
                   <textarea
                     id="message"
                     rows={5}
+                    placeholder="Tell us how we can help you..."
                     className="w-full px-4 py-3 bg-gray-800/50 border border-red-800/50 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-500/50 text-white placeholder-gray-500 transition-all duration-300 resize-none"
-                    placeholder="Tell us how we can help..."
                   />
                 </div>
 
@@ -157,12 +157,12 @@ export default function ContactSection() {
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
-                allowFullScreen={true}
+                allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Our Location - London Eye"
+                title="Our Location - London Office"
                 className="absolute inset-0"
-              ></iframe>
+              />
 
               {/* Overlay card with location info */}
               <div className="absolute top-4 left-4 bg-gray-900/80 backdrop-blur-sm border border-red-800/50 rounded-lg p-4 max-w-xs shadow-xl">
