@@ -91,7 +91,7 @@ export default function AdminPanelLayoutClient({ children, user }) {
             icon={<MdPeople size={20} />}
             label="Users"
             open={isSidebarOpen}
-            href="/admin/user"
+            href="/admin/users"
           />
           <SidebarLink
             icon={<FaServicestack size={20} />}

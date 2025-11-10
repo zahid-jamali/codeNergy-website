@@ -9,11 +9,6 @@ export const dynamic = "force-dynamic";
 export default function DashboardPage() {
   const user = useSelector((state) => state.user) || undefined;
   console.log(`User: isLogin: ${user.isLogin} - name: ${user.name}`);
-  useEffect(() => {
-    if (user !== undefined && !user.isLogin) {
-      redirect("/login"); // or "/admin/login"
-    }
-  }, [user]);
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
       <h1 className="text-3xl text-red-500 font-bold">Welcome, {user.name}</h1>

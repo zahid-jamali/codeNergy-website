@@ -20,6 +20,10 @@ export async function GET() {
 export async function POST(req) {
   try {
     await connectDB();
+    const user = await verifyAdmin();
+    if (!user || user.role !== "admin") {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
     const body = await req.json();
     const testimonial = await Testinomial.create(body);
     return NextResponse.json(testimonial, { status: 201 });

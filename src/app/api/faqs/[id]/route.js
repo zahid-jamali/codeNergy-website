@@ -3,7 +3,7 @@ import { connectDB } from "@/lib/mongodb";
 import Faq from "@/models/Faq";
 import { verifyAdmin } from "@/lib/verifyToken";
 
-export async function PUT(req, { params }) {
+export async function PUT(req, context) {
   await connectDB();
   try {
     const user = await verifyAdmin();
@@ -11,7 +11,7 @@ export async function PUT(req, { params }) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { id } = params;
+    const { id } = await context.parmas;
     const data = await req.json();
     const updated = await Faq.findByIdAndUpdate(id, data, { new: true });
 
@@ -25,7 +25,7 @@ export async function PUT(req, { params }) {
   }
 }
 
-export async function DELETE(req, { params }) {
+export async function DELETE(req, context) {
   await connectDB();
   try {
     const user = await verifyAdmin();
@@ -33,7 +33,7 @@ export async function DELETE(req, { params }) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { id } = params;
+    const { id } = await context.parmas;
     const deleted = await Faq.findByIdAndDelete(id);
     if (!deleted) {
       return NextResponse.json({ error: "FAQ not found" }, { status: 404 });

@@ -9,30 +9,19 @@ import "swiper/css/pagination";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function ServicesCarousel(Services) {
   const [services, setServices] = useState([]);
+  const router = useRouter();
   useEffect(() => {
     if (Services !== undefined) setServices(Services?.Services);
-    // console.log(JSON.stringify(Services));
   }, [Services]);
-  //     const [loading, setLoading]=useState(false);
-  //   useEffect(() => {
-  //     async function fetchServices() {
-  //         setLoading(true)
-  //       try {
-  //         const res = await fetch("/api/services");
-  //         const data = await res.json();
-  //         setServices(data);
-  //       } catch (error) {
-  //         console.error("Error fetching services:", error);
-  //       }finnaly{
-  //         setLoading(false);
-  //       }
-  //     }
-  //     fetchServices();
-  //   }, []);
 
+  const handleServiceClick = (service) => {
+    sessionStorage.setItem("selectedService", JSON.stringify(service));
+    router.push(`/services/${service._id}`);
+  };
   return (
     <section className="relative bg-black text-white py-24 overflow-hidden">
       {/* Subtle radial gradient background */}
@@ -73,6 +62,7 @@ export default function ServicesCarousel(Services) {
                   whileHover={{ scale: 1.03, y: -6 }}
                   transition={{ type: "spring", stiffness: 120 }}
                   className="relative bg-gradient-to-b from-gray-900 to-gray-950 rounded-3xl border border-gray-800 shadow-lg overflow-hidden group h-full flex flex-col"
+                  onClick={() => handleServiceClick(service)}
                 >
                   {/* Image */}
                   <div className="h-52 overflow-hidden">

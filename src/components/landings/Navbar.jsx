@@ -187,10 +187,11 @@ const Navbar = () => {
                   }}
                 >
                   <Link
-                    href="/portfolio"
-                    className="px-4 py-2 text-white hover:bg-red-500 hover:text-white transition"
+                    href="#"
+                    className=" disable px-4 py-2 text-white hover:bg-red-300 hover:text-white transition"
+                    // disable={true}
                   >
-                    Portfolio
+                    <i>Portfolio</i>
                   </Link>
                   <Link
                     href="/pricing"
@@ -200,9 +201,9 @@ const Navbar = () => {
                   </Link>
                   <Link
                     href="/blog"
-                    className="px-4 py-2 text-white hover:bg-red-500 hover:text-white transition"
+                    className="px-4 py-2 text-white hover:bg-red-300 hover:text-white transition"
                   >
-                    Blogs
+                    <i>Blogs</i>
                   </Link>
                   <Link
                     href="/faq"
@@ -320,14 +321,13 @@ const Navbar = () => {
                     </button>
                     {dropdownOpen === "pages" && (
                       <div className="flex flex-col ml-4 mt-2 space-y-2 text-red-500">
-                        <Link href="/portfolio">
-                          <button
-                            className="hover:text-white transition"
-                            onClick={() => setMenuOpen(false)}
-                          >
-                            Portfolio
-                          </button>
-                        </Link>
+                        <button
+                          disabled
+                          className="opacity-50 cursor-not-allowed"
+                        >
+                          Portfolio (Coming Soon)
+                        </button>
+
                         <Link href="/pricing">
                           <button
                             className="hover:text-white transition"
@@ -336,14 +336,14 @@ const Navbar = () => {
                             Pricing
                           </button>
                         </Link>
-                        <Link href="/blog">
-                          <button
-                            className="hover:text-white transition"
-                            onClick={() => setMenuOpen(false)}
-                          >
-                            Blogs
-                          </button>
-                        </Link>
+
+                        <button
+                          disabled
+                          className="opacity-50 cursor-not-allowed"
+                        >
+                          Blogs (Coming Soon)
+                        </button>
+
                         <Link href="/faq">
                           <button
                             className="hover:text-white transition"

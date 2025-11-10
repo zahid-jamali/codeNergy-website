@@ -3,12 +3,18 @@ import { connectDB } from "@/lib/mongodb";
 import Service from "@/models/Services";
 import fs from "fs";
 import path from "path";
+import { verifyAdmin } from "@/lib/verifyToken";
 
-export async function DELETE(req, { params }) {
+export async function DELETE(req, context) {
   await connectDB();
-  const { id } = params;
+  const { id } = await context.params;
+
   console.log(`ID: ${id}`);
   try {
+    const user = await verifyAdmin();
+    if (!user || user.role !== "admin") {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
     const service = await Service.findById(id);
     if (!service)
       return NextResponse.json({ error: "Not found" }, { status: 404 });
@@ -22,8 +28,4 @@ export async function DELETE(req, { params }) {
   } catch (err) {
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
-}
-export async function GET(req, { params }) {
-  //   const { id } = params;
-  NextResponse.json({ message: "it the response" });
 }

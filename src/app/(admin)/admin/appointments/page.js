@@ -11,7 +11,7 @@ export default function AdminAppointmentsPage() {
   let user = useSelector((state) => state.user);
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(true);
-  if (!user.isLogin) return redirect("/login");
+
   // Fetch all appointments
   useEffect(() => {
     async function fetchAppointments() {

@@ -1,12 +1,11 @@
 "use client";
-export const dynamic = "force-dynamic";
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaPlus, FaEdit, FaTrash, FaCheck, FaTimes } from "react-icons/fa";
 import { redirect } from "next/dist/server/api-utils";
 
-// export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 
 export default function FaqsAdminPage() {
   const [faqs, setFaqs] = useState([]);

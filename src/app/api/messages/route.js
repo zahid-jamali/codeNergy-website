@@ -6,11 +6,8 @@ export async function GET() {
   try {
     await connectDB();
     const user = await verifyAdmin();
-    if (user.role !== "admin") {
-      return NextResponse.json(
-        { message: "unauthorized admin user!" },
-        { status: 400 }
-      );
+    if (!user || user.role !== "admin") {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
     const message = await Message.find().sort({ createdAt: -1 });
 
