@@ -10,7 +10,7 @@ import dynamic from "next/dynamic";
 // });
 import TextEditor from "@/components/admin/Editor";
 
-// export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 
 export default function ServicesPage() {
   const [services, setServices] = useState([]);

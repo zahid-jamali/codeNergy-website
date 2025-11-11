@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import {
   FaMapMarkerAlt,
   FaPhone,
@@ -13,7 +14,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="relative bg-gradient-to-b from-black to-red-950 text-white overflow-hidden">
+    <footer className="relative bg-linear-to-b from-black to-red-950 text-white overflow-hidden">
       {/* Subtle animated circuit background */}
       <div className="absolute inset-0 opacity-10 pointer-events-none animate-pulse">
         <svg
@@ -42,12 +43,12 @@ export default function Footer() {
           {/* Logo + Description */}
           <div>
             <div className="flex items-center mb-6">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
+              <div className="w-12 h-12 sm:w-20 sm:h-20 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
                 <Image
                   src="/logo.jpeg"
                   alt="CodeNergy"
-                  width={100}
-                  height={100}
+                  width={200}
+                  height={200}
                   className="rounded-lg object-cover"
                 />
               </div>
@@ -86,21 +87,23 @@ export default function Footer() {
               Company
             </h4>
             <ul className="space-y-3">
-              {["About Us", "Services", "Why Choose Us", "Testimonials"].map(
-                (item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
-                      className="flex items-center text-gray-300 hover:text-red-500 hover:drop-shadow-[0_0_6px_#ff0000] transition-all group"
-                    >
-                      <span className="w-4 h-4 mr-3 text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">
-                        ✓
-                      </span>
-                      {item}
-                    </a>
-                  </li>
-                )
-              )}
+              {[
+                { lbl: "About Us", lnk: "/aboutus" },
+                { lbl: "Services", lnk: "/services" },
+                { lbl: "Team", lnk: "/team" },
+              ].map((item) => (
+                <li key={item.lnk}>
+                  <Link
+                    href={`${item.lnk}`}
+                    className="flex items-center text-gray-300 hover:text-red-500 hover:drop-shadow-[0_0_6px_#ff0000] transition-all group"
+                  >
+                    <span className="w-4 h-4 mr-3 text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                      ✓
+                    </span>
+                    {item.lbl}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -133,7 +136,7 @@ export default function Footer() {
             </h4>
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
-                <FaMapMarkerAlt className="w-6 h-6 text-red-500 mt-1 flex-shrink-0" />
+                <FaMapMarkerAlt className="w-6 h-6 text-red-500 mt-1 shrink-0" />
                 <div>
                   <p className="font-semibold">Office Address</p>
                   <p className="text-gray-300 text-sm">
@@ -144,7 +147,7 @@ export default function Footer() {
               </div>
 
               <div className="flex items-center space-x-4">
-                <FaPhone className="w-6 h-6 text-red-500 flex-shrink-0" />
+                <FaPhone className="w-6 h-6 text-red-500 shrink-0" />
                 <div>
                   <p className="font-semibold">Call Us</p>
                   <a
@@ -157,7 +160,7 @@ export default function Footer() {
               </div>
 
               <div className="flex items-center space-x-4">
-                <FaEnvelope className="w-6 h-6 text-red-500 flex-shrink-0" />
+                <FaEnvelope className="w-6 h-6 text-red-500 shrink-0" />
                 <div>
                   <p className="font-semibold">Mail Us</p>
                   <a

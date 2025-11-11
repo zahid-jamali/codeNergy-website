@@ -7,19 +7,22 @@ import {
   FaEnvelope,
   FaMapMarkerAlt,
   FaPaperPlane,
+  FaSpinner,
+  FaCheckCircle,
 } from "react-icons/fa";
 
 export default function ContactSection() {
   const [isVisible, setIsVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
+  // ✅ Scroll Animation
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById("contact-section");
       if (element) {
         const rect = element.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.8) {
-          setIsVisible(true);
-        }
+        if (rect.top < window.innerHeight * 0.8) setIsVisible(true);
       }
     };
     window.addEventListener("scroll", handleScroll);
@@ -27,19 +30,56 @@ export default function ContactSection() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // ✅ Handle Submit
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setSuccess(false);
+
+    const formData = {
+      name: e.target.name.value.trim(),
+      email: e.target.email.value.trim(),
+      message: e.target.message.value.trim(),
+    };
+    if (
+      formData.name === "" ||
+      formData.email === "" ||
+      formData.message === ""
+    ) {
+      return alert("Please fill all the fields");
+    }
+
+    try {
+      // Example: Send to backend
+      const res = await fetch("/api/messages/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) throw new Error("Failed to send message");
+
+      setSuccess(true);
+      e.target.reset();
+    } catch (err) {
+      alert("Something went wrong! Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section
       id="contact-section"
       className="relative py-16 sm:py-24 overflow-hidden"
       aria-labelledby="contact-heading"
     >
-      {/* Subtle circuit background */}
+      {/* Background Design */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <svg
           className="absolute inset-0 w-full h-full"
           viewBox="0 0 1920 800"
           fill="none"
-          preserveAspectRatio="xMidYMid slice"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -74,7 +114,7 @@ export default function ContactSection() {
           <p className="mt-6 max-w-3xl mx-auto text-gray-400 text-sm sm:text-base leading-relaxed">
             Have questions or need a custom solution for your business? Our team
             is ready to assist you with expert IT guidance and tailored
-            services. Reach out today and let's build something great together.
+            services.
           </p>
         </div>
 
@@ -87,7 +127,7 @@ export default function ContactSection() {
               animate={isVisible ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <form className="space-y-8">
+              <form onSubmit={handleSubmit} className="space-y-8">
                 <div>
                   <label
                     htmlFor="name"
@@ -98,6 +138,7 @@ export default function ContactSection() {
                   <input
                     type="text"
                     id="name"
+                    name="name"
                     placeholder="John Doe"
                     required
                     className="w-full px-4 py-3 bg-gray-800/50 border border-red-800/50 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-500/50 text-white placeholder-gray-500 transition-all duration-300"
@@ -114,6 +155,7 @@ export default function ContactSection() {
                   <input
                     type="email"
                     id="email"
+                    name="email"
                     placeholder="john@example.com"
                     required
                     className="w-full px-4 py-3 bg-gray-800/50 border border-red-800/50 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-500/50 text-white placeholder-gray-500 transition-all duration-300"
@@ -129,23 +171,48 @@ export default function ContactSection() {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     rows={5}
                     placeholder="Tell us how we can help you..."
+                    required
                     className="w-full px-4 py-3 bg-gray-800/50 border border-red-800/50 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-500/50 text-white placeholder-gray-500 transition-all duration-300 resize-none"
                   />
                 </div>
 
+                {/* ✅ Submit Button */}
                 <button
                   type="submit"
-                  className="w-full sm:w-auto inline-flex items-center justify-center bg-red-600 text-white font-bold py-4 px-12 rounded-lg hover:bg-red-500 transition-all duration-300 shadow-lg hover:shadow-red-500/50"
+                  disabled={loading}
+                  className={`w-full sm:w-auto inline-flex items-center justify-center bg-red-600 text-white font-bold py-4 px-12 rounded-lg transition-all duration-300 shadow-lg hover:shadow-red-500/50 ${
+                    loading
+                      ? "opacity-70 cursor-not-allowed"
+                      : "hover:bg-red-500"
+                  }`}
                 >
-                  Send Message
-                  <FaPaperPlane className="w-5 h-5 ml-2" />
+                  {loading ? (
+                    <>
+                      <FaSpinner className="w-5 h-5 mr-2 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Send Message
+                      <FaPaperPlane className="w-5 h-5 ml-2" />
+                    </>
+                  )}
                 </button>
+
+                {/* ✅ Success Message */}
+                {success && (
+                  <p className="flex items-center text-green-400 mt-4 font-medium">
+                    <FaCheckCircle className="w-5 h-5 mr-2" />
+                    Message sent successfully!
+                  </p>
+                )}
               </form>
             </motion.div>
 
-            {/* Right: Google Map Embed */}
+            {/* Right: Google Map */}
             <motion.div
               className="relative h-96 lg:h-full min-h-96 rounded-2xl overflow-hidden shadow-2xl border border-red-800/50"
               initial={{ opacity: 0, x: 50 }}
@@ -164,7 +231,6 @@ export default function ContactSection() {
                 className="absolute inset-0"
               />
 
-              {/* Overlay card with location info */}
               <div className="absolute top-4 left-4 bg-gray-900/80 backdrop-blur-sm border border-red-800/50 rounded-lg p-4 max-w-xs shadow-xl">
                 <div className="flex items-start space-x-3">
                   <FaMapMarkerAlt className="w-6 h-6 text-red-500 mt-1" />
