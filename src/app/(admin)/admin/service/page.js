@@ -3,11 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaTrashAlt, FaPlusCircle } from "react-icons/fa";
-import dynamic from "next/dynamic";
-
-// const RichTextEditor = dynamic(() => import("@/components/admin/Editor.js"), {
-//   ssr: false,
-// });
+// import dynamic from "next/dynamic";
 import TextEditor from "@/components/admin/Editor";
 
 export const dynamic = "force-dynamic";
