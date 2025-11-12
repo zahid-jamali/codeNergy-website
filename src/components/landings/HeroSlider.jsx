@@ -71,7 +71,7 @@ export default function HeroSlider() {
       </AnimatePresence>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col justify-center h-full px-10 md:px-20 text-white">
+      <div className="relative z-10 flex flex-col justify-center h-full px-6 md:px-16 text-white">
         <motion.h5
           key={`small-${currentSlide.id}`}
           initial={{ opacity: 0, y: -20 }}
@@ -87,7 +87,7 @@ export default function HeroSlider() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-3xl md:text-6xl font-extrabold leading-tight"
+          className="text-3xl md:text-7xl font-extrabold leading-tight"
         >
           {currentSlide.title.split(" ").map((word, i) => (
             <span key={i} className={word === "Company" ? "text-red-500" : ""}>

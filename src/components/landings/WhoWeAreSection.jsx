@@ -7,14 +7,14 @@ export default function WhoWeAreSection() {
       {/* Background Glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,0,0,0.15),transparent_70%)]" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className=" mx-auto px-6 relative z-10">
         {/* Title */}
 
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="md:px-10 mb-12 "
         >
           {/* Subheading */}
           <h3 className="relative inline-block text-red-500 uppercase tracking-widest mb-2 pl-8">
@@ -29,7 +29,7 @@ export default function WhoWeAreSection() {
           </h2>
 
           {/* Paragraph */}
-          <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
+          <p className="text-gray-400 mt-4  ">
             At <span className="text-red-500 font-semibold">codeNergy</span>, we
             blend creativity and technology to craft experiences that drive
             success and innovation.
@@ -37,7 +37,7 @@ export default function WhoWeAreSection() {
         </motion.div>
 
         {/* Info Cards */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 md:px-10">
           {[
             {
               title: "Our Vision",

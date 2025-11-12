@@ -23,11 +23,11 @@ export default function ServicesCarousel(Services) {
     router.push(`/services/${service._id}`);
   };
   return (
-    <section className="relative bg-black text-white py-24 overflow-hidden">
+    <section className="relative bg-black  text-white  overflow-hidden">
       {/* Subtle radial gradient background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,0,0,0.1),transparent_70%)] pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-6xl mx-auto px-3 relative z-10 b">
         {/* Header */}
         <motion.h2
           initial={{ opacity: 0, y: 25 }}

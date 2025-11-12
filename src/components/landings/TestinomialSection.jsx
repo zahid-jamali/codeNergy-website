@@ -33,7 +33,7 @@ export default function TestimonialsSection(Comments) {
   return (
     <section
       id="testimonials-section"
-      className="relative py-16 sm:py-24 overflow-hidden "
+      className="relative py-10 sm:py-16 overflow-hidden "
       aria-labelledby="testimonials-heading"
     >
       {/* Subtle circuit background */}
@@ -125,8 +125,8 @@ function TestimonialCarousel({ testimonials, isVisible }) {
                   : { opacity: 0, scale: 0.9 }
               }
               transition={{
-                duration: 0.6,
-                delay: (index % testimonials.length) * 0.1,
+                duration: 0.9,
+                delay: (index % testimonials.length) * 0.9,
               }}
             >
               <FaQuoteLeft className="w-10 h-10 text-red-500 mb-4 opacity-70" />

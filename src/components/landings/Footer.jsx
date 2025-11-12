@@ -38,23 +38,20 @@ export default function Footer() {
         </svg>
       </div>
 
-      <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+      <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16  pt-8 md:pt-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-8 lg:gap-12">
           {/* Logo + Description */}
           <div>
-            <div className="flex items-center mb-6">
-              <div className="w-12 h-12 sm:w-20 sm:h-20 rounded-lg flex items-center justify-center mr-3 overflow-hidden">
+            <div className="flex items-center mb-6 ">
+              <div className="w-12 pt-2  h-12 sm:w-20 sm:h-20  flex items-center justify-center mr-3 overflow-hidden">
                 <Image
                   src="/logo.jpeg"
                   alt="CodeNergy"
                   width={200}
                   height={200}
-                  className="rounded-lg object-cover"
+                  className="object-cover "
                 />
               </div>
-              <h3 className="text-2xl font-semibold text-red-500 tracking-wide">
-                CodeNergy
-              </h3>
             </div>
             <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
               Empowering your business through innovative software solutions.
@@ -174,11 +171,10 @@ export default function Footer() {
             </div>
           </div>
         </div>
-
-        {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-red-800/50 text-center text-gray-400 text-sm">
-          <p>&copy; 2025 CodeNergy IT Solutions. All rights reserved.</p>
-        </div>
+      </div>
+      {/* Bottom bar */}
+      <div className="my-8 pt-8 border-t border-red-800/50 text-center text-gray-400 text-sm">
+        <p>&copy; 2025 CodeNergy IT Solutions. All rights reserved.</p>
       </div>
     </footer>
   );

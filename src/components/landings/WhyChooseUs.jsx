@@ -71,7 +71,7 @@ export default function WhyChooseUs() {
   return (
     <section
       id="why-choose-us"
-      className="relative py-16 sm:py-24 overflow-hidden m-auto md:px-12"
+      className="relative py-16 sm:py-24 overflow-hidden m-auto md:px-8"
       aria-labelledby="why-heading"
     >
       {/* Subtle circuit background */}
@@ -121,8 +121,8 @@ export default function WhyChooseUs() {
         </div>
 
         {/* Grid of Reasons */}
-        <div className="w-full lg:w-[80%] mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        <div className="w-full lg:w-[90%] mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-20">
             {reasons.map((reason, index) => {
               const Icon = reason.icon;
               return (

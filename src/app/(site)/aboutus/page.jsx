@@ -6,7 +6,7 @@ const Aboutus = () => {
   return (
     <section className="bg-black text-white">
       {/* Hero Section */}
-      <div className="text-center py-16 px-4">
+      <div className="text-center py-16 px-1">
         <motion.p
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -28,7 +28,7 @@ const Aboutus = () => {
       </div>
 
       {/* CEO Section */}
-      <div className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* CEO Image */}
         <motion.div
           initial={{ opacity: 0, x: -80 }}
@@ -70,14 +70,14 @@ const Aboutus = () => {
       </div>
 
       {/* Team Section */}
-      <div className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-8 py-16 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Text Section */}
         <motion.div
           initial={{ opacity: 0, x: -80 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="space-y-6 order-2 lg:order-1"
+          className="space-y-6 space-x-6 order-2 lg:order-1"
         >
           <h3 className="text-3xl font-semibold text-red-500">Our Team</h3>
           <p className="text-gray-300 leading-relaxed">

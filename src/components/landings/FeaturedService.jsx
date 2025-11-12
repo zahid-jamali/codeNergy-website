@@ -4,28 +4,20 @@ import { FaCheckCircle } from "react-icons/fa";
 import Image from "next/image";
 
 export default function FeaturedService() {
-  const featuresLeft = [
-    "Comprehensive IT Management",
-    "Seamless System Integration",
-    "User-Centric Experience Design",
-  ];
+  const featuresLeft = ["Management", "Integration", "Design"];
 
-  const featuresRight = [
-    "Robust Servers & Storage Solutions",
-    "Secure Network & Access Point Setup",
-    "Advanced Data Security & Compliance",
-  ];
+  const featuresRight = ["Servers", "Networking", "Security"];
 
   return (
-    <section className="bg-[#111111] text-white py-20 px-6 md:px-20">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+    <section className=" text-white py-20 px-6 md:px-16 ">
+      <div className=" mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
         {/* Left Image Section */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="rounded-xl overflow-hidden shadow-lg"
+          className="rounded-xl overflow-hidden shadow-lg "
         >
           <Image
             src="/images/featured-service.jpg" // Replace with your actual image path
@@ -54,7 +46,7 @@ export default function FeaturedService() {
             </h2>
           </div>
 
-          <p className="text-gray-400 max-w-xl">
+          <p className="text-gray-400 max-w-xl text-justify">
             At codeNergy, we deliver innovative and reliable IT solutions that
             empower businesses to thrive in the digital era. From strategic
             planning to cutting-edge technology implementation, we help you

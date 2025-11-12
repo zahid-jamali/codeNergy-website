@@ -71,7 +71,7 @@ export default function ContactSection() {
   return (
     <section
       id="contact-section"
-      className="relative py-16 sm:py-24 overflow-hidden"
+      className="relative py-12 sm:py-20 md: px-8 overflow-hidden"
       aria-labelledby="contact-heading"
     >
       {/* Background Design */}
@@ -97,175 +97,157 @@ export default function ContactSection() {
         </svg>
       </div>
 
-      <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-12 lg:mb-16">
-          <p className="text-red-600 text-sm sm:text-base font-semibold tracking-wider uppercase inline-flex items-center justify-center">
-            <span className="inline-block w-12 h-px bg-red-600 mr-3"></span>
-            Contact Us
-          </p>
-          <h2
-            id="contact-heading"
-            className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
+      <div className="relative z-10 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-start">
+          {/* Left: Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={isVisible ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <span className="text-white">Get in </span>
-            <span className="text-red-600">Touch</span>
-          </h2>
-          <p className="mt-6 max-w-3xl mx-auto text-gray-400 text-sm sm:text-base leading-relaxed">
-            Have questions or need a custom solution for your business? Our team
-            is ready to assist you with expert IT guidance and tailored
-            services.
-          </p>
-        </div>
+            {/* Header */}
+            <div className="mb-8">
+              <p className="text-red-600 text-sm font-semibold tracking-wider uppercase flex items-center">
+                <span className="inline-block w-10 h-px bg-red-600 mr-3"></span>
+                Contact Us
+              </p>
+              <h2
+                id="contact-heading"
+                className="mt-2 text-3xl sm:text-4xl font-bold text-white"
+              >
+                Get in <span className="text-red-600">Touch</span>
+              </h2>
+              <p className="mt-3 text-gray-400 text-sm sm:text-base max-w-md">
+                Have questions or need a custom solution for your business?
+                We’re here to help with expert IT guidance.
+              </p>
+            </div>
 
-        {/* Two-column layout */}
-        <div className="w-full lg:w-[80%] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-            {/* Left: Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={isVisible ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
-              <form onSubmit={handleSubmit} className="space-y-8">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-white font-medium mb-2"
-                  >
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="John Doe"
-                    required
-                    className="w-full px-4 py-3 bg-gray-800/50 border border-red-800/50 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-500/50 text-white placeholder-gray-500 transition-all duration-300"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-white font-medium mb-2"
-                  >
-                    Your Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="john@example.com"
-                    required
-                    className="w-full px-4 py-3 bg-gray-800/50 border border-red-800/50 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-500/50 text-white placeholder-gray-500 transition-all duration-300"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-white font-medium mb-2"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    placeholder="Tell us how we can help you..."
-                    required
-                    className="w-full px-4 py-3 bg-gray-800/50 border border-red-800/50 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-500/50 text-white placeholder-gray-500 transition-all duration-300 resize-none"
-                  />
-                </div>
-
-                {/* ✅ Submit Button */}
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className={`w-full sm:w-auto inline-flex items-center justify-center bg-red-600 text-white font-bold py-4 px-12 rounded-lg transition-all duration-300 shadow-lg hover:shadow-red-500/50 ${
-                    loading
-                      ? "opacity-70 cursor-not-allowed"
-                      : "hover:bg-red-500"
-                  }`}
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-white font-medium mb-2"
                 >
-                  {loading ? (
-                    <>
-                      <FaSpinner className="w-5 h-5 mr-2 animate-spin" />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      Send Message
-                      <FaPaperPlane className="w-5 h-5 ml-2" />
-                    </>
-                  )}
-                </button>
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="John Doe"
+                  required
+                  className="w-full px-4 py-3 bg-gray-800/50 border border-red-800/50 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-500/50 text-white placeholder-gray-500 transition-all"
+                />
+              </div>
 
-                {/* ✅ Success Message */}
-                {success && (
-                  <p className="flex items-center text-green-400 mt-4 font-medium">
-                    <FaCheckCircle className="w-5 h-5 mr-2" />
-                    Message sent successfully!
-                  </p>
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-white font-medium mb-2"
+                >
+                  Your Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="john@example.com"
+                  required
+                  className="w-full px-4 py-3 bg-gray-800/50 border border-red-800/50 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-500/50 text-white placeholder-gray-500 transition-all"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-white font-medium mb-2"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  placeholder="Tell us how we can help you..."
+                  required
+                  className="w-full px-4 py-3 bg-gray-800/50 border border-red-800/50 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-500/50 text-white placeholder-gray-500 transition-all resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className={`inline-flex items-center justify-center bg-red-600 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-red-500/40 ${
+                  loading ? "opacity-70 cursor-not-allowed" : "hover:bg-red-500"
+                }`}
+              >
+                {loading ? (
+                  <>
+                    <FaSpinner className="w-5 h-5 mr-2 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <FaPaperPlane className="w-5 h-5 ml-2" />
+                  </>
                 )}
-              </form>
-            </motion.div>
+              </button>
 
-            {/* Right: Google Map */}
-            <motion.div
-              className="relative h-96 lg:h-full min-h-96 rounded-2xl overflow-hidden shadow-2xl border border-red-800/50"
-              initial={{ opacity: 0, x: 50 }}
-              animate={isVisible ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            >
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.668316365456!2d-0.127758384316!3d51.503441179636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604b900000000%3A0x7b5e3c8f00b6a3d!2sLondon%20Eye!5e0!3m2!1sen!2suk!4v1698765432100!5m2!1sen!2suk"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Our Location - London Office"
-                className="absolute inset-0"
-              />
+              {success && (
+                <p className="flex items-center text-green-400 mt-4 font-medium">
+                  <FaCheckCircle className="w-5 h-5 mr-2" />
+                  Message sent successfully!
+                </p>
+              )}
+            </form>
+          </motion.div>
 
-              <div className="absolute top-4 left-4 bg-gray-900/80 backdrop-blur-sm border border-red-800/50 rounded-lg p-4 max-w-xs shadow-xl">
-                <div className="flex items-start space-x-3">
-                  <FaMapMarkerAlt className="w-6 h-6 text-red-500 mt-1" />
-                  <div>
-                    <p className="text-white font-bold text-lg">
-                      London Office
-                    </p>
-                    <p className="text-gray-300 text-sm">
-                      Riverside Building, County Hall,
-                      <br />
-                      Westminster Bridge Rd, London SE1 7PB,
-                      <br />
-                      United Kingdom
-                    </p>
-                  </div>
-                </div>
-                <div className="mt-4 flex items-center space-x-4 text-sm">
-                  <a
-                    href="tel:+442079202000"
-                    className="flex items-center text-gray-300 hover:text-red-500 transition-colors"
-                  >
-                    <FaPhone className="w-4 h-4 mr-2" />
-                    +44 20 7920 2000
-                  </a>
-                  <a
-                    href="mailto:info@example.com"
-                    className="flex items-center text-gray-300 hover:text-red-500 transition-colors"
-                  >
-                    <FaEnvelope className="w-4 h-4 mr-2" />
-                    info@example.com
-                  </a>
+          {/* Right: Google Map (smaller & proportional) */}
+          <motion.div
+            className="relative h-64 md:h-full p-4 rounded-xl overflow-hidden shadow-2xl border border-red-800/50"
+            initial={{ opacity: 0, x: 50 }}
+            animate={isVisible ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          >
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.668316365456!2d-0.127758384316!3d51.503441179636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604b900000000%3A0x7b5e3c8f00b6a3d!2sLondon%20Eye!5e0!3m2!1sen!2suk!4v1698765432100!5m2!1sen!2suk"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Our Location - London Office"
+              className="absolute inset-0"
+            />
+            <div className="absolute bottom-4 left-4 bg-gray-900/80 backdrop-blur-sm border border-red-800/50 rounded-lg p-3 shadow-md text-sm">
+              <div className="flex items-start space-x-2">
+                <FaMapMarkerAlt className="w-4 h-4 text-red-500 mt-0.5" />
+                <div>
+                  <p className="text-white font-semibold">London Office</p>
+                  <p className="text-gray-300 text-xs">
+                    Riverside Building, County Hall, Westminster Bridge Rd
+                  </p>
                 </div>
               </div>
-            </motion.div>
-          </div>
+              <div className="mt-2 text-gray-400 text-xs flex flex-col">
+                <a
+                  href="tel:+442079202000"
+                  className="flex items-center hover:text-red-500 transition-colors"
+                >
+                  <FaPhone className="w-3 h-3 mr-2" /> +44 20 7920 2000
+                </a>
+                <a
+                  href="mailto:info@example.com"
+                  className="flex items-center hover:text-red-500 transition-colors mt-1"
+                >
+                  <FaEnvelope className="w-3 h-3 mr-2" /> info@example.com
+                </a>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

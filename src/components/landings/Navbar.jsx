@@ -41,9 +41,9 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="flex flex-col w-screen">
+      <div className="flex flex-col ">
         {/* --------- Header (Mobile) --------- */}
-        <div className="flex justify-center items-center gap-6 text-2xl bg-red-600 text-white h-28 lg:hidden">
+        <div className="flex justify-center  items-center gap-6 text-2xl bg-red-600 text-white h-28 lg:hidden">
           <FaFacebook className="hover:text-blue-400 transition" />
           <FaTwitter className="hover:text-sky-300 transition" />
           <FaYoutube className="hover:text-red-400 transition" />
@@ -64,24 +64,23 @@ const Navbar = () => {
                 <SiGmail className="text-white" />
                 <a
                   href="mailto:sales@codenergy.ae"
-                  className="hover:underline hover:text-gray-200"
+                  className=" hover:text-gray-200"
                 >
                   sales@codenergy.ae
                 </a>
               </div>
 
               <div className="flex items-center gap-2">
-                <FaClock className="text-white" />
                 <span className="flex flex-row">
                   <Image
                     src={"/images/ae.png"}
                     alt="UAE Flag"
-                    width={25}
+                    width={30}
                     height={7}
                     className=" border-2rounded-sm shadow-md"
-                  />{" "}
-                  {"          "}
-                  Current Time (UAE): {time}
+                  />
+
+                  <span className="pl-3">Current Time (UAE): {time}</span>
                 </span>
               </div>
             </div>
@@ -92,7 +91,7 @@ const Navbar = () => {
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-blue-400 transition"
+              className="hover:text-gray-400 transition"
             >
               <FaFacebook />
             </a>
@@ -100,7 +99,7 @@ const Navbar = () => {
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-sky-300 transition"
+              className="hover:text-gray-400 transition"
             >
               <FaTwitter />
             </a>
@@ -108,7 +107,7 @@ const Navbar = () => {
               href="https://youtube.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-red-400 transition"
+              className="hover:text-gray-400 transition"
             >
               <FaYoutube />
             </a>
@@ -116,47 +115,27 @@ const Navbar = () => {
         </div>
 
         {/* --------- Navbar --------- */}
-        <div className="bg-black w-full flex items-center justify-between px-6 md:px-16 py-1 relative">
+        <div className="bg-black w-full flex items-center justify-between px-5   md:px-16 py-1 relative">
           {/* Logo */}
-          <div className="  w-1/3 md:w-1/9  ">
+          <div className="w-1/3 md:w-auto    ">
             <Image
               src="/logo.jpeg"
               alt="CodeNergy"
               width={400}
               height={400}
-              className="w-full h-auto max-h-30 object-contain "
+              className="w-full h-full max-h-30 object-contain "
               priority
             />
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-10 text-white text-lg">
-            <div
-              className="relative group"
-              // onMouseEnter={() => setDropdownOpen("home")}
-              // onMouseLeave={() => setDropdownOpen(null)}
-            >
+            <div className="relative group">
               <Link href={"/"}>
                 <button className="flex items-center gap-1 hover:text-red-500 transition">
                   Home
                 </button>
               </Link>
-              {/* {dropdownOpen === "home" && (
-                <div className="absolute top-full mt-2 left-0 bg-black border border-red-500 rounded shadow-lg flex flex-col min-w-[160px]">
-                  <a
-                    href="#"
-                    className="px-4 py-2 text-red-500 hover:bg-red-500 hover:text-white transition"
-                  >
-                    Home Style 1
-                  </a>
-                  <a
-                    href="#"
-                    className="px-4 py-2 text-red-500 hover:bg-red-500 hover:text-white transition"
-                  >
-                    Home Style 2
-                  </a>
-                </div>
-              )} */}
             </div>
 
             <Link href="/aboutus" className="hover:text-red-500 transition">
@@ -218,7 +197,8 @@ const Navbar = () => {
             <Link href="/team" className="hover:text-red-500 transition">
               Team
             </Link>
-
+          </div>
+          <div className="hidden md:block">
             <Link
               href="/contactus"
               className="bg-red-600 border-2 border-black text-white px-6 py-3 rounded-none hover:bg-black hover:text-white hover:border-2 hover:border-red-600 transition"

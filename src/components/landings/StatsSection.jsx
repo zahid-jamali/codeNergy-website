@@ -59,13 +59,13 @@ export default function StatsSection() {
       </div>
 
       {/* Centered inner wrapper: 80% width on desktop */}
-      <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="w-full lg:w-[80%] mx-auto">
+      <div className="relative z-10  max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full lg:w-[95%] mx-auto">
           <h2 id="stats-heading" className="sr-only">
             Company Statistics
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 sm:gap-x-8 lg:gap-x-12 text-center">
+          <div className="grid  grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 sm:gap-x-8 lg:gap-x-14 text-center">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
