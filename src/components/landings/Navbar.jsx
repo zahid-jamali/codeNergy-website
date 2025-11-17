@@ -165,25 +165,25 @@ const Navbar = () => {
                     isolation: "isolate",
                   }}
                 >
-                  <Link
+                  {/* <Link
                     href="#"
                     className=" disable px-4 py-2 text-white hover:bg-red-300 hover:text-white transition"
                     // disable={true}
                   >
                     <i>Portfolio</i>
-                  </Link>
+                  </Link> */}
                   <Link
                     href="/pricing"
                     className="px-4 py-2 text-white hover:bg-red-500 hover:text-white transition"
                   >
                     Pricing
                   </Link>
-                  <Link
+                  {/* <Link
                     href="/blog"
                     className="px-4 py-2 text-white hover:bg-red-300 hover:text-white transition"
                   >
                     <i>Blogs</i>
-                  </Link>
+                  </Link> */}
                   <Link
                     href="/faq"
                     className="px-4 py-2 text-white hover:bg-red-500 hover:text-white transition"
@@ -301,12 +301,12 @@ const Navbar = () => {
                     </button>
                     {dropdownOpen === "pages" && (
                       <div className="flex flex-col ml-4 mt-2 space-y-2 text-red-500">
-                        <button
+                        {/* <button
                           disabled
                           className="opacity-50 cursor-not-allowed"
                         >
                           Portfolio (Coming Soon)
-                        </button>
+                        </button> */}
 
                         <Link href="/pricing">
                           <button
@@ -317,12 +317,12 @@ const Navbar = () => {
                           </button>
                         </Link>
 
-                        <button
+                        {/* <button
                           disabled
                           className="opacity-50 cursor-not-allowed"
                         >
                           Blogs (Coming Soon)
-                        </button>
+                        </button> */}
 
                         <Link href="/faq">
                           <button

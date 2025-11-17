@@ -26,7 +26,7 @@ export default function PricingTeaser() {
   return (
     <section
       id="pricing-teaser"
-      className="relative py-16 sm:py-24 overflow-hidden md:px-8 "
+      className="relative py-16 sm:py-24 overflow-hidden px-2 md:px-8 "
       aria-labelledby="pricing-heading"
     >
       {/* Subtle circuit background for theme consistency */}
