@@ -197,8 +197,6 @@ const Navbar = () => {
             <Link href="/team" className="hover:text-red-500 transition">
               Team
             </Link>
-          </div>
-          <div className="hidden md:block">
             <Link
               href="/contactus"
               className="bg-red-600 border-2 border-black text-white px-6 py-3 rounded-none hover:bg-black hover:text-white hover:border-2 hover:border-red-600 transition"
@@ -206,6 +204,8 @@ const Navbar = () => {
               Contact Us
             </Link>
           </div>
+          {/* <div className="hidden md:block">
+          </div> */}
 
           {/* Toggle Button (Mobile) */}
           <button

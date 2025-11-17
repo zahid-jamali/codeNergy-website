@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import ServiceCards from "@/components/landings/ServiceCards";
 
 export default function ServicesPage() {
   const [services, setServices] = useState([]);
@@ -41,14 +42,14 @@ export default function ServicesPage() {
   }
 
   return (
-    <section className="bg-black text-white min-h-screen">
+    <section className=" text-white min-h-screen">
       {/* 🌟 HERO SECTION */}
-      <div className="relative w-full min-h-[60vh] flex flex-col md:flex-row items-center justify-center gap-10 px-8 py-20 bg-gradient-to-b from-zinc-900 to-black">
+      <div className="relative w-full min-h-[60vh] flex flex-col md:flex-row items-center  gap-10  py-20">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-xl text-center md:text-left"
+          className="max-w-xl  text-center md:text-left md:ml-16"
         >
           <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-4">
             Empower Your Business with{" "}
@@ -71,7 +72,7 @@ export default function ServicesPage() {
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative w-80 h-80 md:w-[400px] md:h-[400px]"
+          className="relative w-80 h-80 md:w-[400px] md:h-[400px] m-auto md:pl-46"
         >
           <Image
             src="/images/services-hero.png"
@@ -83,7 +84,7 @@ export default function ServicesPage() {
       </div>
 
       {/* 🧩 SERVICES GRID */}
-      <div className="max-w-7xl mx-auto px-6 py-20">
+      <div className="max-w-7xl mx-auto px-6 md:px-16 py-20">
         <motion.h2
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -138,9 +139,10 @@ export default function ServicesPage() {
           </div>
         )}
       </div>
+      <ServiceCards />
 
       {/* ✨ CALL TO ACTION */}
-      <div className="text-center py-20 bg-zinc-900/70 border-t border-zinc-800">
+      <div className="text-center py-20  border-t border-zinc-800">
         <h3 className="text-3xl font-bold mb-4">
           Ready to elevate your digital presence?
         </h3>

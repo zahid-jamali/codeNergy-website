@@ -7,10 +7,11 @@ const AppointmentSchema = new mongoose.Schema(
     date: { type: String, required: true },
     time: { type: String, required: true },
     message: { type: String },
+    page: { type: String },
     serviceId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Service",
-      required: true,
+      required: false,
     },
     isDone: { type: Boolean, default: false },
   },

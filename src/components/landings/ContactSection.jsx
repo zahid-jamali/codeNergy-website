@@ -71,7 +71,7 @@ export default function ContactSection() {
   return (
     <section
       id="contact-section"
-      className="relative py-12 sm:py-20 md: px-8 overflow-hidden"
+      className="relative py-12 sm:py-20 px-2 md:px-8 overflow-hidden"
       aria-labelledby="contact-heading"
     >
       {/* Background Design */}

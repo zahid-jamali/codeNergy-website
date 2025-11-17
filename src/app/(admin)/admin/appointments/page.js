@@ -1,9 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { FaCheckCircle, FaTrashAlt } from "react-icons/fa";
+import { FaCheckCircle, FaTrashAlt, FaEye } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import { redirect } from "next/dist/server/api-utils";
 
 export const dynamic = "force-dynamic";
 
@@ -11,6 +10,7 @@ export default function AdminAppointmentsPage() {
   let user = useSelector((state) => state.user);
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedMessage, setSelectedMessage] = useState("");
 
   // Fetch all appointments
   useEffect(() => {
@@ -70,9 +70,10 @@ export default function AdminAppointmentsPage() {
               <tr>
                 <th className="py-4 px-6">Name</th>
                 <th className="py-4 px-6">Email</th>
-                <th className="py-4 px-6">Service</th>
+                <th className="py-4 px-6">Service / Page</th>
                 <th className="py-4 px-6">Date</th>
                 <th className="py-4 px-6">Time</th>
+                <th className="py-4 px-6">Message</th>
                 <th className="py-4 px-6">Status</th>
                 <th className="py-4 px-6 text-right">Actions</th>
               </tr>
@@ -87,9 +88,24 @@ export default function AdminAppointmentsPage() {
                 >
                   <td className="py-4 px-6 font-medium">{a.name}</td>
                   <td className="py-4 px-6">{a.email}</td>
-                  <td className="py-4 px-6">{a.serviceId?.title || "—"}</td>
-                  <td className="py-4 px-6">{a.date}</td>
-                  <td className="py-4 px-6">{a.time}</td>
+                  <td className="py-4 px-6">
+                    {a.serviceId?.title || a.page || "—"}
+                  </td>
+                  <td className="py-4 px-6">{a.date || "—"}</td>
+                  <td className="py-4 px-6">{a.time || "—"}</td>
+                  <td className="py-4 px-6 max-w-xs">
+                    {a.message ? (
+                      <div
+                        className="truncate cursor-pointer"
+                        title={a.message}
+                        onClick={() => setSelectedMessage(a.message)}
+                      >
+                        {a.message}
+                      </div>
+                    ) : (
+                      "—"
+                    )}
+                  </td>
                   <td className="py-4 px-6">
                     {a.isDone ? (
                       <span className="text-green-400 font-semibold">Done</span>
@@ -122,6 +138,25 @@ export default function AdminAppointmentsPage() {
             </tbody>
           </table>
         </div>
+
+        {/* Message Modal */}
+        {selectedMessage && (
+          <div
+            className="fixed inset-0 bg-black/70 flex justify-center items-center z-50"
+            onClick={() => setSelectedMessage("")}
+          >
+            <div className="bg-gray-900 rounded-xl p-6 max-w-lg w-full text-gray-100 shadow-lg">
+              <h3 className="text-xl font-bold mb-4">Message</h3>
+              <p className="whitespace-pre-wrap">{selectedMessage}</p>
+              <button
+                className="mt-6 px-6 py-2 bg-red-600 hover:bg-red-500 rounded-xl font-bold"
+                onClick={() => setSelectedMessage("")}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
