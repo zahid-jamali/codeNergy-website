@@ -107,20 +107,33 @@ export default function Footer() {
           {/* Our Team Links */}
           <div>
             <h4 className="text-xl sm:text-2xl font-semibold text-red-600 mb-6">
-              Our Team
+              Clients
             </h4>
             <ul className="space-y-3">
-              {["Our Team", "Gallery", "Latest Projects"].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
-                    className="flex items-center text-gray-300 hover:text-red-500 hover:drop-shadow-[0_0_6px_#ff0000] transition-all group"
+              {[
+                { lbl: "Pricing", lnk: "/pricing" },
+                { lbl: "FAQ", lnk: "/faq" },
+                { lbl: "Need Help", lnk: "/contactus" },
+              ].map((item, idx) => (
+                <li key={idx}>
+                  <Link
+                    href={item.lnk}
+                    className="flex items-center text-gray-300 hover:text-red-500 transition-all group"
                   >
-                    <span className="w-4 h-4 mr-3 text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span
+                      className="
+          w-4 h-4 mr-3 text-red-500 
+          opacity-0 -translate-x-2 
+          group-hover:opacity-100 
+          group-hover:translate-x-0 
+          transition-all duration-200
+        "
+                    >
                       ✓
                     </span>
-                    {item}
-                  </a>
+
+                    {item.lbl}
+                  </Link>
                 </li>
               ))}
             </ul>
