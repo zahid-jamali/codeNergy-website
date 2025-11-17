@@ -5,6 +5,7 @@ import Service from "@/models/Services";
 import User from "@/models/User";
 import { verifyAdmin } from "@/lib/verifyToken";
 import sendMail from "@/lib/sendMail";
+import Activities from "@/models/Activities";
 
 export async function GET() {
   try {
@@ -28,6 +29,9 @@ export async function POST(req) {
     await connectDB();
     const body = await req.json();
     const newAppointment = await Appointment.create(body);
+    await Activities.create({
+      content: `A new appointment has been scheduled by ${body.name}`,
+    });
     const prevAdmins = await User.find({
       role: "admin",
     });

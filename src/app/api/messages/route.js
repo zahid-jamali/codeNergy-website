@@ -4,6 +4,7 @@ import Message from "@/models/Messages";
 import User from "@/models/User";
 import sendMail from "@/lib/sendMail";
 import { NextResponse } from "next/server";
+import Activities from "@/models/Activities";
 export async function GET() {
   try {
     await connectDB();
@@ -37,6 +38,7 @@ export async function POST(req) {
   try {
     let msg = Message({ name, email, message });
     await msg.save();
+    await Activities.create({ content: "A new message!" });
     const prevAdmins = await User.find({ role: "admin" });
     const emails = prevAdmins.map((U) => U.email);
 

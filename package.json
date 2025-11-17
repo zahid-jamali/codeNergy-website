@@ -9,14 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@mantine/core": "^8.3.7",
-    "@mantine/hooks": "^8.3.7",
-    "@mantine/tiptap": "^8.3.7",
     "@reduxjs/toolkit": "^2.10.1",
-    "@tiptap/extension-link": "^3.10.7",
-    "@tiptap/extension-underline": "^3.10.2",
-    "@tiptap/react": "^3.10.7",
-    "@tiptap/starter-kit": "^3.10.7",
     "bcryptjs": "^3.0.3",
     "dotenv": "^17.2.3",
     "framer-motion": "^12.23.24",
