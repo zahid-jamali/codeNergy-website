@@ -19,6 +19,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const [time, setTime] = useState("");
+  const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
     const update = () => {
@@ -37,6 +38,28 @@ const Navbar = () => {
     update(); // Run once
     const interval = setInterval(update, 1000); // Update every second
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const navbar = document.getElementById("main-navbar");
+    const sentinel = document.getElementById("sticky-sentinel");
+
+    if (!navbar || !sentinel) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          setIsSticky(true);
+        } else {
+          setIsSticky(false);
+        }
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(sentinel);
+
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -115,7 +138,13 @@ const Navbar = () => {
         </div>
 
         {/* --------- Navbar --------- */}
-        <div className="bg-black w-full flex items-center justify-between px-5   md:px-16 py-1 relative">
+        <div id="sticky-sentinel" className="h-1"></div>
+
+        <div
+          id="main-navbar"
+          className={`bg-black w-full flex items-center justify-between px-5 md:px-16 py-1 relative transition-all duration-300
+  ${isSticky ? "fixed top-0 left-0 z-50 shadow-xl" : ""}`}
+        >
           {/* Logo */}
           <div className="w-1/3 md:w-auto    ">
             <Image
