@@ -6,8 +6,11 @@ const blogSchema = new mongoose.Schema(
     title: { type: String, required: true },
     description: { type: String, required: true },
     content: { type: String, required: true },
-    author: { type: String, required: true },
-    image: { type: String, default: "/images/slider3.jpg" },
+    author: {
+      type: mongoose.Schema.ObjectId.Type,
+      ref: "User",
+    },
+    image: { type: String },
     slug: { type: String, required: true, unique: true },
   },
   { timestamps: true }

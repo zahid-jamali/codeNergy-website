@@ -4,6 +4,7 @@ import User from "@/models/User";
 import { verifyAdmin } from "@/lib/verifyToken";
 import bcrypt from "bcryptjs";
 import sendMail from "@/lib/sendMail";
+import Activities from "@/models/Activities";
 
 // ✅ GET All Users
 export async function GET() {
@@ -46,6 +47,7 @@ export async function POST(req) {
     password: hashedPassword,
     role: userRole,
   });
+  await Activities.create({ content: `A new user created by ${user.name}` });
 
   // Notify other admins
   const prevAdmins = await User.find({ role: "admin", _id: { $ne: user._id } });

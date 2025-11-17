@@ -125,12 +125,12 @@ export default function AdminPanelLayoutClient({ children, user }) {
             open={isSidebarOpen}
             href="/admin/faqs"
           />
-          <SidebarLink
+          {/* <SidebarLink
             icon={<FaCog size={20} />}
             label="Settings"
             open={isSidebarOpen}
             href="/admin/settings"
-          />
+          /> */}
         </nav>
 
         {/* Logout */}

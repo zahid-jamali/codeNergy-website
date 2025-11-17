@@ -3,6 +3,7 @@ import { connectDB } from "@/lib/mongodb";
 import User from "@/models/User";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import Activities from "@/models/Activities";
 
 export async function POST(req) {
   try {
@@ -29,6 +30,9 @@ export async function POST(req) {
       role: user.role,
       token: token,
     };
+    await Activities.create({
+      content: `${usr.name} login to the admin dashboard!`,
+    });
 
     const res = NextResponse.json({
       message: "Login successful",

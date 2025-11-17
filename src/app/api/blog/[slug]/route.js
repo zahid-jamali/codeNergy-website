@@ -3,10 +3,10 @@ import { NextResponse } from "next/server";
 import mongoose from "mongoose";
 import Blog from "@/models/Blog";
 
-export async function connectDB() {
-  if (mongoose.connection.readyState >= 1) return;
-  await mongoose.connect(process.env.MONGO_URI);
-}
+// export async function connectDB() {
+//   if (mongoose.connection.readyState >= 1) return;
+//   await mongoose.connect(process.env.MONGO_URI);
+// }
 
 // Get blog by slug
 export async function GET(_, { params }) {
