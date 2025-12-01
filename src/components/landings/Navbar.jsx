@@ -6,20 +6,16 @@ import {
   FaFacebook,
   FaTwitter,
   FaYoutube,
-  FaClock,
   FaBars,
   FaTimes,
 } from "react-icons/fa";
-import { FaLocationDot } from "react-icons/fa6";
 import { SiGmail } from "react-icons/si";
-import { IoIosArrowDown } from "react-icons/io";
 import Link from "next/link";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const [time, setTime] = useState("");
-  const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
     const update = () => {
@@ -38,28 +34,6 @@ const Navbar = () => {
     update(); // Run once
     const interval = setInterval(update, 1000); // Update every second
     return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    const navbar = document.getElementById("main-navbar");
-    const sentinel = document.getElementById("sticky-sentinel");
-
-    if (!navbar || !sentinel) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) {
-          setIsSticky(true);
-        } else {
-          setIsSticky(false);
-        }
-      },
-      { threshold: 0 }
-    );
-
-    observer.observe(sentinel);
-
-    return () => observer.disconnect();
   }, []);
 
   return (
@@ -138,23 +112,34 @@ const Navbar = () => {
         </div>
 
         {/* --------- Navbar --------- */}
-        <div id="sticky-sentinel" className="h-1"></div>
 
-        <div
-          id="main-navbar"
-          className={`bg-black w-full flex items-center justify-between px-5 md:px-16 py-1 relative transition-all duration-300
-  ${isSticky ? "fixed top-0 left-0 z-50 shadow-xl" : ""}`}
-        >
-          {/* Logo */}
-          <div className="w-1/3 md:w-auto    ">
-            <Image
-              src="/logo.jpeg"
-              alt="CodeNergy"
-              width={400}
-              height={400}
-              className="w-full h-full max-h-30 object-contain "
-              priority
-            />
+        <div className=" w-full flex items-center justify-between px-5 md:px-16 py-1 md:py-4 relative z-[999] transition-all duration-300">
+          {/* Logo - Desktop Only (Rounded & Overlapping) */}
+          <div className="w-1/3 md:w-auto  flex items-center relative">
+            <div className="hidden md:block  absolute -bottom-22 left-0 z-[9999] pointer-events-none">
+              <div className="h-32 w-32 rounded-full border-2  overflow-hidden p-4   bg-black isolate will-change-transform">
+                <Image
+                  src="/logo.jpeg"
+                  alt="CodeNergy"
+                  width={200}
+                  height={200}
+                  className="w-full  h-full object-fill  "
+                  priority
+                />
+              </div>
+            </div>
+
+            {/* Mobile logo remains exactly SAME */}
+            <div className="md:hidden w-2/3">
+              <Image
+                src="/logo.jpeg"
+                alt="CodeNergy"
+                width={400}
+                height={400}
+                className="w-full h-full max-h-40 object-contain"
+                priority
+              />
+            </div>
           </div>
 
           {/* Desktop Menu */}
@@ -172,7 +157,10 @@ const Navbar = () => {
             </Link>
 
             <Link href="/services" className="hover:text-red-500 transition">
-              Services
+              What we do
+            </Link>
+            <Link href="/team" className="hover:text-red-500 transition">
+              How we do
             </Link>
 
             <div
@@ -194,25 +182,25 @@ const Navbar = () => {
                     isolation: "isolate",
                   }}
                 >
-                  <Link
+                  {/* <Link
                     href="#"
                     className=" disable px-4 py-2 text-white hover:bg-red-300 hover:text-white transition"
                     // disable={true}
                   >
                     <i>Portfolio</i>
-                  </Link>
+                  </Link> */}
                   <Link
                     href="/pricing"
                     className="px-4 py-2 text-white hover:bg-red-500 hover:text-white transition"
                   >
                     Pricing
                   </Link>
-                  <Link
+                  {/* <Link
                     href="/blog"
                     className="px-4 py-2 text-white hover:bg-red-300 hover:text-white transition"
                   >
                     <i>Blogs</i>
-                  </Link>
+                  </Link> */}
                   <Link
                     href="/faq"
                     className="px-4 py-2 text-white hover:bg-red-500 hover:text-white transition"
@@ -223,9 +211,6 @@ const Navbar = () => {
               )}
             </div>
 
-            <Link href="/team" className="hover:text-red-500 transition">
-              Team
-            </Link>
             <Link
               href="/contactus"
               className="bg-red-600 border-2 border-black text-white px-6 py-3 rounded-none hover:bg-black hover:text-white hover:border-2 hover:border-red-600 transition"
@@ -312,7 +297,16 @@ const Navbar = () => {
                       className="text-white hover:text-red-600 transition"
                       onClick={() => setMenuOpen(false)}
                     >
-                      Services
+                      What we do
+                    </button>
+                  </Link>
+
+                  <Link
+                    href="/team"
+                    className="text-white hover:text-red-600 transition"
+                  >
+                    <button onClick={() => setMenuOpen(false)}>
+                      How we do
                     </button>
                   </Link>
 
@@ -330,12 +324,12 @@ const Navbar = () => {
                     </button>
                     {dropdownOpen === "pages" && (
                       <div className="flex flex-col ml-4 mt-2 space-y-2 text-red-500">
-                        <button
+                        {/* <button
                           disabled
                           className="opacity-50 cursor-not-allowed"
                         >
                           Portfolio (Coming Soon)
-                        </button>
+                        </button> */}
 
                         <Link href="/pricing">
                           <button
@@ -346,12 +340,12 @@ const Navbar = () => {
                           </button>
                         </Link>
 
-                        <button
+                        {/* <button
                           disabled
                           className="opacity-50 cursor-not-allowed"
                         >
                           Blogs (Coming Soon)
-                        </button>
+                        </button> */}
 
                         <Link href="/faq">
                           <button
@@ -366,14 +360,8 @@ const Navbar = () => {
                   </div>
 
                   <Link
-                    href="/team"
-                    className="text-white hover:text-red-600 transition"
-                  >
-                    <button onClick={() => setMenuOpen(false)}>Team</button>
-                  </Link>
-
-                  <Link
                     href="/contactus"
+                    onClick={() => setMenuOpen(false)}
                     className="bg-red-600 text-white px-6 py-3 hover:bg-black hover:border-2 hover:border-red-600 hover:text-white transition rounded-none"
                   >
                     Contact Us

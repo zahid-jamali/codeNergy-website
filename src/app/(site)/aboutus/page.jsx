@@ -167,12 +167,13 @@ export default function NextGenAboutUs() {
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-center py-16 border-t border-red-600/30 px-6"
+        className="text-center py-20 px-6 border-t border-white/10"
       >
-        <p className="text-gray-400 italic max-w-2xl mx-auto">
-          “Coming together is a beginning, staying together is progress, and
-          working together is success. At CodeNergy, we live by this philosophy
-          every day.”
+        <p className="text-gray-300 italic max-w-3xl mx-auto text-lg leading-relaxed">
+          “Coming together is a beginning. Staying together is progress. Working
+          together is success. At{" "}
+          <span className="text-red-500 font-semibold">CodeNergy</span>, this is
+          more than a quote — it’s who we are.”
         </p>
       </motion.div>
     </section>
