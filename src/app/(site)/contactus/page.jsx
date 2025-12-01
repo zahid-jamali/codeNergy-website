@@ -100,12 +100,18 @@ const Contactus = () => {
 
             <div className="space-y-4">
               <div className="flex items-center">
-                <FaPhone className="text-red-500 mr-3" />
+                <FaPhone className="text-red-500 mr-3 rotate-90" />
                 <p>+92 300 1234567</p>
               </div>
               <div className="flex items-center">
                 <FaEnvelope className="text-red-500 mr-3" />
-                <p>info@zarehtechsolutions.com</p>
+                <a
+                  href="mailto:sales@codenergy.ae"
+                  className="flex items-center hover:text-red-500 transition-colors mt-1"
+                >
+                  {" "}
+                  sales@codenergy.ae
+                </a>
               </div>
               <div className="flex items-center">
                 <FaMapMarkerAlt className="text-red-500 mr-3" />
@@ -219,22 +225,24 @@ const Contactus = () => {
         </div>
 
         {/* Map Section */}
+        {/* Map Section */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mt-16"
         >
-          <div className="w-full h-80 border-2 border-red-600 rounded-lg overflow-hidden shadow-lg shadow-red-500/30">
+          <div className="w-full h-80 border-2 border-red-600 rounded-lg overflow-hidden shadow-lg shadow-red-500/30 relative">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.668316365456!2d-0.127758384316!3d51.503441179636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604b900000000%3A0x7b5e3c8f00b6a3d!2sLondon%20Eye!5e0!3m2!1sen!2suk!4v1698765432100!5m2!1sen!2suk"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2789.427420517524!2d55.45602357414213!3d25.319909077632165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5f26195b7e6b%3A0xc0f6d4eb509bdf75!2sSPC%20Free%20Zone%20-%20Business%20Setup%20In%20Sharjah%2C%20UAE!5e1!3m2!1sen!2s!4v1764577804696!5m2!1sen!2s"
               width="100%"
               height="100%"
               style={{ border: 0 }}
-              allowFullScreen={true}
+              allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Our Location - London Eye"
+              title="Sharjah Publishing City Free Zone Sharjah, United Arab Emirates"
+              className="absolute inset-0"
             ></iframe>
           </div>
         </motion.div>

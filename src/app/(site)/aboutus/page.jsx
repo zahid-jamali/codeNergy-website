@@ -11,7 +11,7 @@ export default function NextGenAboutUs() {
       <div className="absolute top-1/3 left-1/2 w-[700px] h-[700px] bg-red-600/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
 
       {/* Hero Section */}
-      <div className="relative z-10 max-w-6xl mx-auto text-center px-6 py-32">
+      <div className="relative z-10 max-w-6xl mx-auto text-center px-6 pt-16 pb-10">
         <motion.p
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -44,7 +44,7 @@ export default function NextGenAboutUs() {
       </div>
 
       {/* CEO Section */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6  grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <motion.div
           initial={{ opacity: 0, x: -80 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -57,7 +57,7 @@ export default function NextGenAboutUs() {
             alt="CEO"
             width={500}
             height={500}
-            className="rounded-3xl  object-cover w-full max-w-sm"
+            className="rounded-3xl  object-cover w-2xl h-1/3 pt-24 max-w-sm"
           />
         </motion.div>
         <motion.div
@@ -69,21 +69,18 @@ export default function NextGenAboutUs() {
         >
           <h3 className="text-3xl font-semibold text-red-500">CEO’s Message</h3>
           <p className="text-gray-300 leading-relaxed">
-            “Our mission at{" "}
-            <span className="text-red-500 font-semibold">CodeNergy</span> is to
-            create software that not only works flawlessly but inspires growth
-            and innovation. Every line of code we write reflects our dedication,
-            creativity, and commitment to excellence.”
-          </p>
-          <p className="text-gray-400 leading-relaxed">
-            From designing elegant web applications to implementing complex
-            AI-driven solutions, our work is guided by the philosophy of pushing
-            technological boundaries while delivering tangible business results.
-          </p>
-          <p className="text-gray-400 leading-relaxed">
-            We focus on innovation, quality, and collaboration. Our team
-            partners with clients to understand their vision and turn it into
-            scalable, cutting-edge solutions that drive real-world impact.
+            At <span className="text-red-500">CodeNergy </span>, we believe in
+            combining experience, innovation, and execution to create solutions
+            that truly empower businesses. With more than one half-decade spent
+            in the IT industry — across traditional technology and modern
+            digital services — our team has faced challenges, solved problems,
+            and delivered results that matter. Our mission is simple: to make
+            technology work for you. Whether it’s software development, digital
+            marketing, BPO services, or technical support, we focus on providing
+            solutions that are practical, efficient, and impactful. At
+            CodeNergy, we don’t just build projects — we build partnerships. I
+            invite you to connect with us, share your vision, and let’s turn
+            ideas into results that drive your business forward.
           </p>
           <p className="text-red-500 font-semibold">— Aadil Khan, CEO</p>
         </motion.div>
@@ -99,15 +96,11 @@ export default function NextGenAboutUs() {
         >
           <h3 className="text-3xl font-semibold text-red-500">Our Mission</h3>
           <p className="text-gray-300 leading-relaxed">
-            To empower businesses with reliable, modern, and innovative software
-            solutions that unlock growth and efficiency. We aim to bridge the
-            gap between creativity and technology, delivering results that
-            exceed expectations.
-          </p>
-          <p className="text-gray-400 leading-relaxed">
-            Our mission extends beyond coding — we strive to create meaningful
-            experiences for users, building software that solves problems and
-            drives real impact.
+            To empower businesses with technology, creativity, and innovation by
+            delivering solutions that are practical, efficient, and
+            results-driven. We aim to turn ideas into real impact — through
+            software that works, marketing that converts, BPO that performs, and
+            support that never stops.
           </p>
         </motion.div>
         <motion.div
@@ -118,15 +111,10 @@ export default function NextGenAboutUs() {
         >
           <h3 className="text-3xl font-semibold text-red-500">Our Vision</h3>
           <p className="text-gray-300 leading-relaxed">
-            To be a globally recognized software solutions company known for
-            innovation, quality, and customer-centric design. We envision a
-            world where technology enhances every aspect of business operations
-            and human experience.
-          </p>
-          <p className="text-gray-400 leading-relaxed">
-            We continually evolve, embracing new technologies and methodologies
-            to deliver solutions that are not only advanced but sustainable,
-            secure, and future-ready.
+            To be recognized as a leading technology and digital solutions
+            partner globally — a company known for innovation, reliability, and
+            relentless execution, helping organizations grow smarter, faster,
+            and stronger in the digital age.
           </p>
         </motion.div>
       </div>
@@ -161,21 +149,6 @@ export default function NextGenAboutUs() {
           </motion.div>
         ))}
       </div>
-
-      {/* Footer Quote */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-center py-20 px-6 border-t border-white/10"
-      >
-        <p className="text-gray-300 italic max-w-3xl mx-auto text-lg leading-relaxed">
-          “Coming together is a beginning. Staying together is progress. Working
-          together is success. At{" "}
-          <span className="text-red-500 font-semibold">CodeNergy</span>, this is
-          more than a quote — it’s who we are.”
-        </p>
-      </motion.div>
     </section>
   );
 }

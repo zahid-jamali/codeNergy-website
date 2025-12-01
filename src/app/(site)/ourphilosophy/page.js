@@ -20,7 +20,8 @@ export default function HowWeDoItPage() {
     {
       title: "We Create with Purpose",
       points: [
-        "Every line of code, every design, every campaign — has a purpose, strategy, and result attached to it.",
+        "Every line of code, every design, every campaign —",
+        "has a purpose, strategy, and result attached to it.",
         "We don’t do generic work.",
         "We build what brings value, reduces effort, boosts revenue, and makes your brand stronger.",
       ],
@@ -88,8 +89,15 @@ export default function HowWeDoItPage() {
   return (
     <div className="bg-black text-white py-20 px-6 md:px-16 lg:px-28 space-y-24">
       <h1 className="text-4xl md:text-5xl font-bold text-center mb-10 text-red-500">
-        How We Do It — Our Philosophy
+        How We Do It | Our Philosophy
       </h1>
+
+      <p className="text-gray-300 mx-auto text-justify text-lg md:text-xl max-w-4xl">
+        At CodeNergy, we believe that great solutions come from great thinking.
+        Our philosophy is built on a simple foundation — clarity, creativity,
+        technology, and consistent execution. Every project we take begins with
+        understanding your goals and ends with measurable results.
+      </p>
 
       {sections.map((sec, index) => (
         <motion.div
@@ -101,7 +109,6 @@ export default function HowWeDoItPage() {
             index % 2 !== 0 ? "lg:flex-row-reverse" : ""
           }`}
         >
-          {/* Text Section */}
           <div
             className={`${
               index % 2 !== 0 ? "lg:order-last" : "lg:order-first"
@@ -117,7 +124,6 @@ export default function HowWeDoItPage() {
             </ul>
           </div>
 
-          {/* Image */}
           <div
             className={`w-full h-80 lg:h-96 relative rounded-2xl overflow-hidden shadow-xl border border-white/10 ${
               index % 2 !== 0 ? "lg:order-first" : "lg:order-last"

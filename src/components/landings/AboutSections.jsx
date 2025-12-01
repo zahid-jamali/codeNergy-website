@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { FaBuilding, FaFlag } from "react-icons/fa";
+import { FaUsers, FaCodeBranch, FaHeadset } from "react-icons/fa";
 
 const AboutSection = () => {
   return (
@@ -15,51 +15,66 @@ const AboutSection = () => {
               <span className="w-10 h-0.5 bg-red-500 mr-2"></span>
               About Us
             </p>
+
             <h2 className="text-4xl md:text-5xl font-extrabold mb-8 leading-tight">
-              Building Innovative IT
+              Crafting Technology That
               <span className="text-red-500 block sm:inline">
                 {" "}
-                Solutions for Your Future
+                Moves Businesses Forward
               </span>
             </h2>
 
             {/* Main Text */}
             <p className="text-gray-400 mb-10 text-lg leading-relaxed">
-              At codeNergy, we specialize in delivering cutting-edge IT services
-              that empower businesses to thrive in the digital era. Our
-              dedicated team combines expertise, innovation, and technology to
-              create solutions that drive efficiency, security, and growth for
-              your company.
+              We are a team of experienced IT professionals shaping digital
+              success through software development, marketing, BPO services, and
+              technical support. With years of execution and innovation behind
+              us, we don’t just work with technology — we understand it and
+              build the future through it.
             </p>
 
-            {/* Vision and Mission */}
+            {/* Strengths / Highlights */}
             <div className="space-y-8">
-              {/* Our Vision */}
+              {/* Experience */}
               <div className="flex items-start">
                 <div className="p-3 bg-gray-800 rounded-full mr-4 mt-1">
-                  <FaBuilding className="w-6 h-6 text-red-500" />
+                  <FaUsers className="w-6 h-6 text-red-500" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-1">Our Vision</h3>
+                  <h3 className="text-xl font-bold mb-1">Experienced Team</h3>
                   <p className="text-gray-400">
-                    To be the leading provider of innovative IT solutions,
-                    helping businesses unlock their digital potential and
-                    achieve long-term success.
+                    Skilled professionals with multi-industry experience in
+                    delivering impactful digital solutions.
                   </p>
                 </div>
               </div>
 
-              {/* Our Mission */}
+              {/* Services Strength */}
               <div className="flex items-start">
                 <div className="p-3 bg-gray-800 rounded-full mr-4 mt-1">
-                  <FaFlag className="w-6 h-6 text-red-500" />
+                  <FaCodeBranch className="w-6 h-6 text-red-500" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-1">Our Mission</h3>
+                  <h3 className="text-xl font-bold mb-1">
+                    All-in-One Capability
+                  </h3>
                   <p className="text-gray-400">
-                    To deliver reliable, scalable, and secure IT solutions
-                    tailored to each client’s needs, enabling businesses to grow
-                    confidently in the digital landscape.
+                    From software and marketing to operations and support — we
+                    provide a complete ecosystem for business growth.
+                  </p>
+                </div>
+              </div>
+
+              {/* Support */}
+              <div className="flex items-start">
+                <div className="p-3 bg-gray-800 rounded-full mr-4 mt-1">
+                  <FaHeadset className="w-6 h-6 text-red-500" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-1">Reliable Support</h3>
+                  <p className="text-gray-400">
+                    Continuous assistance and dependable service that keeps your
+                    operations running smoothly.
                   </p>
                 </div>
               </div>
@@ -82,10 +97,10 @@ const AboutSection = () => {
                 className="text-red-500 text-5xl font-signature italic mb-2 select-none"
                 style={{ fontFamily: "'Dancing Script', cursive" }}
               >
-                Benny Ricardo
+                Adil Ali
               </p>
               <p className="text-white text-xl font-bold leading-none">
-                Benny Ricardo
+                Adil Ali
               </p>
               <p className="text-red-500 text-sm">CEO & Founder</p>
             </div>

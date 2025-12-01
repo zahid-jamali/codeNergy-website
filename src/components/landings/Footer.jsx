@@ -43,7 +43,7 @@ export default function Footer() {
           {/* Logo + Description */}
           <div>
             <div className="flex items-center mb-6 ">
-              <div className="w-12 pt-2  h-12 sm:w-20 sm:h-20  flex items-center justify-center mr-3 overflow-hidden">
+              <div className="w-20 p-1  h-20  md:w-24 md:h-24  flex items-center justify-center mr-3 overflow-hidden">
                 <Image
                   src="/logo.jpeg"
                   alt="CodeNergy"
@@ -157,7 +157,8 @@ export default function Footer() {
               </div>
 
               <div className="flex items-center space-x-4">
-                <FaPhone className="w-6 h-6 text-red-500 shrink-0" />
+                <FaPhone className="w-6 h-6 text-red-500 shrink-0 rotate-90" />
+
                 <div>
                   <p className="font-semibold">Call Us</p>
                   <a

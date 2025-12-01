@@ -16,6 +16,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const [time, setTime] = useState("");
+  const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
     const update = () => {
@@ -36,6 +37,28 @@ const Navbar = () => {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const navbar = document.getElementById("main-navbar");
+    const sentinel = document.getElementById("sticky-sentinel");
+
+    if (!navbar || !sentinel) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          setIsSticky(true);
+        } else {
+          setIsSticky(false);
+        }
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(sentinel);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <div className="flex flex-col ">
@@ -49,13 +72,6 @@ const Navbar = () => {
         {/* --------- Desktop Header --------- */}
         <div className="hidden lg:flex justify-between text-white bg-red-600 items-center px-16 py-4">
           <div className="flex flex-col gap-2 text-sm">
-            {/* <div className="flex items-center gap-2">
-              <FaLocationDot className="text-white" />
-              <span>
-                Business Center, Sharjah Publishing City Free Zone, Sharjah, UAE
-              </span>
-            </div> */}
-
             <div className="flex items-center gap-3 flex-wrap">
               <div className="flex items-center gap-2">
                 <SiGmail className="text-white" />
@@ -112,34 +128,23 @@ const Navbar = () => {
         </div>
 
         {/* --------- Navbar --------- */}
+        <div id="sticky-sentinel" className="h-1"></div>
 
-        <div className=" w-full flex items-center justify-between px-5 md:px-16 py-1 md:py-4 relative z-[999] transition-all duration-300">
-          {/* Logo - Desktop Only (Rounded & Overlapping) */}
-          <div className="w-1/3 md:w-auto  flex items-center relative">
-            <div className="hidden md:block  absolute -bottom-22 left-0 z-[9999] pointer-events-none">
-              <div className="h-32 w-32 rounded-full border-2  overflow-hidden p-4   bg-black isolate will-change-transform">
-                <Image
-                  src="/logo.jpeg"
-                  alt="CodeNergy"
-                  width={200}
-                  height={200}
-                  className="w-full  h-full object-fill  "
-                  priority
-                />
-              </div>
-            </div>
-
-            {/* Mobile logo remains exactly SAME */}
-            <div className="md:hidden w-2/3">
-              <Image
-                src="/logo.jpeg"
-                alt="CodeNergy"
-                width={400}
-                height={400}
-                className="w-full h-full max-h-40 object-contain"
-                priority
-              />
-            </div>
+        <div
+          id="main-navbar"
+          className={`bg-black w-full flex items-center justify-between px-5 md:px-16 py-1 relative transition-all duration-300
+  ${isSticky ? "fixed top-0 left-0 z-50 shadow-xl" : ""}`}
+        >
+          {/* Logo */}
+          <div className="w-1/3 md:w-auto    ">
+            <Image
+              src="/logo.jpeg"
+              alt="CodeNergy"
+              width={400}
+              height={400}
+              className="w-full h-full max-h-30 object-contain "
+              priority
+            />
           </div>
 
           {/* Desktop Menu */}
@@ -153,14 +158,17 @@ const Navbar = () => {
             </div>
 
             <Link href="/aboutus" className="hover:text-red-500 transition">
-              About Us
+              Who we are
             </Link>
 
             <Link href="/services" className="hover:text-red-500 transition">
               What we do
             </Link>
-            <Link href="/team" className="hover:text-red-500 transition">
-              How we do
+            <Link
+              href="/ourphilosophy"
+              className="hover:text-red-500 transition"
+            >
+              How we do it
             </Link>
 
             <div
@@ -211,6 +219,9 @@ const Navbar = () => {
               )}
             </div>
 
+            {/* <Link href="/team" className="hover:text-red-500 transition">
+              Team
+            </Link> */}
             <Link
               href="/contactus"
               className="bg-red-600 border-2 border-black text-white px-6 py-3 rounded-none hover:bg-black hover:text-white hover:border-2 hover:border-red-600 transition"
@@ -283,31 +294,28 @@ const Navbar = () => {
                     )} */}
                   </div>
 
-                  <Link href="/aboutus">
-                    <button
-                      onClick={() => setMenuOpen(false)}
-                      className="text-white hover:text-red-600 transition"
-                    >
-                      About Us
-                    </button>
-                  </Link>
-
-                  <Link href="/services">
-                    <button
-                      className="text-white hover:text-red-600 transition"
-                      onClick={() => setMenuOpen(false)}
-                    >
-                      What we do
-                    </button>
+                  <Link
+                    href="/aboutus"
+                    onClick={() => setMenuOpen(false)}
+                    className="text-white hover:text-red-600 transition"
+                  >
+                    <button>Who we are</button>
                   </Link>
 
                   <Link
-                    href="/team"
+                    href="/services"
                     className="text-white hover:text-red-600 transition"
+                    onClick={() => setMenuOpen(false)}
                   >
-                    <button onClick={() => setMenuOpen(false)}>
-                      How we do
-                    </button>
+                    <button>What we do</button>
+                  </Link>
+
+                  <Link
+                    href="/ourphilosophy"
+                    className="text-white hover:text-red-600 transition"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    <button>How we do it</button>
                   </Link>
 
                   {/* Pages Dropdown */}
