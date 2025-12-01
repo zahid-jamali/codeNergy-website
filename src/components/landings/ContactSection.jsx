@@ -212,23 +212,23 @@ export default function ContactSection() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.668316365456!2d-0.127758384316!3d51.503441179636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604b900000000%3A0x7b5e3c8f00b6a3d!2sLondon%20Eye!5e0!3m2!1sen!2suk!4v1698765432100!5m2!1sen!2suk"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2789.427420517524!2d55.45602357414213!3d25.319909077632165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5f26195b7e6b%3A0xc0f6d4eb509bdf75!2sSPC%20Free%20Zone%20-%20Business%20Setup%20In%20Sharjah%2C%20UAE!5e1!3m2!1sen!2s!4v1764577804696!5m2!1sen!2s"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Our Location - London Office"
+              title="Sharjah Publishing City Free Zone Sharjah, United Arab Emirates"
               className="absolute inset-0"
-            />
+            ></iframe>
             <div className="absolute bottom-4 left-4 bg-gray-900/80 backdrop-blur-sm border border-red-800/50 rounded-lg p-3 shadow-md text-sm">
               <div className="flex items-start space-x-2">
                 <FaMapMarkerAlt className="w-4 h-4 text-red-500 mt-0.5" />
                 <div>
-                  <p className="text-white font-semibold">London Office</p>
+                  <p className="text-white font-semibold">Sharjah Office</p>
                   <p className="text-gray-300 text-xs">
-                    Riverside Building, County Hall, Westminster Bridge Rd
+                    Sharjah Publishing City Free Zone Sharjah,
                   </p>
                 </div>
               </div>
@@ -240,10 +240,10 @@ export default function ContactSection() {
                   <FaPhone className="w-3 h-3 mr-2" /> +44 20 7920 2000
                 </a>
                 <a
-                  href="mailto:info@example.com"
+                  href="mailto:sales@codenergy.ae"
                   className="flex items-center hover:text-red-500 transition-colors mt-1"
                 >
-                  <FaEnvelope className="w-3 h-3 mr-2" /> info@example.com
+                  <FaEnvelope className="w-3 h-3 mr-2" /> sales@codenergy.ae
                 </a>
               </div>
             </div>

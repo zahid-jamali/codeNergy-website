@@ -6,13 +6,10 @@ import {
   FaFacebook,
   FaTwitter,
   FaYoutube,
-  FaClock,
   FaBars,
   FaTimes,
 } from "react-icons/fa";
-import { FaLocationDot } from "react-icons/fa6";
 import { SiGmail } from "react-icons/si";
-import { IoIosArrowDown } from "react-icons/io";
 import Link from "next/link";
 
 const Navbar = () => {
@@ -75,13 +72,6 @@ const Navbar = () => {
         {/* --------- Desktop Header --------- */}
         <div className="hidden lg:flex justify-between text-white bg-red-600 items-center px-16 py-4">
           <div className="flex flex-col gap-2 text-sm">
-            {/* <div className="flex items-center gap-2">
-              <FaLocationDot className="text-white" />
-              <span>
-                Business Center, Sharjah Publishing City Free Zone, Sharjah, UAE
-              </span>
-            </div> */}
-
             <div className="flex items-center gap-3 flex-wrap">
               <div className="flex items-center gap-2">
                 <SiGmail className="text-white" />
@@ -168,11 +158,17 @@ const Navbar = () => {
             </div>
 
             <Link href="/aboutus" className="hover:text-red-500 transition">
-              About Us
+              Who we are
             </Link>
 
             <Link href="/services" className="hover:text-red-500 transition">
-              Services
+              What we do
+            </Link>
+            <Link
+              href="/ourphilosophy"
+              className="hover:text-red-500 transition"
+            >
+              How we do it
             </Link>
 
             <div
@@ -223,9 +219,9 @@ const Navbar = () => {
               )}
             </div>
 
-            <Link href="/team" className="hover:text-red-500 transition">
+            {/* <Link href="/team" className="hover:text-red-500 transition">
               Team
-            </Link>
+            </Link> */}
             <Link
               href="/contactus"
               className="bg-red-600 border-2 border-black text-white px-6 py-3 rounded-none hover:bg-black hover:text-white hover:border-2 hover:border-red-600 transition"
@@ -298,22 +294,28 @@ const Navbar = () => {
                     )} */}
                   </div>
 
-                  <Link href="/aboutus">
-                    <button
-                      onClick={() => setMenuOpen(false)}
-                      className="text-white hover:text-red-600 transition"
-                    >
-                      About Us
-                    </button>
+                  <Link
+                    href="/aboutus"
+                    onClick={() => setMenuOpen(false)}
+                    className="text-white hover:text-red-600 transition"
+                  >
+                    <button>Who we are</button>
                   </Link>
 
-                  <Link href="/services">
-                    <button
-                      className="text-white hover:text-red-600 transition"
-                      onClick={() => setMenuOpen(false)}
-                    >
-                      Services
-                    </button>
+                  <Link
+                    href="/services"
+                    className="text-white hover:text-red-600 transition"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    <button>What we do</button>
+                  </Link>
+
+                  <Link
+                    href="/ourphilosophy"
+                    className="text-white hover:text-red-600 transition"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    <button>How we do it</button>
                   </Link>
 
                   {/* Pages Dropdown */}
@@ -366,14 +368,8 @@ const Navbar = () => {
                   </div>
 
                   <Link
-                    href="/team"
-                    className="text-white hover:text-red-600 transition"
-                  >
-                    <button onClick={() => setMenuOpen(false)}>Team</button>
-                  </Link>
-
-                  <Link
                     href="/contactus"
+                    onClick={() => setMenuOpen(false)}
                     className="bg-red-600 text-white px-6 py-3 hover:bg-black hover:border-2 hover:border-red-600 hover:text-white transition rounded-none"
                   >
                     Contact Us

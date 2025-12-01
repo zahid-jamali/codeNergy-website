@@ -4,9 +4,9 @@ import { FaCheckCircle } from "react-icons/fa";
 import Image from "next/image";
 
 export default function FeaturedService() {
-  const featuresLeft = ["Management", "Integration", "Design"];
+  const featuresLeft = ["Development", "Marketing & Branding", " SEO"];
 
-  const featuresRight = ["Servers", "Networking", "Security"];
+  const featuresRight = ["Outsourcing Services", "Technical Support Services"];
 
   return (
     <section className=" text-white py-20 px-6 md:px-16 ">

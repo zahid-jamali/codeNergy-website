@@ -9,7 +9,6 @@ export default function WhoWeAreSection() {
 
       <div className=" mx-auto px-6 relative z-10">
         {/* Title */}
-
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -24,15 +23,17 @@ export default function WhoWeAreSection() {
 
           {/* Main Heading */}
           <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-            We Build <span className="text-red-500">Digital Dreams</span> That
-            Inspire
+            We Build <span className="text-red-500">Digital Futures</span> with
+            Experience
           </h2>
 
           {/* Paragraph */}
-          <p className="text-gray-400 mt-4  ">
-            At <span className="text-red-500 font-semibold">codeNergy</span>, we
-            blend creativity and technology to craft experiences that drive
-            success and innovation.
+          <p className="text-gray-400 mt-4">
+            At <span className="text-red-500 font-semibold">codeNergy</span>,
+            our strength lies in a team shaped by years of experience across
+            software development, digital marketing, BPO operations, and
+            technical support — giving us a deep, practical understanding of how
+            modern businesses evolve and succeed.
           </p>
         </motion.div>
 
@@ -41,15 +42,15 @@ export default function WhoWeAreSection() {
           {[
             {
               title: "Our Vision",
-              desc: "To become a global leader in delivering innovative and scalable digital solutions that empower businesses.",
+              desc: "To be a trusted global partner known for innovation, reliability, and technology that helps businesses grow smarter and stronger.",
             },
             {
               title: "Our Mission",
-              desc: "We aim to provide seamless technology experiences that simplify life, enhance productivity, and boost growth.",
+              desc: "To turn ideas into real impact by delivering practical, efficient, and result-oriented solutions across software, marketing, operations, and support.",
             },
             {
               title: "Our Approach",
-              desc: "We focus on client-first strategies, continuous learning, and cutting-edge tools to deliver excellence.",
+              desc: "A blend of experience, creativity, and execution — enabling us to understand, build, and elevate digital solutions that truly move businesses forward.",
             },
           ].map((item, i) => (
             <motion.div
