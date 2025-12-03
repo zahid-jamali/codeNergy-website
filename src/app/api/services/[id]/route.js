@@ -26,6 +26,7 @@ export async function DELETE(req, context) {
     await Service.findByIdAndDelete(id);
     return NextResponse.json({ message: "Deleted successfully" });
   } catch (err) {
+    console.log(err);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }
