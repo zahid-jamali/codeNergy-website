@@ -7,6 +7,9 @@ const serviceSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    imagePublicId: {
+      type: String,
+    },
     title: {
       type: String,
       required: true,

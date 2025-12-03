@@ -64,7 +64,12 @@ const Navbar = () => {
       <div className="flex flex-col ">
         {/* --------- Header (Mobile) --------- */}
         <div className="flex justify-center  items-center gap-6 text-2xl bg-red-600 text-white h-28 lg:hidden">
-          <FaFacebook className="hover:text-blue-400 transition" />
+          <a
+            href="https://www.facebook.com/profile.php?id=61583738717575"
+            target={"_blank"}
+          >
+            <FaFacebook className="hover:text-blue-400 transition" />
+          </a>
           <FaTwitter className="hover:text-sky-300 transition" />
           <FaYoutube className="hover:text-red-400 transition" />
         </div>
@@ -101,7 +106,7 @@ const Navbar = () => {
 
           <div className="flex gap-5 text-2xl">
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/profile.php?id=61583738717575"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-gray-400 transition"
@@ -176,7 +181,7 @@ const Navbar = () => {
               onMouseEnter={() => setDropdownOpen("pages")}
               onMouseLeave={() => setDropdownOpen(null)}
             >
-              <button className="flex items-center gap-1 hover:text-red-500 transition">
+              {/* <button className="flex items-center gap-1 hover:text-red-500 transition">
                 Solutions +
               </button>
 
@@ -190,25 +195,12 @@ const Navbar = () => {
                     isolation: "isolate",
                   }}
                 >
-                  {/* <Link
-                    href="#"
-                    className=" disable px-4 py-2 text-white hover:bg-red-300 hover:text-white transition"
-                    // disable={true}
-                  >
-                    <i>Portfolio</i>
-                  </Link> */}
                   <Link
                     href="/pricing"
                     className="px-4 py-2 text-white hover:bg-red-500 hover:text-white transition"
                   >
                     Pricing
                   </Link>
-                  {/* <Link
-                    href="/blog"
-                    className="px-4 py-2 text-white hover:bg-red-300 hover:text-white transition"
-                  >
-                    <i>Blogs</i>
-                  </Link> */}
                   <Link
                     href="/faq"
                     className="px-4 py-2 text-white hover:bg-red-500 hover:text-white transition"
@@ -216,7 +208,7 @@ const Navbar = () => {
                     FAQ
                   </Link>
                 </div>
-              )}
+              )} */}
             </div>
 
             {/* <Link href="/team" className="hover:text-red-500 transition">
@@ -319,7 +311,7 @@ const Navbar = () => {
                   </Link>
 
                   {/* Pages Dropdown */}
-                  <div className="flex flex-col text-white">
+                  {/* <div className="flex flex-col text-white">
                     <button
                       onClick={() =>
                         setDropdownOpen(
@@ -332,12 +324,7 @@ const Navbar = () => {
                     </button>
                     {dropdownOpen === "pages" && (
                       <div className="flex flex-col ml-4 mt-2 space-y-2 text-red-500">
-                        {/* <button
-                          disabled
-                          className="opacity-50 cursor-not-allowed"
-                        >
-                          Portfolio (Coming Soon)
-                        </button> */}
+                      
 
                         <Link href="/pricing">
                           <button
@@ -347,13 +334,6 @@ const Navbar = () => {
                             Pricing
                           </button>
                         </Link>
-
-                        {/* <button
-                          disabled
-                          className="opacity-50 cursor-not-allowed"
-                        >
-                          Blogs (Coming Soon)
-                        </button> */}
 
                         <Link href="/faq">
                           <button
@@ -365,7 +345,7 @@ const Navbar = () => {
                         </Link>
                       </div>
                     )}
-                  </div>
+                  </div> */}
 
                   <Link
                     href="/contactus"

@@ -1,32 +1,35 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
 import Service from "@/models/Services";
-import fs from "fs";
-import path from "path";
 import { verifyAdmin } from "@/lib/verifyToken";
+import cloudinary from "@/lib/cloudinary";
 
 export async function DELETE(req, context) {
   await connectDB();
-  const { id } = await context.params;
 
-  console.log(`ID: ${id}`);
   try {
     const user = await verifyAdmin();
     if (!user || user.role !== "admin") {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+    const { id } = await context.params;
+
     const service = await Service.findById(id);
-    if (!service)
+    if (!service) {
       return NextResponse.json({ error: "Not found" }, { status: 404 });
+    }
 
-    // delete image from uploads folder
-    const imagePath = path.join(process.cwd(), "public", service.image);
-    if (fs.existsSync(imagePath)) fs.unlinkSync(imagePath);
+    // Delete Cloudinary image
+    if (service.imagePublicId) {
+      await cloudinary.uploader.destroy(service.imagePublicId);
+    }
 
+    // Delete from DB
     await Service.findByIdAndDelete(id);
+
     return NextResponse.json({ message: "Deleted successfully" });
   } catch (err) {
-    console.log(err);
+    console.log("Delete Error:", err);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }

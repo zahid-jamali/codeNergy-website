@@ -62,7 +62,10 @@ export default function Footer() {
             {/* Social Media Links */}
             <div className="mt-6 flex space-x-4">
               {[
-                { icon: FaFacebook, link: "#" },
+                {
+                  icon: FaFacebook,
+                  link: "https://www.facebook.com/profile.php?id=61583738717575",
+                },
                 { icon: FaTwitter, link: "#" },
                 { icon: FaLinkedin, link: "#" },
                 { icon: FaInstagram, link: "#" },
@@ -85,9 +88,9 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               {[
-                { lbl: "About Us", lnk: "/aboutus" },
-                { lbl: "Services", lnk: "/services" },
-                { lbl: "Team", lnk: "/team" },
+                { lbl: "Who we are", lnk: "/aboutus" },
+                { lbl: "What we serve", lnk: "/services" },
+                { lbl: "Our Team", lnk: "/team" },
               ].map((item) => (
                 <li key={item.lnk}>
                   <Link

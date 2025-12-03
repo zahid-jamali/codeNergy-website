@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import SlateDisplay from "@/components/admin/SlateDisplay";
 
 /** Utility: Render Slate JSON */
 const renderSlateContent = (content) => {
@@ -124,11 +125,16 @@ export default function ServiceDetailPage() {
           transition={{ duration: 0.6 }}
           className="relative w-full h-96 rounded-2xl overflow-hidden mb-12 shadow-lg"
         >
-          <Image
+          {/* <Image
             src={service.image}
             alt={service.title}
             width={400}
             height={400}
+            className="m-auto object-cover"
+          /> */}
+          <img
+            src={service.image}
+            alt={service.title}
             className="m-auto object-cover"
           />
         </motion.div>
@@ -156,7 +162,8 @@ export default function ServiceDetailPage() {
               About this Service
             </h2>
             <div className="space-y-3 text-gray-300">
-              {renderSlateContent(service.longDescription)}
+              {/* {renderSlateContent(service.longDescription)} */}
+              <SlateDisplay value={service.longDescription} />
             </div>
           </motion.div>
 

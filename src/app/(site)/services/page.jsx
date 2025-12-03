@@ -112,10 +112,15 @@ export default function ServicesPage() {
                            hover:shadow-[0_0_25px_-5px_rgba(239,68,68,0.6)] transition-all duration-500 cursor-pointer"
               >
                 <div className="relative w-full h-56 overflow-hidden">
-                  <Image
+                  {/* <Image
                     src={service.image || "/assets/default-service.jpg"}
                     alt={service.title}
                     fill
+                    className="object-cover hover:scale-110 transition-transform duration-700"
+                  /> */}
+                  <img
+                    src={service.image}
+                    alt={service.title}
                     className="object-cover hover:scale-110 transition-transform duration-700"
                   />
                 </div>

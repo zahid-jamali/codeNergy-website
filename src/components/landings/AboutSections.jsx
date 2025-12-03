@@ -84,25 +84,15 @@ const AboutSection = () => {
           {/* Right Column: Image and Signature */}
           <div className="lg:w-1/2 relative order-1 lg:order-2 w-full max-w-md lg:max-w-none">
             {/* Image */}
-            <div className="relative w-full h-96 sm:h-[500px] lg:h-[600px] overflow-hidden shadow-2xl rounded-lg">
-              <div className="absolute inset-0 bg-cover bg-center">
-                <img src="/images/ceo.png" alt="CEO" />
+            <div className="relative w-full h-96 sm:h-[500px] lg:h-[600px] flex justify-center items-center overflow-hidden shadow-2xl rounded-lg">
+              <div className="absolute inset-0 flex justify-center items-center">
+                <img
+                  src="/images/programming-team.jpg"
+                  alt="Programming team"
+                  className="object-cover w-full h-full"
+                />
                 <div className="absolute inset-0 bg-black opacity-30"></div>
               </div>
-            </div>
-
-            {/* Signature and Title */}
-            <div className="absolute bottom-4 left-4 p-4">
-              <p
-                className="text-red-500 text-5xl font-signature italic mb-2 select-none"
-                style={{ fontFamily: "'Dancing Script', cursive" }}
-              >
-                Adil Ali
-              </p>
-              <p className="text-white text-xl font-bold leading-none">
-                Adil Ali
-              </p>
-              <p className="text-red-500 text-sm">CEO & Founder</p>
             </div>
           </div>
         </div>
