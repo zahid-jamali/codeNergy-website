@@ -44,24 +44,10 @@ export default function NextGenAboutUs() {
       </div>
 
       {/* CEO Section */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6  grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        {/* Left Column: CEO Message */}
         <motion.div
           initial={{ opacity: 0, x: -80 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="flex justify-center"
-        >
-          <Image
-            src="/images/ceo.png"
-            alt="CEO"
-            width={500}
-            height={500}
-            className="rounded-3xl  object-cover w-2xl h-1/3 pt-24 max-w-sm"
-          />
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, x: 80 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
@@ -83,6 +69,46 @@ export default function NextGenAboutUs() {
             ideas into results that drive your business forward.
           </p>
           <p className="text-red-500 font-semibold">— Aadil Khan, CEO</p>
+        </motion.div>
+
+        {/* Right Column: Animated Professional Design */}
+        <motion.div
+          initial={{ opacity: 0, x: 80 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="relative w-full h-96 sm:h-[500px] lg:h-[600px] flex items-center justify-center"
+        >
+          {/* Animated Background Circle */}
+          <motion.div
+            className="absolute w-72 h-72 rounded-full bg-red-600/20"
+            animate={{ scale: [1, 1.2, 1], rotate: [0, 45, 0] }}
+            transition={{ duration: 6, repeat: Infinity, repeatType: "loop" }}
+          ></motion.div>
+
+          <motion.div
+            className="absolute w-56 h-56 rounded-full bg-red-500/10"
+            animate={{ scale: [1, 1.15, 1], rotate: [0, -30, 0] }}
+            transition={{ duration: 5, repeat: Infinity, repeatType: "loop" }}
+          ></motion.div>
+
+          {/* Central Professional Icon */}
+          <div className="relative w-32 h-32 flex items-center justify-center rounded-full bg-black/40 shadow-xl">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-16 h-16 text-red-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 4v16m8-8H4"
+              />
+            </svg>
+          </div>
         </motion.div>
       </div>
 
