@@ -3,9 +3,12 @@ import mongoose from "mongoose";
 const serviceSchema = new mongoose.Schema(
   {
     image: {
-      type: String, // store image URL (local or cloud)
+      type: String,
       required: true,
       trim: true,
+    },
+    category: {
+      type: String,
     },
     title: {
       type: String,

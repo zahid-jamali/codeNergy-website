@@ -64,7 +64,12 @@ const Navbar = () => {
       <div className="flex flex-col ">
         {/* --------- Header (Mobile) --------- */}
         <div className="flex justify-center  items-center gap-6 text-2xl bg-red-600 text-white h-28 lg:hidden">
-          <FaFacebook className="hover:text-blue-400 transition" />
+          <a
+            href="https://www.facebook.com/profile.php?id=61583738717575"
+            target="_blank"
+          >
+            <FaFacebook className="hover:text-blue-400 transition" />
+          </a>
           <FaTwitter className="hover:text-sky-300 transition" />
           <FaYoutube className="hover:text-red-400 transition" />
         </div>
@@ -101,7 +106,7 @@ const Navbar = () => {
 
           <div className="flex gap-5 text-2xl">
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/profile.php?id=61583738717575"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-gray-400 transition"
@@ -161,15 +166,9 @@ const Navbar = () => {
               Who we are
             </Link>
 
-            <Link href="/services" className="hover:text-red-500 transition">
+            {/* <Link href="/services" className="hover:text-red-500 transition">
               What we do
-            </Link>
-            <Link
-              href="/ourphilosophy"
-              className="hover:text-red-500 transition"
-            >
-              How we do it
-            </Link>
+            </Link> */}
 
             <div
               className="relative group z-50"
@@ -177,7 +176,7 @@ const Navbar = () => {
               onMouseLeave={() => setDropdownOpen(null)}
             >
               <button className="flex items-center gap-1 hover:text-red-500 transition">
-                Solutions +
+                What we do +
               </button>
 
               {dropdownOpen === "pages" && (
@@ -190,34 +189,41 @@ const Navbar = () => {
                     isolation: "isolate",
                   }}
                 >
-                  {/* <Link
-                    href="#"
-                    className=" disable px-4 py-2 text-white hover:bg-red-300 hover:text-white transition"
-                    // disable={true}
-                  >
-                    <i>Portfolio</i>
-                  </Link> */}
                   <Link
-                    href="/pricing"
+                    href="/development"
                     className="px-4 py-2 text-white hover:bg-red-500 hover:text-white transition"
                   >
-                    Pricing
+                    Development
                   </Link>
-                  {/* <Link
-                    href="/blog"
-                    className="px-4 py-2 text-white hover:bg-red-300 hover:text-white transition"
-                  >
-                    <i>Blogs</i>
-                  </Link> */}
+
                   <Link
-                    href="/faq"
+                    href="/marketing"
                     className="px-4 py-2 text-white hover:bg-red-500 hover:text-white transition"
                   >
-                    FAQ
+                    Marketing & Branding
+                  </Link>
+                  <Link
+                    href="/outsourcing"
+                    className="px-4 py-2 text-white hover:bg-red-500 hover:text-white transition"
+                  >
+                    Outsourcing Services
+                  </Link>
+                  <Link
+                    href="/technicalSupport"
+                    className="px-4 py-2 text-white hover:bg-red-500 hover:text-white transition"
+                  >
+                    Technical Support Services
                   </Link>
                 </div>
               )}
             </div>
+
+            <Link
+              href="/ourphilosophy"
+              className="hover:text-red-500 transition"
+            >
+              How we do it
+            </Link>
 
             {/* <Link href="/team" className="hover:text-red-500 transition">
               Team
@@ -302,22 +308,6 @@ const Navbar = () => {
                     <button>Who we are</button>
                   </Link>
 
-                  <Link
-                    href="/services"
-                    className="text-white hover:text-red-600 transition"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    <button>What we do</button>
-                  </Link>
-
-                  <Link
-                    href="/ourphilosophy"
-                    className="text-white hover:text-red-600 transition"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    <button>How we do it</button>
-                  </Link>
-
                   {/* Pages Dropdown */}
                   <div className="flex flex-col text-white">
                     <button
@@ -328,44 +318,56 @@ const Navbar = () => {
                       }
                       className="flex items-center justify-between w-full pr-6 hover:text-red-600 transition"
                     >
-                      Solutions +
+                      What we do +
                     </button>
                     {dropdownOpen === "pages" && (
                       <div className="flex flex-col ml-4 mt-2 space-y-2 text-red-500">
-                        {/* <button
-                          disabled
-                          className="opacity-50 cursor-not-allowed"
-                        >
-                          Portfolio (Coming Soon)
-                        </button> */}
-
-                        <Link href="/pricing">
+                        <Link href="/development">
                           <button
                             className="hover:text-white transition"
                             onClick={() => setMenuOpen(false)}
                           >
-                            Pricing
+                            Development
                           </button>
                         </Link>
 
-                        {/* <button
-                          disabled
-                          className="opacity-50 cursor-not-allowed"
-                        >
-                          Blogs (Coming Soon)
-                        </button> */}
-
-                        <Link href="/faq">
+                        <Link href="/marketing">
                           <button
                             className="hover:text-white transition"
                             onClick={() => setMenuOpen(false)}
                           >
-                            FAQ
+                            Marketing & Branding
+                          </button>
+                        </Link>
+
+                        <Link href="/outsourcing">
+                          <button
+                            className="hover:text-white transition"
+                            onClick={() => setMenuOpen(false)}
+                          >
+                            Outsourcing Services
+                          </button>
+                        </Link>
+
+                        <Link href="/technicalSupport">
+                          <button
+                            className="hover:text-white transition"
+                            onClick={() => setMenuOpen(false)}
+                          >
+                            Technical Support Services
                           </button>
                         </Link>
                       </div>
                     )}
                   </div>
+
+                  <Link
+                    href="/ourphilosophy"
+                    className="text-white hover:text-red-600 transition"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    <button>How we do it</button>
+                  </Link>
 
                   <Link
                     href="/contactus"

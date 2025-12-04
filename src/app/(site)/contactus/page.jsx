@@ -101,7 +101,9 @@ const Contactus = () => {
             <div className="space-y-4">
               <div className="flex items-center">
                 <FaPhone className="text-red-500 mr-3 rotate-90" />
-                <p>+92 300 1234567</p>
+                <a href="tel:+971562930563">
+                  <p>+971 56 293 0563</p>
+                </a>
               </div>
               <div className="flex items-center">
                 <FaEnvelope className="text-red-500 mr-3" />
@@ -115,7 +117,10 @@ const Contactus = () => {
               </div>
               <div className="flex items-center">
                 <FaMapMarkerAlt className="text-red-500 mr-3" />
-                <p>Nawabshah, Sindh, Pakistan</p>
+                <p>
+                  Business Center, Sharjah Publishing City Free Zone Sharjah,
+                  United Arab Emirates
+                </p>
               </div>
             </div>
           </motion.div>
