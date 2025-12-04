@@ -125,13 +125,6 @@ export default function ServiceDetailPage() {
           transition={{ duration: 0.6 }}
           className="relative w-full h-96 rounded-2xl overflow-hidden mb-12 shadow-lg"
         >
-          {/* <Image
-            src={service.image}
-            alt={service.title}
-            width={400}
-            height={400}
-            className="m-auto object-cover"
-          /> */}
           <img
             src={service.image}
             alt={service.title}

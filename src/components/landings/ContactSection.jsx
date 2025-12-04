@@ -234,10 +234,10 @@ export default function ContactSection() {
               </div>
               <div className="mt-2 text-gray-400 text-xs flex flex-col">
                 <a
-                  href="tel:+442079202000"
+                  href="tel:+971562930563"
                   className="flex items-center hover:text-red-500 transition-colors"
                 >
-                  <FaPhone className="w-3 h-3 mr-2" /> +44 20 7920 2000
+                  <FaPhone className="w-3 h-3 mr-2" /> +971 56 293 0563
                 </a>
                 <a
                   href="mailto:sales@codenergy.ae"

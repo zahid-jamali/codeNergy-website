@@ -1,14 +1,14 @@
 import React from "react";
 
 const renderElement = (element) => {
-  // Check if it's a leaf
+  // Leaf node
   if (element.text !== undefined) {
-    let text = element.text;
-    if (element.bold) text = <strong>{text}</strong>;
-    return text;
+    if (element.bold) {
+      return <strong>{element.text}</strong>;
+    }
+    return <span>{element.text}</span>;
   }
 
-  // Otherwise, it's an element node
   const children = element.children?.map((child, i) => (
     <React.Fragment key={i}>{renderElement(child)}</React.Fragment>
   ));
@@ -42,7 +42,7 @@ const renderElement = (element) => {
 };
 
 const SlateDisplay = ({ value }) => {
-  if (!Array.isArray(value)) {
+  if (typeof value === "string") {
     value = JSON.parse(value);
   }
 

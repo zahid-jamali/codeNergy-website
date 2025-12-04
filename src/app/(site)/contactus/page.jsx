@@ -101,7 +101,10 @@ const Contactus = () => {
             <div className="space-y-4">
               <div className="flex items-center">
                 <FaPhone className="text-red-500 mr-3 rotate-90" />
-                <p>+987654321</p>
+
+                <a href="tel:+971562930563">
+                  <p>+971 56 293 0563</p>
+                </a>
               </div>
               <div className="flex items-center">
                 <FaEnvelope className="text-red-500 mr-3" />
