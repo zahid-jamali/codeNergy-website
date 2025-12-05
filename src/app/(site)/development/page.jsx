@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import ServiceCards from "@/components/landings/ServiceCards";
 import { FaLaptopCode, FaCogs, FaTools, FaCloud } from "react-icons/fa";
 
 export default function ServicesPage() {
