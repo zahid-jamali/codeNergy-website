@@ -176,7 +176,7 @@ const Navbar = () => {
               onMouseLeave={() => setDropdownOpen(null)}
             >
               <button className="flex items-center gap-1 hover:text-red-500 transition">
-                What we do +
+                What we do
               </button>
 
               {dropdownOpen === "pages" && (
@@ -318,7 +318,7 @@ const Navbar = () => {
                       }
                       className="flex items-center justify-between w-full pr-6 hover:text-red-600 transition"
                     >
-                      What we do +
+                      What we do
                     </button>
                     {dropdownOpen === "pages" && (
                       <div className="flex flex-col ml-4 mt-2 space-y-2 text-red-500">
