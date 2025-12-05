@@ -116,8 +116,8 @@ export default function ServiceDetailPage() {
   }
 
   return (
-    <section className="bg-black text-white min-h-screen py-20 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section className="bg-black text-white min-h-screen py-20 px-6 ">
+      <div className="max-w-7xl mx-auto md:px-10 ">
         {/* Image Header */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
