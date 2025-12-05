@@ -63,7 +63,7 @@ export default function Home() {
       <StatsSection />
       <WhyChooseUs />
       <TestimonialsSection Comments={comments} />
-      <PricingTeaser />
+      {/* <PricingTeaser /> */}
       <ServiceCards />
       <ContactSection />
     </>

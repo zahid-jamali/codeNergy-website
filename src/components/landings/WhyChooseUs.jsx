@@ -121,14 +121,14 @@ export default function WhyChooseUs() {
         </div>
 
         {/* Grid of Reasons */}
-        <div className="w-full lg:w-[90%] mx-auto">
+        <div className="w-full  mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-20">
             {reasons.map((reason, index) => {
               const Icon = reason.icon;
               return (
                 <motion.div
                   key={reason.title}
-                  className="group relative bg-gradient-to-br from-black to-red-600/60 backdrop-blur-sm border border-red-800/50 rounded-lg p-6 sm:p-8 hover:border-red-500 transition-all shadow-lg"
+                  className="group relative bg-gradient-to-br from-black to-red-600/60 backdrop-blur-sm border border-red-800/50 rounded-lg p-6 sm:p-8 gap-4 hover:border-red-500 transition-all shadow-lg"
                   initial={{ opacity: 0, y: 30 }}
                   animate={isVisible ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.3, delay: index * 0.01 }}
@@ -147,11 +147,11 @@ export default function WhyChooseUs() {
                     <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6">
                       {reason.desc}
                     </p>
-                    <a
+                    {/* <a
                       href="#"
                       className="inline-flex items-center text-red-500 font-medium text-sm sm:text-base hover:text-red-400 transition-colors group"
                     >
-                      {reason.link}
+                       {reason.link} 
                       <svg
                         className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1"
                         fill="none"
@@ -165,7 +165,7 @@ export default function WhyChooseUs() {
                           d="M9 5l7 7-7 7"
                         />
                       </svg>
-                    </a>
+                    </a> */}
                   </div>
                 </motion.div>
               );

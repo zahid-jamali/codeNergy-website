@@ -20,7 +20,7 @@ export default function ServicesCarousel(Services) {
 
   const handleServiceClick = (service) => {
     sessionStorage.setItem("selectedService", JSON.stringify(service));
-    router.push(`/services/${service._id}`);
+    router.push(`/${service.category}/${service._id}`);
   };
   return (
     <section className="relative bg-black  text-white  overflow-hidden">
@@ -42,8 +42,8 @@ export default function ServicesCarousel(Services) {
         {/* Carousel */}
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
-          navigation
-          pagination={{ clickable: true }}
+          navigation={false}
+          pagination={false}
           autoplay={{ delay: 2500, disableOnInteraction: false }}
           loop
           spaceBetween={35}
@@ -85,7 +85,10 @@ export default function ServicesCarousel(Services) {
                       </p>
                     </div>
 
-                    <Link href={`/services/${service._id}`} className="mt-5">
+                    <Link
+                      href={`/${service.category}/${service._id}`}
+                      className="mt-5"
+                    >
                       <motion.button
                         whileHover={{ x: 5 }}
                         whileTap={{ scale: 0.95 }}

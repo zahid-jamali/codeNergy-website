@@ -81,7 +81,7 @@ export default function TestimonialsSection(Comments) {
         </div>
 
         {/* 80% centered wrapper */}
-        <div className="w-full lg:w-[90%] mx-auto">
+        <div className="w-full lg:w-[94%] mx-auto">
           <TestimonialCarousel
             testimonials={testinomials}
             isVisible={isVisible}
@@ -99,7 +99,7 @@ function TestimonialCarousel({ testimonials, isVisible }) {
 
   return (
     <div
-      className="overflow-hidden"
+      className="overflow-hidden w-full"
       //   onMouseEnter={() => setHovered(true)}
       //   onMouseLeave={() => setHovered(false)}
     >

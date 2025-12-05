@@ -21,7 +21,6 @@ const Navbar = () => {
   useEffect(() => {
     const update = () => {
       const now = new Date();
-      // Format the time in UAE timezone (Gulf Standard Time)
       const formatted = now.toLocaleString("en-AE", {
         timeZone: "Asia/Dubai",
         hour: "2-digit",
@@ -32,41 +31,34 @@ const Navbar = () => {
       setTime(formatted);
     };
 
-    update(); // Run once
-    const interval = setInterval(update, 1000); // Update every second
+    update();
+    const interval = setInterval(update, 1000);
     return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
-    const navbar = document.getElementById("main-navbar");
-    const sentinel = document.getElementById("sticky-sentinel");
+    const handleScroll = () => {
+      const navbar = document.getElementById("main-navbar");
+      if (!navbar) return;
 
-    if (!navbar || !sentinel) return;
+      const navbarOffset = navbar.offsetTop;
+      setIsSticky(window.scrollY > navbarOffset);
+    };
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) {
-          setIsSticky(true);
-        } else {
-          setIsSticky(false);
-        }
-      },
-      { threshold: 0 }
-    );
-
-    observer.observe(sentinel);
-
-    return () => observer.disconnect();
+    handleScroll(); // Check initial position
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <>
-      <div className="flex flex-col ">
+      <div className="flex flex-col relative">
         {/* --------- Header (Mobile) --------- */}
-        <div className="flex justify-center  items-center gap-6 text-2xl bg-red-600 text-white h-28 lg:hidden">
+        <div className="flex justify-center items-center gap-6 text-2xl bg-red-600 text-white h-28 lg:hidden">
           <a
             href="https://www.facebook.com/profile.php?id=61583738717575"
             target="_blank"
+            rel="noopener noreferrer"
           >
             <FaFacebook className="hover:text-blue-400 transition" />
           </a>
@@ -82,7 +74,7 @@ const Navbar = () => {
                 <SiGmail className="text-white" />
                 <a
                   href="mailto:sales@codenergy.ae"
-                  className=" hover:text-gray-200"
+                  className="hover:text-gray-200"
                 >
                   sales@codenergy.ae
                 </a>
@@ -95,9 +87,8 @@ const Navbar = () => {
                     alt="UAE Flag"
                     width={30}
                     height={7}
-                    className=" border-2rounded-sm shadow-md"
+                    className="border-2 rounded-sm shadow-md"
                   />
-
                   <span className="pl-3">Current Time (UAE): {time}</span>
                 </span>
               </div>
@@ -109,7 +100,7 @@ const Navbar = () => {
               href="https://www.facebook.com/profile.php?id=61583738717575"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-gray-400 transition"
+              className="hover:text-black transition"
             >
               <FaFacebook />
             </a>
@@ -117,7 +108,7 @@ const Navbar = () => {
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-gray-400 transition"
+              className="hover:text-black transition"
             >
               <FaTwitter />
             </a>
@@ -125,7 +116,7 @@ const Navbar = () => {
               href="https://youtube.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-gray-400 transition"
+              className="hover:text-black transition"
             >
               <FaYoutube />
             </a>
@@ -133,21 +124,19 @@ const Navbar = () => {
         </div>
 
         {/* --------- Navbar --------- */}
-        <div id="sticky-sentinel" className="h-1"></div>
-
         <div
           id="main-navbar"
-          className={`bg-black w-full flex items-center justify-between px-5 md:px-16 py-1 relative transition-all duration-300
-  ${isSticky ? "fixed top-0 left-0 z-50 shadow-xl" : ""}`}
+          className={`bg-black w-full flex items-center justify-between px-5 md:px-16 py-2 transition-all duration-300
+      ${isSticky ? "fixed top-0 left-0 right-0 z-50 shadow-2xl" : "relative"}`}
         >
           {/* Logo */}
-          <div className="w-1/3 md:w-auto    ">
+          <div className="w-1/3 md:w-auto">
             <Image
               src="/logo.jpeg"
               alt="CodeNergy"
               width={400}
               height={400}
-              className="w-full h-full max-h-30 object-contain "
+              className="w-full h-full max-h-30 object-contain"
               priority
             />
           </div>
@@ -166,10 +155,6 @@ const Navbar = () => {
               Who we are
             </Link>
 
-            {/* <Link href="/services" className="hover:text-red-500 transition">
-              What we do
-            </Link> */}
-
             <div
               className="relative group z-50"
               onMouseEnter={() => setDropdownOpen("pages")}
@@ -181,8 +166,8 @@ const Navbar = () => {
 
               {dropdownOpen === "pages" && (
                 <div
-                  onMouseEnter={() => setDropdownOpen("pages")} // keeps dropdown open
-                  onMouseLeave={() => setDropdownOpen(null)} // closes only when leaving dropdown
+                  onMouseEnter={() => setDropdownOpen("pages")}
+                  onMouseLeave={() => setDropdownOpen(null)}
                   className="absolute top-full left-0 bg-black border border-red-500 rounded shadow-lg flex flex-col min-w-[180px] z-[9999]"
                   style={{
                     backgroundColor: "rgba(0,0,0,1)",
@@ -225,9 +210,6 @@ const Navbar = () => {
               How we do it
             </Link>
 
-            {/* <Link href="/team" className="hover:text-red-500 transition">
-              Team
-            </Link> */}
             <Link
               href="/contactus"
               className="bg-red-600 border-2 border-black text-white px-6 py-3 rounded-none hover:bg-black hover:text-white hover:border-2 hover:border-red-600 transition"
@@ -235,8 +217,6 @@ const Navbar = () => {
               Contact Us
             </Link>
           </div>
-          {/* <div className="hidden md:block">
-          </div> */}
 
           {/* Toggle Button (Mobile) */}
           <button
@@ -261,7 +241,6 @@ const Navbar = () => {
                   onClick={() => setMenuOpen(false)}
                 />
 
-                {/* Sliding Navbar */}
                 {/* Sliding Navbar (Mobile) */}
                 <motion.div
                   key="mobile-menu"
@@ -278,7 +257,7 @@ const Navbar = () => {
                     height={50}
                   />
 
-                  {/* Home Dropdown */}
+                  {/* Home */}
                   <div className="flex flex-col text-white">
                     <Link href={"/"}>
                       <button
@@ -288,16 +267,6 @@ const Navbar = () => {
                         Home
                       </button>
                     </Link>
-                    {/* {dropdownOpen === "home" && (
-                      <div className="flex flex-col ml-4 mt-2 space-y-2 text-red-500">
-                        <a href="#" className="hover:text-white transition">
-                          Home Style 1
-                        </a>
-                        <a href="#" className="hover:text-white transition">
-                          Home Style 2
-                        </a>
-                      </div>
-                    )} */}
                   </div>
 
                   <Link
@@ -381,6 +350,9 @@ const Navbar = () => {
             )}
           </AnimatePresence>
         </div>
+
+        {/* Spacer to prevent content jump when navbar becomes fixed */}
+        {isSticky && <div style={{ height: "70px" }}></div>}
       </div>
     </>
   );
