@@ -24,8 +24,9 @@ export async function POST(req) {
     const title = formData.get("title");
     const description = formData.get("description");
     const longDescription = formData.get("longDescription");
+    const category = formData.get("category");
 
-    if (!file || !title || !description) {
+    if (!file || !title || !description || !category) {
       return NextResponse.json(
         { error: "All fields are required" },
         { status: 400 }
@@ -53,6 +54,7 @@ export async function POST(req) {
       title,
       description,
       longDescription,
+      category,
     });
 
     return NextResponse.json(newService, { status: 201 });

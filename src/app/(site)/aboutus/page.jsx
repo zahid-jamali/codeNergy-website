@@ -68,7 +68,7 @@ export default function NextGenAboutUs() {
             invite you to connect with us, share your vision, and let’s turn
             ideas into results that drive your business forward.
           </p>
-          <p className="text-red-500 font-semibold">— Aadil Khan, CEO</p>
+          <p className="text-red-500 font-semibold">— Adil Ali, CEO</p>
         </motion.div>
 
         {/* Right Column: Animated Professional Design */}
@@ -77,48 +77,19 @@ export default function NextGenAboutUs() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="relative w-full h-96 sm:h-[500px] lg:h-[600px] flex items-center justify-center"
+          className="relative  w-full h-96 sm:h-[500px] lg:h-[600px] flex items-center justify-center"
         >
-          {/* Animated Background Circle */}
-          <motion.div
-            className="absolute w-72 h-72 rounded-full bg-red-600/20"
-            animate={{ scale: [1, 1.2, 1], rotate: [0, 45, 0] }}
-            transition={{ duration: 6, repeat: Infinity, repeatType: "loop" }}
-          ></motion.div>
-
-          <motion.div
-            className="absolute w-56 h-56 rounded-full bg-red-500/10"
-            animate={{ scale: [1, 1.15, 1], rotate: [0, -30, 0] }}
-            transition={{ duration: 5, repeat: Infinity, repeatType: "loop" }}
-          ></motion.div>
-
-          {/* Central Professional Icon */}
-          <div className="relative w-32 h-32 flex items-center justify-center rounded-full bg-black/40 shadow-xl">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-16 h-16 text-red-500"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 4v16m8-8H4"
-              />
-            </svg>
-          </div>
+          <img src="/images/ceo.png" className="w-[95%] lg:w-8/12 rounded-xl" />
         </motion.div>
       </div>
 
       {/* Mission & Vision Section */}
-      <div className="relative z-10 md:px-16 max-w-7xl mx-auto px-6 py-24 grid grid-cols-1 md:grid-cols-2 gap-16">
+      <div className="relative z-10 md:px-16 max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-16">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="space-y-6"
+          className="space-y-6  border border-red-600/40 p-8 rounded-2xl shadow-lg hover:shadow-red-500/30 transition-all duration-300"
         >
           <h3 className="text-3xl font-semibold text-red-500">Our Mission</h3>
           <p className="text-gray-300 leading-relaxed">
@@ -133,7 +104,7 @@ export default function NextGenAboutUs() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="space-y-6"
+          className="space-y-6  border border-red-600/40 p-8 rounded-2xl shadow-lg hover:shadow-red-500/30 transition-all duration-300"
         >
           <h3 className="text-3xl font-semibold text-red-500">Our Vision</h3>
           <p className="text-gray-300 leading-relaxed">

@@ -18,6 +18,7 @@ export default function ServicesPage() {
   const [msg, setMsg] = useState("");
   const [loading, setLoading] = useState(false);
   const [cleanEditor, setCleanEditor] = useState(false);
+  const [category, setCategory] = useState("");
 
   useEffect(() => {
     fetchServices();
@@ -31,7 +32,7 @@ export default function ServicesPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!title || !description || !image) {
+    if (!title || !description || !image || !category) {
       setMsg("All fields are required!");
       return;
     }
@@ -43,6 +44,7 @@ export default function ServicesPage() {
     formData.append("description", description);
     formData.append("image", image);
     formData.append("longDescription", longDescription);
+    formData.append("category", category);
 
     const res = await fetch("/api/services", {
       method: "POST",
@@ -53,6 +55,7 @@ export default function ServicesPage() {
       setMsg("✅ Service added successfully!");
       setTitle("");
       setDescription("");
+      setCategory("");
       setImage(null);
       setLongDescription("");
       fetchServices();
@@ -120,6 +123,24 @@ export default function ServicesPage() {
                 rows={3}
                 className="w-full mt-4 p-3 bg-gray-800 rounded-lg border border-gray-700 focus:border-red-500 outline-none"
               ></textarea>
+
+              <label className="text-gray-400 text-sm mt-4 block">
+                Category
+              </label>
+
+              <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                className="w-full mt-4 p-3 bg-gray-800 rounded-lg border border-gray-700 focus:border-red-500 outline-none text-gray-300"
+              >
+                <option value="">Select Category</option>
+                <option value="development">Development</option>
+                <option value="marketing">Marketing & Branding</option>
+                <option value="outsourcing">Outsourcing Services</option>
+                <option value="technicalSupport">
+                  Technical Support Services
+                </option>
+              </select>
 
               <div className="mt-4">
                 <TextEditor

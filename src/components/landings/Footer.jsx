@@ -91,6 +91,7 @@ export default function Footer() {
                 { lbl: "Who we are", lnk: "/aboutus" },
                 { lbl: "What we serve", lnk: "/services" },
                 { lbl: "Our Team", lnk: "/team" },
+                { lbl: "FAQ", lnk: "/faq" },
               ].map((item) => (
                 <li key={item.lnk}>
                   <Link
@@ -110,13 +111,17 @@ export default function Footer() {
           {/* Our Team Links */}
           <div>
             <h4 className="text-xl sm:text-2xl font-semibold text-red-600 mb-6">
-              Clients
+              Services
             </h4>
             <ul className="space-y-3">
               {[
-                { lbl: "Pricing", lnk: "/pricing" },
-                { lbl: "FAQ", lnk: "/faq" },
-                { lbl: "Need Help", lnk: "/contactus" },
+                { lbl: "Development", lnk: "/development" },
+                { lbl: "Marketing & Branding", lnk: "/marketing" },
+                { lbl: "Outsourcing Services", lnk: "/outsourcing" },
+                {
+                  lbl: "Technical Support Services",
+                  lnk: "/technicalSupport ",
+                },
               ].map((item, idx) => (
                 <li key={idx}>
                   <Link
