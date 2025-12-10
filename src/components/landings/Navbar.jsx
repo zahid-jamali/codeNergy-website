@@ -461,14 +461,9 @@ const Navbar = () => {
                                 }
                                 className="flex items-center justify-between w-full text-red-500 hover:text-white transition font-semibold"
                               >
-                                <Link
-                                  href={category.href}
-                                  onClick={(e) => e.stopPropagation()}
-                                >
-                                  <span className="hover:text-white">
-                                    {category.title}
-                                  </span>
-                                </Link>
+                                <span className="hover:text-white">
+                                  {category.title}
+                                </span>
                                 <span className="text-lg ml-2">
                                   {mobileExpandedCategory === key ? "−" : "+"}
                                 </span>
