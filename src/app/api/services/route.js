@@ -3,6 +3,7 @@ import { connectDB } from "@/lib/mongodb";
 import Service from "@/models/Services";
 import { verifyAdmin } from "@/lib/verifyToken";
 import cloudinary from "@/lib/cloudinary";
+import mongoose from "mongoose";
 
 export async function GET() {
   await connectDB();
@@ -25,8 +26,11 @@ export async function POST(req) {
     const description = formData.get("description");
     const longDescription = formData.get("longDescription");
     const category = formData.get("category");
+    const subcategory = formData.get("subcategory");
+    const sideDescription = formData.get("sideDescription");
+    console.log(sideDescription);
 
-    if (!file || !title || !description || !category) {
+    if (!file || !title || !description || !category || !subcategory) {
       return NextResponse.json(
         { error: "All fields are required" },
         { status: 400 }
@@ -46,16 +50,21 @@ export async function POST(req) {
         })
         .end(buffer);
     });
+    //  const href =  // temporary _id for href
 
-    // Create service entry in DB
     const newService = await Service.create({
       image: uploadResult.secure_url,
       imagePublicId: uploadResult.public_id,
       title,
       description,
+      sideDescription,
       longDescription,
       category,
+      subcategory: subcategory,
     });
+
+    newService.href = `/${category}/${newService._id}`;
+    await newService.save();
 
     return NextResponse.json(newService, { status: 201 });
   } catch (err) {

@@ -52,18 +52,15 @@ export default function ServiceDetailPage() {
   });
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState({ type: "", message: "" });
-
   useEffect(() => {
-    const saved = sessionStorage.getItem("selectedService");
-    if (saved) {
-      setService(JSON.parse(saved));
-    } else {
-      fetch(`/api/services/${params.id}`)
-        .then((res) => res.json())
-        .then((data) => setService(data))
-        .catch(() => router.push("/services"));
-    }
-  }, [params.id, router]);
+    fetch(`/api/services/${params.id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setService(data);
+        setLoading(false);
+      })
+      .catch(() => router.push("/services"));
+  }, []);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -156,7 +153,8 @@ export default function ServiceDetailPage() {
             </h2>
             <div className="space-y-3 text-gray-300">
               {/* {renderSlateContent(service.longDescription)} */}
-              <SlateDisplay value={service.longDescription} />
+              {/* <SlateDisplay value={service.longDescription} /> */}
+              {service.sideDescription}
             </div>
           </motion.div>
 
@@ -241,6 +239,10 @@ export default function ServiceDetailPage() {
               </p>
             )}
           </motion.div>
+        </div>
+        <div>
+          <h2 className="text-2xl text-red-500">How we do it</h2>
+          <SlateDisplay value={service.longDescription} />
         </div>
       </div>
     </section>
