@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaPlay } from "react-icons/fa";
 import Modal from "react-modal";
 import Image from "next/image";
+import Link from "next/link";
 // Modal.setAppElement("#__next");
 
 const slides = [
@@ -108,9 +109,11 @@ export default function HeroSlider() {
 
         {/* Buttons */}
         <div className="mt-10 flex items-center gap-6">
-          <button className="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 uppercase">
-            Meet With Us
-          </button>
+          <Link href="/contactus">
+            <button className="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 uppercase">
+              Send a quote
+            </button>
+          </Link>
           <div
             onClick={() => setIsOpen(true)}
             className="cursor-pointer flex items-center justify-center w-14 h-14 rounded-full bg-white/10 border border-white/30 relative"

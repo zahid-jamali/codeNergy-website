@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaTrashAlt, FaPlusCircle } from "react-icons/fa";
+import { FaTrashAlt, FaPlusCircle, FaBuromobelexperte } from "react-icons/fa";
 // import dynamic from "next/dynamic";
 import TextEditor from "@/components/admin/Editor";
 
@@ -19,6 +19,104 @@ export default function ServicesPage() {
   const [loading, setLoading] = useState(false);
   const [cleanEditor, setCleanEditor] = useState(false);
   const [category, setCategory] = useState("");
+  const [subcategory, setSubcategory] = useState("");
+  const [sideDescription, setSideDescription] = useState("");
+
+  const serviceCategories = {
+    development: {
+      title: "Development",
+      href: "/development",
+      subcategories: {
+        website: {
+          title: "Website Development",
+          services: [
+            { name: "E-Commerce Websites", href: "/services/ecommerce" },
+            { name: "Portfolio Websites", href: "/services/portfolio" },
+          ],
+        },
+        app: {
+          title: "App Development",
+          services: [
+            { name: "Android Development", href: "/services/android" },
+          ],
+        },
+        software: {
+          title: "Software Development",
+          services: [
+            { name: "CMS Software", href: "/services/cms" },
+            { name: "ERP Software", href: "/services/erp" },
+          ],
+        },
+      },
+    },
+    marketing: {
+      title: "Marketing & Branding",
+      href: "/marketing",
+      subcategories: {
+        digital: {
+          title: "Digital Marketing",
+          services: [
+            { name: "SEO Services", href: "/services/seo" },
+            { name: "Social Media Marketing", href: "/services/smm" },
+          ],
+        },
+        content: {
+          title: "Content Marketing",
+          services: [
+            { name: "Content Strategy", href: "/services/content-strategy" },
+            { name: "Copywriting", href: "/services/copywriting" },
+          ],
+        },
+        branding: {
+          title: "Brand Identity",
+          services: [
+            { name: "Logo Design", href: "/services/logo" },
+            { name: "Brand Guidelines", href: "/services/brand-guidelines" },
+          ],
+        },
+      },
+    },
+    outsourcing: {
+      title: "Outsourcing Services",
+      href: "/outsourcing",
+      subcategories: {
+        staff: {
+          title: "Staff Augmentation",
+          services: [
+            { name: "Dedicated Developers", href: "/services/dedicated-dev" },
+            { name: "Project Teams", href: "/services/project-teams" },
+          ],
+        },
+        support: {
+          title: "Business Support",
+          services: [
+            { name: "Virtual Assistants", href: "/services/virtual-assistant" },
+            { name: "Data Entry", href: "/services/data-entry" },
+          ],
+        },
+      },
+    },
+    technical: {
+      title: "Technical Support Services",
+      href: "/technicalSupport",
+      subcategories: {
+        maintenance: {
+          title: "Website Maintenance",
+          services: [
+            { name: "Regular Updates", href: "/services/updates" },
+            { name: "Bug Fixes", href: "/services/bug-fixes" },
+          ],
+        },
+        hosting: {
+          title: "Hosting Support",
+          services: [
+            { name: "Server Management", href: "/services/server" },
+            { name: "Cloud Solutions", href: "/services/cloud" },
+          ],
+        },
+      },
+    },
+  };
 
   useEffect(() => {
     fetchServices();
@@ -40,11 +138,13 @@ export default function ServicesPage() {
     setMsg("");
 
     const formData = new FormData();
+    formData.append("category", category);
+    formData.append("subcategory", subcategory);
     formData.append("title", title);
     formData.append("description", description);
     formData.append("image", image);
     formData.append("longDescription", longDescription);
-    formData.append("category", category);
+    formData.append("sideDescription", sideDescription);
 
     const res = await fetch("/api/services", {
       method: "POST",
@@ -58,6 +158,7 @@ export default function ServicesPage() {
       setCategory("");
       setImage(null);
       setLongDescription("");
+      setSideDescription("");
       fetchServices();
       setCleanEditor(true);
       setTimeout(() => setCleanEditor(false), 100);
@@ -130,17 +231,55 @@ export default function ServicesPage() {
 
               <select
                 value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                className="w-full mt-4 p-3 bg-gray-800 rounded-lg border border-gray-700 focus:border-red-500 outline-none text-gray-300"
+                onChange={(e) => {
+                  setCategory(e.target.value);
+                  setSubcategory(""); // reset subcategory on category change
+                }}
+                className="bg-gray-800 text-white"
               >
                 <option value="">Select Category</option>
-                <option value="development">Development</option>
-                <option value="marketing">Marketing & Branding</option>
-                <option value="outsourcing">Outsourcing Services</option>
-                <option value="technicalSupport">
-                  Technical Support Services
-                </option>
+
+                {Object.keys(serviceCategories).map((key) => (
+                  <option key={key} value={serviceCategories[key].title}>
+                    {serviceCategories[key].title}
+                  </option>
+                ))}
               </select>
+
+              {category && (
+                <select
+                  value={subcategory}
+                  onChange={(e) => setSubcategory(e.target.value)}
+                  className="bg-gray-800 text-white"
+                >
+                  <option value="">Select Subcategory</option>
+
+                  {Object.keys(serviceCategories[category].subcategories).map(
+                    (subKey) => (
+                      <option
+                        key={subKey}
+                        value={
+                          serviceCategories[category].subcategories[subKey]
+                            .title
+                        }
+                      >
+                        {
+                          serviceCategories[category].subcategories[subKey]
+                            .title
+                        }
+                      </option>
+                    )
+                  )}
+                </select>
+              )}
+
+              <textarea
+                value={sideDescription}
+                onChange={(e) => setSideDescription(e.target.value)}
+                placeholder="Define Service"
+                rows={3}
+                className="w-full mt-4 p-3 bg-gray-800 rounded-lg border border-gray-700 focus:border-red-500 outline-none"
+              ></textarea>
 
               <div className="mt-4">
                 <TextEditor

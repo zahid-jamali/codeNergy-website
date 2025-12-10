@@ -15,8 +15,121 @@ import Link from "next/link";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(null);
+  const [activeSubcategory, setActiveSubcategory] = useState(null);
+  const [activeService, setActiveService] = useState(null);
   const [time, setTime] = useState("");
   const [isSticky, setIsSticky] = useState(false);
+  const [mobileExpandedCategory, setMobileExpandedCategory] = useState(null);
+  const [mobileExpandedSubcategory, setMobileExpandedSubcategory] =
+    useState(null);
+  const [serviceCategories, setServiceCategories] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/services/forNavbar")
+      .then((res) => res.json())
+      .then((data) => setServiceCategories(data));
+  }, []);
+
+  useEffect(() => {
+    console.log(serviceCategories);
+  }, [serviceCategories]);
+
+  // Service categories structure
+  // const serviceCategories = {
+  //   development: {
+  //     title: "Development",
+  //     href: "/development",
+  //     subcategories: {
+  //       website: {
+  //         title: "Website Development",
+  //         services: [
+  //           { name: "E-Commerce Websites", href: "/services/ecommerce" },
+  //           { name: "Portfolio Websites", href: "/services/portfolio" },
+  //         ],
+  //       },
+  //       app: {
+  //         title: "App Development",
+  //         services: [
+  //           { name: "Android Development", href: "/services/android" },
+  //         ],
+  //       },
+  //       software: {
+  //         title: "Software Development",
+  //         services: [
+  //           { name: "CMS Software", href: "/services/cms" },
+  //           { name: "ERP Software", href: "/services/erp" },
+  //         ],
+  //       },
+  //     },
+  //   },
+  //   marketing: {
+  //     title: "Marketing & Branding",
+  //     href: "/marketing",
+  //     subcategories: {
+  //       digital: {
+  //         title: "Digital Marketing",
+  //         services: [
+  //           { name: "SEO Services", href: "/services/seo" },
+  //           { name: "Social Media Marketing", href: "/services/smm" },
+  //         ],
+  //       },
+  //       content: {
+  //         title: "Content Marketing",
+  //         services: [
+  //           { name: "Content Strategy", href: "/services/content-strategy" },
+  //           { name: "Copywriting", href: "/services/copywriting" },
+  //         ],
+  //       },
+  //       branding: {
+  //         title: "Brand Identity",
+  //         services: [
+  //           { name: "Logo Design", href: "/services/logo" },
+  //           { name: "Brand Guidelines", href: "/services/brand-guidelines" },
+  //         ],
+  //       },
+  //     },
+  //   },
+  //   outsourcing: {
+  //     title: "Outsourcing Services",
+  //     href: "/outsourcing",
+  //     subcategories: {
+  //       staff: {
+  //         title: "Staff Augmentation",
+  //         services: [
+  //           { name: "Dedicated Developers", href: "/services/dedicated-dev" },
+  //           { name: "Project Teams", href: "/services/project-teams" },
+  //         ],
+  //       },
+  //       support: {
+  //         title: "Business Support",
+  //         services: [
+  //           { name: "Virtual Assistants", href: "/services/virtual-assistant" },
+  //           { name: "Data Entry", href: "/services/data-entry" },
+  //         ],
+  //       },
+  //     },
+  //   },
+  //   technical: {
+  //     title: "Technical Support Services",
+  //     href: "/technicalSupport",
+  //     subcategories: {
+  //       maintenance: {
+  //         title: "Website Maintenance",
+  //         services: [
+  //           { name: "Regular Updates", href: "/services/updates" },
+  //           { name: "Bug Fixes", href: "/services/bug-fixes" },
+  //         ],
+  //       },
+  //       hosting: {
+  //         title: "Hosting Support",
+  //         services: [
+  //           { name: "Server Management", href: "/services/server" },
+  //           { name: "Cloud Solutions", href: "/services/cloud" },
+  //         ],
+  //       },
+  //     },
+  //   },
+  // };
 
   useEffect(() => {
     const update = () => {
@@ -45,7 +158,7 @@ const Navbar = () => {
       setIsSticky(window.scrollY > navbarOffset);
     };
 
-    handleScroll(); // Check initial position
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -158,47 +271,89 @@ const Navbar = () => {
             <div
               className="relative group z-50"
               onMouseEnter={() => setDropdownOpen("pages")}
-              onMouseLeave={() => setDropdownOpen(null)}
+              onMouseLeave={() => {
+                setDropdownOpen(null);
+                setActiveSubcategory(null);
+                setActiveService(null);
+              }}
             >
               <button className="flex items-center gap-1 hover:text-red-500 transition">
                 What we do
               </button>
 
               {dropdownOpen === "pages" && (
-                <div
-                  onMouseEnter={() => setDropdownOpen("pages")}
-                  onMouseLeave={() => setDropdownOpen(null)}
-                  className="absolute top-full left-0 bg-black border border-red-500 rounded shadow-lg flex flex-col min-w-[180px] z-[9999]"
-                  style={{
-                    backgroundColor: "rgba(0,0,0,1)",
-                    isolation: "isolate",
-                  }}
-                >
-                  <Link
-                    href="/development"
-                    className="px-4 py-2 text-white hover:bg-red-500 hover:text-white transition"
+                <div className="absolute top-full left-0 flex z-[9999]">
+                  {/* Main Categories */}
+                  <div
+                    className="bg-black  rounded shadow-lg flex flex-col min-w-[180px]"
+                    style={{
+                      backgroundColor: "rgba(0,0,0,1)",
+                      isolation: "isolate",
+                    }}
                   >
-                    Development
-                  </Link>
+                    {Object.entries(serviceCategories).map(
+                      ([key, category]) => (
+                        <div
+                          key={key}
+                          onMouseEnter={() => {
+                            setActiveSubcategory(key);
+                            setActiveService(null);
+                          }}
+                          className="relative"
+                        >
+                          <Link
+                            href={category.href}
+                            className="px-4 py-2 text-white hover:bg-red-500 hover:text-white transition flex items-center justify-between"
+                          >
+                            <span>{category.title}</span>
+                            <span className="ml-2">›</span>
+                          </Link>
+                        </div>
+                      )
+                    )}
+                  </div>
 
-                  <Link
-                    href="/marketing"
-                    className="px-4 py-2 text-white hover:bg-red-500 hover:text-white transition"
-                  >
-                    Marketing & Branding
-                  </Link>
-                  <Link
-                    href="/outsourcing"
-                    className="px-4 py-2 text-white hover:bg-red-500 hover:text-white transition"
-                  >
-                    Outsourcing Services
-                  </Link>
-                  <Link
-                    href="/technicalSupport"
-                    className="px-4 py-2 text-white hover:bg-red-500 hover:text-white transition"
-                  >
-                    Technical Support Services
-                  </Link>
+                  {/* Subcategories and Services in One Box */}
+                  {activeSubcategory && (
+                    <div
+                      className="bg-black  rounded shadow-lg min-w-[200px] max-w-[350px] ml-0 max-h-[500px] overflow-y-auto"
+                      style={{
+                        backgroundColor: "rgba(0,0,0,1)",
+                        isolation: "isolate",
+                      }}
+                    >
+                      {Object.entries(
+                        serviceCategories[activeSubcategory].subcategories
+                      ).map(([subKey, subcategory]) => (
+                        <div
+                          key={subKey}
+                          onMouseEnter={() => setActiveService(subKey)}
+                          onMouseLeave={() => setActiveService(null)}
+                          className="border-b border-gray-800 last:border-b-0"
+                        >
+                          {/* Subcategory Title */}
+                          <div className="px-4 py-3 text-base text-red-400 font-semibold bg-gray-900 cursor-pointer hover:bg-red-500 hover:text-white transition">
+                            {subcategory.title}
+                          </div>
+
+                          {/* Services appear under subcategory when hovered */}
+                          {activeService === subKey && (
+                            <div className="flex flex-col bg-gray-950">
+                              {subcategory.services.map((service, idx) => (
+                                <Link
+                                  key={idx}
+                                  href={service.href}
+                                  className="px-6 py-2 text-gray-300 hover:bg-red-500 hover:text-white transition text-base border-l-2 border-red-600"
+                                >
+                                  {service.name}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -288,44 +443,94 @@ const Navbar = () => {
                       className="flex items-center justify-between w-full pr-6 hover:text-red-600 transition"
                     >
                       What we do
+                      <span className="text-xl">
+                        {dropdownOpen === "pages" ? "−" : "+"}
+                      </span>
                     </button>
                     {dropdownOpen === "pages" && (
-                      <div className="flex flex-col ml-4 mt-2 space-y-2 text-red-500">
-                        <Link href="/development">
-                          <button
-                            className="hover:text-white transition"
-                            onClick={() => setMenuOpen(false)}
-                          >
-                            Development
-                          </button>
-                        </Link>
+                      <div className="flex flex-col ml-4 mt-2 space-y-3">
+                        {Object.entries(serviceCategories).map(
+                          ([key, category]) => (
+                            <div key={key}>
+                              {/* Main Category */}
+                              <button
+                                onClick={() =>
+                                  setMobileExpandedCategory(
+                                    mobileExpandedCategory === key ? null : key
+                                  )
+                                }
+                                className="flex items-center justify-between w-full text-red-500 hover:text-white transition font-semibold"
+                              >
+                                <Link
+                                  href={category.href}
+                                  onClick={(e) => e.stopPropagation()}
+                                >
+                                  <span className="hover:text-white">
+                                    {category.title}
+                                  </span>
+                                </Link>
+                                <span className="text-lg ml-2">
+                                  {mobileExpandedCategory === key ? "−" : "+"}
+                                </span>
+                              </button>
 
-                        <Link href="/marketing">
-                          <button
-                            className="hover:text-white transition"
-                            onClick={() => setMenuOpen(false)}
-                          >
-                            Marketing & Branding
-                          </button>
-                        </Link>
+                              {/* Subcategories */}
+                              {mobileExpandedCategory === key && (
+                                <div className="ml-4 mt-2 space-y-2">
+                                  {Object.entries(category.subcategories).map(
+                                    ([subKey, subcategory]) => (
+                                      <div key={subKey}>
+                                        <button
+                                          onClick={() =>
+                                            setMobileExpandedSubcategory(
+                                              mobileExpandedSubcategory ===
+                                                `${key}-${subKey}`
+                                                ? null
+                                                : `${key}-${subKey}`
+                                            )
+                                          }
+                                          className="flex items-center justify-between w-full text-gray-300 hover:text-white transition text-sm font-medium"
+                                        >
+                                          <span>{subcategory.title}</span>
+                                          <span className="text-base ml-2">
+                                            {mobileExpandedSubcategory ===
+                                            `${key}-${subKey}`
+                                              ? "−"
+                                              : "+"}
+                                          </span>
+                                        </button>
 
-                        <Link href="/outsourcing">
-                          <button
-                            className="hover:text-white transition"
-                            onClick={() => setMenuOpen(false)}
-                          >
-                            Outsourcing Services
-                          </button>
-                        </Link>
-
-                        <Link href="/technicalSupport">
-                          <button
-                            className="hover:text-white transition"
-                            onClick={() => setMenuOpen(false)}
-                          >
-                            Technical Support Services
-                          </button>
-                        </Link>
+                                        {/* Services */}
+                                        {mobileExpandedSubcategory ===
+                                          `${key}-${subKey}` && (
+                                          <div className="ml-4 mt-1 space-y-1">
+                                            {subcategory.services.map(
+                                              (service, idx) => (
+                                                <Link
+                                                  key={idx}
+                                                  href={service.href}
+                                                >
+                                                  <button
+                                                    className="text-gray-400 text-xs hover:text-red-500 transition block w-full text-left py-1"
+                                                    onClick={() =>
+                                                      setMenuOpen(false)
+                                                    }
+                                                  >
+                                                    • {service.name}
+                                                  </button>
+                                                </Link>
+                                              )
+                                            )}
+                                          </div>
+                                        )}
+                                      </div>
+                                    )
+                                  )}
+                                </div>
+                              )}
+                            </div>
+                          )
+                        )}
                       </div>
                     )}
                   </div>

@@ -10,22 +10,43 @@ const serviceSchema = new mongoose.Schema(
     imagePublicId: {
       type: String,
     },
+
+    /** CATEGORY LEVEL */
     category: {
+      type: String, // Example: development, marketing, outsourcing
+      required: true,
+      trim: true,
+    },
+
+    /** SUBCATEGORY LEVEL */
+    subcategory: {
       type: String,
     },
+
+    /** SERVICE LEVEL */
     title: {
-      type: String,
+      type: String, // Example: Portfolio Websites
       required: true,
       trim: true,
       unique: true,
       maxlength: 100,
     },
+
+    href: {
+      type: String,
+      required: false,
+    },
+
     description: {
       type: String,
       required: true,
       trim: true,
       maxlength: 500,
     },
+    sideDescription: {
+      type: String,
+    },
+
     longDescription: {
       type: String,
     },

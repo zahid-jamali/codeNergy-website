@@ -4,6 +4,30 @@ import Service from "@/models/Services";
 import { verifyAdmin } from "@/lib/verifyToken";
 import cloudinary from "@/lib/cloudinary";
 
+export async function GET(req, context) {
+  await connectDB();
+  const { id } = await context.params; // no await here
+  if (!id) {
+    return NextResponse.json(
+      { error: "Service ID is required" },
+      { status: 400 }
+    );
+  }
+
+  try {
+    const service = await Service.findById(id);
+
+    if (!service) {
+      return NextResponse.json({ error: "Service not found" }, { status: 404 });
+    }
+
+    return NextResponse.json(service, { status: 200 });
+  } catch (err) {
+    console.error("Error fetching service:", err);
+    return NextResponse.json({ error: "Server error" }, { status: 500 });
+  }
+}
+
 export async function DELETE(req, context) {
   await connectDB();
 
