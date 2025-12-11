@@ -12,6 +12,9 @@ const schema = mongoose.Schema(
     message: {
       type: String,
     },
+    phone: {
+      type: String,
+    },
     seen: {
       type: Boolean,
       default: "false",

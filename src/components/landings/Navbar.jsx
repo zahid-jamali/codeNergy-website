@@ -285,7 +285,7 @@ const Navbar = () => {
                 <div className="absolute top-full left-0 flex z-[9999]">
                   {/* Main Categories */}
                   <div
-                    className="bg-black  rounded shadow-lg flex flex-col min-w-[180px]"
+                    className="bg-black text-base  rounded shadow-lg flex flex-col min-w-[180px]"
                     style={{
                       backgroundColor: "rgba(0,0,0,1)",
                       isolation: "isolate",
@@ -316,7 +316,7 @@ const Navbar = () => {
                   {/* Subcategories and Services in One Box */}
                   {activeSubcategory && (
                     <div
-                      className="bg-black  rounded shadow-lg min-w-[200px] max-w-[350px] ml-0 max-h-[500px] overflow-y-auto"
+                      className="bg-black text-base  rounded shadow-lg min-w-[200px] max-w-[350px] ml-0 max-h-[500px] overflow-y-auto"
                       style={{
                         backgroundColor: "rgba(0,0,0,1)",
                         isolation: "isolate",
@@ -329,10 +329,10 @@ const Navbar = () => {
                           key={subKey}
                           onMouseEnter={() => setActiveService(subKey)}
                           onMouseLeave={() => setActiveService(null)}
-                          className="border-b border-gray-800 last:border-b-0"
+                          className="border-b text-base border-gray-800 last:border-b-0"
                         >
                           {/* Subcategory Title */}
-                          <div className="px-4 py-3 text-base text-red-400 font-semibold bg-gray-900 cursor-pointer hover:bg-red-500 hover:text-white transition">
+                          <div className="px-4 py-3 text-sm text-red-400  bg-gray-900 cursor-pointer hover:bg-red-500 hover:text-white transition">
                             {subcategory.title}
                           </div>
 
@@ -343,7 +343,7 @@ const Navbar = () => {
                                 <Link
                                   key={idx}
                                   href={service.href}
-                                  className="px-6 py-2 text-gray-300 hover:bg-red-500 hover:text-white transition text-base border-l-2 border-red-600"
+                                  className="px-6 py-2 text-gray-300 hover:bg-red-500 hover:text-white transition text-sm border-l-2 border-red-600"
                                 >
                                   {service.name}
                                 </Link>
