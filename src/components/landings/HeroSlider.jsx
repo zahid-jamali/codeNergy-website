@@ -80,7 +80,7 @@ export default function HeroSlider() {
   };
 
   return (
-    <div className="relative h-screen w-full overflow-hidden flex items-center ">
+    <div className="relative   w-full overflow-hidden flex items-center ">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide.id}
@@ -100,7 +100,7 @@ export default function HeroSlider() {
         </motion.div>
       </AnimatePresence>
 
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-10 px-6 md:px-20 w-full items-center">
+      <div className="relative  pt-24 md:pt-0 z-10 grid grid-cols-1 md:grid-cols-2 gap-10 px-2  md:px-20 w-full items-center">
         {/* Left Content */}
         <div className="flex flex-col justify-center text-white max-w-xl">
           <motion.h5
@@ -139,9 +139,9 @@ export default function HeroSlider() {
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="bg-white/5  backdrop-blur-2xl border border-white/10 p-8 rounded-3xl shadow-[0_0_40px_rgba(0,0,0,0.4)] w-full max-w-md"
+          className="bg-white/5 mt-1 md:mt-28 backdrop-blur-2xl border border-white/10 p-4 md:p-8 rounded-3xl shadow-[0_0_40px_rgba(0,0,0,0.4)] w-full max-w-[360px] md:ml-44 "
         >
-          <h3 className="text-3xl font-bold mb-6 text-white tracking-wide">
+          <h3 className="text-3xl text-center font-bold mb-6 text-white tracking-wide">
             Request a Quote
           </h3>
 

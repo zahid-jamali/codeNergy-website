@@ -11,15 +11,25 @@ export default function NextGenAboutUs() {
       <div className="absolute top-1/3 left-1/2 w-[700px] h-[700px] bg-red-600/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
 
       {/* Hero Section */}
+
+      <div className="w-full bg-[url('/images/slider2.jpg')] bg-cover bg-center">
+        <div className="absolute inset-0 bg-black/60"></div>
+
+        {/* <div className=" text-white"> */}
+
+        <p className="text-4xl relative z-10 font-bold py-12 px-4 md:py-28 md:px-20 md:text-center">
+          About <span className="text-red-500">us</span>
+        </p>
+      </div>
       <div className="relative z-10 max-w-6xl mx-auto text-center px-6 pt-16 pb-10">
-        <motion.p
+        {/* <motion.p
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-red-500 uppercase font-semibold tracking-widest mb-4"
         >
           About Us
-        </motion.p>
+        </motion.p> */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
