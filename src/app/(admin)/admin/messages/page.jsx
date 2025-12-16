@@ -97,6 +97,7 @@ export default function MessagesPage() {
                   }`}
                 >
                   {msg.email}
+                  <br /> {msg.phone}
                 </p>
 
                 <div

@@ -1,5 +1,6 @@
 import Footer from "@/components/landings/Footer";
 import Navbar from "@/components/landings/Navbar";
+import WhatsAppButton from "@/components/WhatsappButton";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -81,6 +82,8 @@ export default function RootLayout({ children }) {
       >
         <Navbar />
         {children}
+        <div id="floating-root" />
+        <WhatsAppButton />
         <Footer />
       </body>
     </html>

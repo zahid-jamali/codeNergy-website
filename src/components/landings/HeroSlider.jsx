@@ -28,12 +28,37 @@ export default function HeroSlider() {
   const [current, setCurrent] = useState(0);
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedSubcategory, setSelectedSubcategory] = useState("");
+  const [selectedService, setSelectedService] = useState("");
+  const [servicesData, setServicesData] = useState({});
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    message: "Send Quate from the Home page slider form!!!",
   });
+  const message = `Send Quate from the Home page slider form, for the category:${selectedCategory}, subcategory:${selectedSubcategory} and service:${selectedService}!!!`;
+
+  useEffect(() => {
+    fetch("/api/services/forNavbar")
+      .then((res) => res.json())
+      .then((data) => setServicesData(data));
+  }, []);
+
+  const categories = Object.keys(servicesData);
+
+  const subcategories = servicesData[selectedCategory]?.subcategories
+    ? Object.keys(servicesData[selectedCategory].subcategories)
+    : [];
+
+  const services =
+    selectedCategory &&
+    selectedSubcategory &&
+    servicesData[selectedCategory]?.subcategories?.[selectedSubcategory]
+      ? servicesData[selectedCategory].subcategories[selectedSubcategory]
+          .services
+      : [];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -60,7 +85,7 @@ export default function HeroSlider() {
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
-          message: formData.message,
+          message: message,
         }),
       });
 
@@ -100,111 +125,198 @@ export default function HeroSlider() {
         </motion.div>
       </AnimatePresence>
 
-      <div className="relative  pt-24 md:pt-0 z-10 grid grid-cols-1 md:grid-cols-2 gap-10 px-2  md:px-20 w-full items-center">
-        {/* Left Content */}
-        <div className="flex flex-col justify-center text-white max-w-xl">
-          <motion.h5
-            key={`small-${currentSlide.id}`}
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-red-500 font-semibold tracking-[4px] mb-3 uppercase"
-          >
-            Best IT Solution
-          </motion.h5>
-
-          <motion.h1
-            key={`title-${currentSlide.id}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-2xl"
-          >
-            {currentSlide.title}
-          </motion.h1>
-
-          <motion.p
-            key={`text-${currentSlide.id}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
-            className="mt-6 text-lg text-gray-200 leading-relaxed drop-shadow"
-          >
-            {currentSlide.text}
-          </motion.p>
-        </div>
-
-        {/* Right Quote Form */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="bg-white/5 mt-1 md:mt-28 backdrop-blur-2xl border border-white/10 p-4 md:p-8 rounded-3xl shadow-[0_0_40px_rgba(0,0,0,0.4)] w-full max-w-[360px] md:ml-44 "
-        >
-          <h3 className="text-3xl text-center font-bold mb-6 text-white tracking-wide">
-            Request a Quote
-          </h3>
-
-          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full p-4 rounded-xl bg-white/10 border border-white/20 placeholder-gray-300 text-white focus:ring-2 focus:ring-red-500 focus:border-transparent transition"
-            />
-
-            <input
-              type="email"
-              name="email"
-              placeholder="Email Address"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full p-4 rounded-xl bg-white/10 border border-white/20 placeholder-gray-300 text-white focus:ring-2 focus:ring-red-500 focus:border-transparent transition"
-            />
-
-            <input
-              type="text"
-              name="phone"
-              placeholder="Phone Number"
-              value={formData.phone}
-              onChange={handleChange}
-              required
-              className="w-full p-4 rounded-xl bg-white/10 border border-white/20 placeholder-gray-300 text-white focus:ring-2 focus:ring-red-500 focus:border-transparent transition"
-            />
-
-            <button
-              type="submit"
-              disabled={loading}
-              className={`w-full text-white font-semibold py-4 rounded-xl text-lg shadow-lg transition 
-                ${
-                  loading
-                    ? "bg-red-400 cursor-not-allowed"
-                    : "bg-red-600 hover:bg-red-700"
-                }
-              `}
+      <div className="relative pt-24 md:pt-0 z-10 w-full">
+        <div className="grid  grid-cols-1 md:grid-cols-2 w-[90%] m-auto items-center">
+          {/* LEFT CONTENT – Full Left */}
+          <div className="flex flex-col justify-center text-white max-w-2xl">
+            <motion.h5
+              key={`small-${currentSlide.id}`}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-red-500 font-semibold tracking-[4px] mb-4 uppercase"
             >
-              {loading ? (
-                <span className="flex items-center justify-center gap-2">
-                  <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                  Sending...
-                </span>
-              ) : (
-                "Send Quote"
-              )}
-            </button>
-          </form>
+              Best IT Solution
+            </motion.h5>
 
-          {/* Success Message */}
-          {successMessage && (
-            <p className="mt-4 text-green-300 text-lg font-medium">
-              {successMessage}
-            </p>
-          )}
-        </motion.div>
+            <motion.h1
+              key={`title-${currentSlide.id}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              className="text-4xl md:text-6xl font-extrabold leading-tight"
+            >
+              {currentSlide.title}
+            </motion.h1>
+
+            <motion.p
+              key={`text-${currentSlide.id}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.3 }}
+              className="mt-6 text-lg text-gray-200 leading-relaxed max-w-xl"
+            >
+              {currentSlide.text}
+            </motion.p>
+          </div>
+
+          {/* RIGHT QUOTE FORM – Full Right */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="ml-auto w-full max-w-[350px] mt-12 md:mt-20 bg-white/5 backdrop-blur-2xl 
+                 border border-white/10 rounded-3xl 
+                 p-8 shadow-[0_20px_60px_rgba(0,0,0,0.45)]"
+          >
+            <h3 className="text-2xl font-semibold text-white mb-6 text-center">
+              Request a Quote
+            </h3>
+
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20
+                     text-white placeholder-gray-300
+                     focus:ring-2 focus:ring-red-500 focus:outline-none"
+              />
+
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20
+                     text-white placeholder-gray-300
+                     focus:ring-2 focus:ring-red-500 focus:outline-none"
+              />
+
+              <input
+                type="text"
+                name="phone"
+                placeholder="Phone Number"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20
+                     text-white placeholder-gray-300
+                     focus:ring-2 focus:ring-red-500 focus:outline-none"
+              />
+
+              {/* CATEGORY */}
+              <select
+                value={selectedCategory}
+                onChange={(e) => {
+                  setSelectedCategory(e.target.value);
+                  setSelectedSubcategory("");
+                  setSelectedService("");
+                }}
+                required
+                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20
+               text-white focus:ring-2 focus:ring-red-500 outline-none"
+              >
+                <option value="" className="text-black">
+                  Select Category
+                </option>
+                {categories.map((cat) => (
+                  <option
+                    key={cat}
+                    value={servicesData[cat].title}
+                    className="text-black"
+                  >
+                    {servicesData[cat].title}
+                  </option>
+                ))}
+              </select>
+
+              {/* SUBCATEGORY */}
+              {selectedCategory && (
+                <select
+                  value={selectedSubcategory}
+                  onChange={(e) => {
+                    setSelectedSubcategory(e.target.value);
+                    setSelectedService("");
+                  }}
+                  required
+                  className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20
+                 text-white focus:ring-2 focus:ring-red-500 outline-none"
+                >
+                  <option value="" className="text-black">
+                    Select Subcategory
+                  </option>
+                  {subcategories.map((sub) => (
+                    <option
+                      key={sub}
+                      value={
+                        servicesData[selectedCategory].subcategories[sub].title
+                      }
+                      className="text-black"
+                    >
+                      {servicesData[selectedCategory].subcategories[sub].title}
+                    </option>
+                  ))}
+                </select>
+              )}
+
+              {/* SERVICE */}
+              {selectedSubcategory && (
+                <select
+                  value={selectedService}
+                  onChange={(e) => setSelectedService(e.target.value)}
+                  required
+                  className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20
+                 text-white focus:ring-2 focus:ring-red-500 outline-none"
+                >
+                  <option value="" className="text-black">
+                    Select Service
+                  </option>
+                  {services.map((service) => (
+                    <option
+                      key={service.href}
+                      value={service.name}
+                      className="text-black"
+                    >
+                      {service.name}
+                    </option>
+                  ))}
+                </select>
+              )}
+
+              <button
+                type="submit"
+                disabled={loading}
+                className={`mt-2 w-full py-3 text-white rounded-xl font-semibold transition
+            ${
+              loading
+                ? "bg-red-400 cursor-not-allowed"
+                : "bg-red-500 hover:bg-red-700"
+            }`}
+              >
+                {loading ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    Sending...
+                  </span>
+                ) : (
+                  "Send Quote"
+                )}
+              </button>
+            </form>
+
+            {successMessage && (
+              <p className="mt-4 text-green-300 text-center font-medium">
+                {successMessage}
+              </p>
+            )}
+          </motion.div>
+        </div>
       </div>
     </div>
   );

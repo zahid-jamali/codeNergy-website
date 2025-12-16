@@ -26,8 +26,7 @@ export async function GET() {
 
 export async function POST(req) {
   await connectDB();
-  let { name, email, message } = await req.json();
-  console.log(name, email, message);
+  let { name, email, message, phone } = await req.json();
   message.trim();
   if ((!name, !email, !message)) {
     return NextResponse.json(
@@ -36,7 +35,7 @@ export async function POST(req) {
     );
   }
   try {
-    let msg = Message({ name, email, message });
+    let msg = Message({ name, email, message, phone });
     await msg.save();
     await Activities.create({ content: "A new message!" });
     const prevAdmins = await User.find({ role: "admin" });
