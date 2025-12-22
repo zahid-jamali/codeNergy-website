@@ -47,7 +47,8 @@ export default function Home() {
   if (loading) {
     return (
       <div className="flex flex-col justify-center items-center h-screen bg-black text-white">
-        <div className="w-16 h-16 border-4 border-red-600 border-t-transparent rounded-full animate-spin"></div>
+        {/* FIXED: Added transform-none to prevent breaking fixed positioning */}
+        <div className="w-16 h-16 border-4 border-red-600 border-t-transparent rounded-full animate-spin transform-none !important"></div>
         <p className="mt-4 text-lg tracking-wide">Loading content...</p>
       </div>
     );

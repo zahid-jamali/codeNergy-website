@@ -89,7 +89,7 @@ const AboutSection = () => {
                 <img
                   src="/images/programming-team.jpg"
                   alt="Programming team"
-                  className="object-cover w-full h-full"
+                  className="object-cover w-full h-full m-auto md:w-3/4 md:h-3/4"
                 />
                 <div className="absolute inset-0 bg-black opacity-30"></div>
               </div>

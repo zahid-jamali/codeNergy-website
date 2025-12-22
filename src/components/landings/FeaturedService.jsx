@@ -24,18 +24,12 @@ export default function FeaturedService() {
             alt="Featured Service"
             width={700}
             height={500}
-            className="rounded-xl object-cover w-full h-full"
+            className="rounded-xl object-cover w-full h-full md:w-3/4 md:h-3/4 m-auto"
           />
         </motion.div>
 
         {/* Right Text Section */}
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="space-y-6"
-        >
+        <div className="space-y-6">
           <div>
             <p className="text-red-500 uppercase tracking-widest font-semibold mb-2 relative inline-block">
               <span className="absolute -left-8 top-1/2 w-6 h-[2px] bg-red-500 -translate-y-1/2"></span>
@@ -74,7 +68,7 @@ export default function FeaturedService() {
               ))}
             </ul>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

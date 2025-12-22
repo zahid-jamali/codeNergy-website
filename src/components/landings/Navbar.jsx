@@ -34,103 +34,6 @@ const Navbar = () => {
     console.log(serviceCategories);
   }, [serviceCategories]);
 
-  // Service categories structure
-  // const serviceCategories = {
-  //   development: {
-  //     title: "Development",
-  //     href: "/development",
-  //     subcategories: {
-  //       website: {
-  //         title: "Website Development",
-  //         services: [
-  //           { name: "E-Commerce Websites", href: "/services/ecommerce" },
-  //           { name: "Portfolio Websites", href: "/services/portfolio" },
-  //         ],
-  //       },
-  //       app: {
-  //         title: "App Development",
-  //         services: [
-  //           { name: "Android Development", href: "/services/android" },
-  //         ],
-  //       },
-  //       software: {
-  //         title: "Software Development",
-  //         services: [
-  //           { name: "CMS Software", href: "/services/cms" },
-  //           { name: "ERP Software", href: "/services/erp" },
-  //         ],
-  //       },
-  //     },
-  //   },
-  //   marketing: {
-  //     title: "Marketing & Branding",
-  //     href: "/marketing",
-  //     subcategories: {
-  //       digital: {
-  //         title: "Digital Marketing",
-  //         services: [
-  //           { name: "SEO Services", href: "/services/seo" },
-  //           { name: "Social Media Marketing", href: "/services/smm" },
-  //         ],
-  //       },
-  //       content: {
-  //         title: "Content Marketing",
-  //         services: [
-  //           { name: "Content Strategy", href: "/services/content-strategy" },
-  //           { name: "Copywriting", href: "/services/copywriting" },
-  //         ],
-  //       },
-  //       branding: {
-  //         title: "Brand Identity",
-  //         services: [
-  //           { name: "Logo Design", href: "/services/logo" },
-  //           { name: "Brand Guidelines", href: "/services/brand-guidelines" },
-  //         ],
-  //       },
-  //     },
-  //   },
-  //   outsourcing: {
-  //     title: "Outsourcing Services",
-  //     href: "/outsourcing",
-  //     subcategories: {
-  //       staff: {
-  //         title: "Staff Augmentation",
-  //         services: [
-  //           { name: "Dedicated Developers", href: "/services/dedicated-dev" },
-  //           { name: "Project Teams", href: "/services/project-teams" },
-  //         ],
-  //       },
-  //       support: {
-  //         title: "Business Support",
-  //         services: [
-  //           { name: "Virtual Assistants", href: "/services/virtual-assistant" },
-  //           { name: "Data Entry", href: "/services/data-entry" },
-  //         ],
-  //       },
-  //     },
-  //   },
-  //   technical: {
-  //     title: "Technical Support Services",
-  //     href: "/technicalSupport",
-  //     subcategories: {
-  //       maintenance: {
-  //         title: "Website Maintenance",
-  //         services: [
-  //           { name: "Regular Updates", href: "/services/updates" },
-  //           { name: "Bug Fixes", href: "/services/bug-fixes" },
-  //         ],
-  //       },
-  //       hosting: {
-  //         title: "Hosting Support",
-  //         services: [
-  //           { name: "Server Management", href: "/services/server" },
-  //           { name: "Cloud Solutions", href: "/services/cloud" },
-  //         ],
-  //       },
-  //     },
-  //   },
-  // };
-
   useEffect(() => {
     const update = () => {
       const now = new Date();
@@ -167,7 +70,7 @@ const Navbar = () => {
     <>
       <div className="flex flex-col relative">
         {/* --------- Header (Mobile) --------- */}
-        <div className="flex justify-center items-center gap-6 text-2xl bg-red-600 text-white h-28 lg:hidden">
+        <div className="flex justify-center items-center gap-6 text-2xl bg-red-600 text-white h-16 md:hidden">
           <a
             href="https://www.facebook.com/profile.php?id=61583738717575"
             target="_blank"
@@ -180,7 +83,7 @@ const Navbar = () => {
         </div>
 
         {/* --------- Desktop Header --------- */}
-        <div className="hidden lg:flex justify-between text-white bg-red-600 items-center px-16 py-4">
+        <div className="hidden md:flex justify-between text-white bg-red-600 items-center px-16 py-4">
           <div className="flex flex-col gap-2 text-sm">
             <div className="flex items-center gap-3 flex-wrap">
               <div className="flex items-center gap-2">
@@ -237,10 +140,10 @@ const Navbar = () => {
         </div>
 
         {/* --------- Navbar --------- */}
+        <div id="main-navbar"></div>
         <div
-          id="main-navbar"
           className={`bg-black w-full flex items-center justify-between px-5 md:px-16 py-2 transition-all duration-300
-      ${isSticky ? "fixed top-0 left-0 right-0 z-50 shadow-2xl" : "relative"}`}
+      ${isSticky ? "fixed top-2 left-0 right-0 z-50 shadow-2xl" : "relative"}`}
         >
           {/* Logo */}
           <div className="w-1/3 md:w-auto">
@@ -255,7 +158,7 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-10 text-white text-lg">
+          <div className="hidden lg:flex items-center gap-10 text-white text-lg">
             <div className="relative group">
               <Link href={"/"}>
                 <button className="flex items-center gap-1 hover:text-red-500 transition">
@@ -376,7 +279,7 @@ const Navbar = () => {
           {/* Toggle Button (Mobile) */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="text-white text-3xl md:hidden focus:outline-none z-50"
+            className="text-white text-3xl lg:hidden focus:outline-none z-50"
           >
             {menuOpen ? <FaTimes className="text-red-600" /> : <FaBars />}
           </button>
@@ -392,7 +295,7 @@ const Navbar = () => {
                   animate={{ opacity: 0.5, x: 0 }}
                   exit={{ opacity: 0, x: "-100%" }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="fixed inset-0 bg-black md:hidden z-30"
+                  className="fixed inset-0 bg-black lg:hidden z-30"
                   onClick={() => setMenuOpen(false)}
                 />
 
@@ -403,7 +306,7 @@ const Navbar = () => {
                   animate={{ x: 0 }}
                   exit={{ x: "-100%" }}
                   transition={{ duration: 0.5, ease: "easeOut" }}
-                  className="fixed top-10 left-0 w-3/4 h-full bg-black flex flex-col text-left pl-6 text-lg space-y-6 py-16 md:hidden z-40 overflow-y-auto"
+                  className="fixed top-10 left-0 w-3/4 h-full bg-black flex flex-col text-left pl-6 text-lg space-y-6 py-16 lg:hidden z-40 overflow-y-auto"
                 >
                   <Image
                     src={"/logo.jpeg"}

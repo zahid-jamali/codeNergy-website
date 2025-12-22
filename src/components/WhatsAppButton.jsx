@@ -1,4 +1,3 @@
-"use client";
 import { FaWhatsapp } from "react-icons/fa";
 
 export default function WhatsAppButton() {
@@ -9,22 +8,16 @@ export default function WhatsAppButton() {
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
       className="
-        fixed 
-        z-[9999]
-
-        /* Mobile positioning (safe area aware) */
-        bottom-[calc(env(safe-area-inset-bottom)+16px)]
-        right-4
-
-        /* Desktop positioning */
-        md:bottom-8
-        md:right-8
+        fixed
+        bottom-4 right-4
+        md:bottom-8 md:right-8
+        z-[999999]
 
         bg-green-500 hover:bg-green-600
         text-white p-4 rounded-full
-        shadow-[0_12px_35px_rgba(0,0,0,0.4)]
+        shadow-[0_12px_30px_rgba(0,0,0,0.4)]
 
-        transition-transform duration-300
+        transition-transform
         hover:scale-110
         active:scale-95
       "

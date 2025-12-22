@@ -15,6 +15,7 @@ export default function WhoWeAreSection() {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
             className="md:px-10 mb-12"
           >
             {/* Subheading */}
@@ -49,13 +50,13 @@ export default function WhoWeAreSection() {
             <img
               src="/images/services-hero.png"
               alt="Who We Are"
-              className="rounded-2xl shadow-xl w-full pr-12"
+              className="rounded-2xl shadow-xl w-full pr-12 m-auto md:w-3/4 md:h-3/4"
             />
           </motion.div>
         </div>
 
         {/* Info Cards */}
-        <div className="grid md:grid-cols-3 gap-8 md:px-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 sm:px-6 md:px-10">
           {[
             {
               title: "Our Vision",
@@ -75,12 +76,24 @@ export default function WhoWeAreSection() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: i * 0.2 }}
-              className="bg-[#111] border border-red-600/40 p-8 rounded-2xl shadow-lg hover:shadow-red-500/30 transition-all duration-300"
+              className="
+        bg-gradient-to-tr from-gray-900 via-black to-gray-900
+        border border-red-600/30
+        p-6 sm:p-8
+        rounded-3xl
+        shadow-lg shadow-red-600/20
+        hover:shadow-red-500/40
+        hover:scale-105
+        transition-transform duration-300
+        flex flex-col justify-between
+      "
             >
-              <h3 className="text-2xl font-semibold text-red-500 mb-4">
+              <h3 className="text-2xl sm:text-3xl font-bold text-red-500 mb-4">
                 {item.title}
               </h3>
-              <p className="text-gray-300">{item.desc}</p>
+              <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
+                {item.desc}
+              </p>
             </motion.div>
           ))}
         </div>

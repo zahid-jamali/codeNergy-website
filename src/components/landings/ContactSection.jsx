@@ -16,7 +16,7 @@ export default function ContactSection() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  // ✅ Scroll Animation
+  // Scroll animation
   useEffect(() => {
     const handleScroll = () => {
       const element = document.getElementById("contact-section");
@@ -30,7 +30,6 @@ export default function ContactSection() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // ✅ Handle Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -41,24 +40,18 @@ export default function ContactSection() {
       email: e.target.email.value.trim(),
       message: e.target.message.value.trim(),
     };
-    if (
-      formData.name === "" ||
-      formData.email === "" ||
-      formData.message === ""
-    ) {
+    if (!formData.name || !formData.email || !formData.message) {
+      setLoading(false);
       return alert("Please fill all the fields");
     }
 
     try {
-      // Example: Send to backend
       const res = await fetch("/api/messages/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-
       if (!res.ok) throw new Error("Failed to send message");
-
       setSuccess(true);
       e.target.reset();
     } catch (err) {
@@ -71,10 +64,10 @@ export default function ContactSection() {
   return (
     <section
       id="contact-section"
-      className="relative py-12 sm:py-20 px-2 md:px-8 overflow-hidden"
+      className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 lg:px-16 overflow-hidden"
       aria-labelledby="contact-heading"
     >
-      {/* Background Design */}
+      {/* Background */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <svg
           className="absolute inset-0 w-full h-full"
@@ -97,37 +90,36 @@ export default function ContactSection() {
         </svg>
       </div>
 
-      <div className="relative z-10 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-start">
+      <div className="relative z-10 max-w-screen-xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-start">
           {/* Left: Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            {/* Header */}
-            <div className="mb-8">
+            <div className="mb-6 md:mb-8">
               <p className="text-red-600 text-sm font-semibold tracking-wider uppercase flex items-center">
                 <span className="inline-block w-10 h-px bg-red-600 mr-3"></span>
                 Contact Us
               </p>
               <h2
                 id="contact-heading"
-                className="mt-2 text-3xl sm:text-4xl font-bold text-white"
+                className="mt-2 text-2xl sm:text-3xl md:text-4xl font-bold text-white"
               >
                 Get in <span className="text-red-600">Touch</span>
               </h2>
-              <p className="mt-3 text-gray-400 text-sm sm:text-base max-w-md">
+              <p className="mt-2 md:mt-3 text-gray-400 text-sm sm:text-base max-w-md">
                 Have questions or need a custom solution for your business?
                 We’re here to help with expert IT guidance.
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-white font-medium mb-2"
+                  className="block text-white font-medium mb-1 md:mb-2"
                 >
                   Your Name
                 </label>
@@ -137,14 +129,14 @@ export default function ContactSection() {
                   name="name"
                   placeholder="John Doe"
                   required
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-red-800/50 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-500/50 text-white placeholder-gray-500 transition-all"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-800/50 border border-red-800/50 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-500/50 text-white placeholder-gray-500 transition-all"
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-white font-medium mb-2"
+                  className="block text-white font-medium mb-1 md:mb-2"
                 >
                   Your Email
                 </label>
@@ -154,14 +146,14 @@ export default function ContactSection() {
                   name="email"
                   placeholder="john@example.com"
                   required
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-red-800/50 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-500/50 text-white placeholder-gray-500 transition-all"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-800/50 border border-red-800/50 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-500/50 text-white placeholder-gray-500 transition-all"
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-white font-medium mb-2"
+                  className="block text-white font-medium mb-1 md:mb-2"
                 >
                   Message
                 </label>
@@ -171,42 +163,42 @@ export default function ContactSection() {
                   rows={4}
                   placeholder="Tell us how we can help you..."
                   required
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-red-800/50 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-500/50 text-white placeholder-gray-500 transition-all resize-none"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-800/50 border border-red-800/50 rounded-lg focus:border-red-500 focus:ring-2 focus:ring-red-500/50 text-white placeholder-gray-500 transition-all resize-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={loading}
-                className={`inline-flex items-center justify-center bg-red-600 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-red-500/40 ${
+                className={`inline-flex items-center justify-center bg-red-600 text-white font-bold py-2.5 sm:py-3 px-6 sm:px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-red-500/40 ${
                   loading ? "opacity-70 cursor-not-allowed" : "hover:bg-red-500"
                 }`}
               >
                 {loading ? (
                   <>
-                    <FaSpinner className="w-5 h-5 mr-2 animate-spin" />
+                    <FaSpinner className="w-4 h-4 sm:w-5 sm:h-5 mr-2 animate-spin" />
                     Sending...
                   </>
                 ) : (
                   <>
                     Send Message
-                    <FaPaperPlane className="w-5 h-5 ml-2" />
+                    <FaPaperPlane className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                   </>
                 )}
               </button>
 
               {success && (
-                <p className="flex items-center text-green-400 mt-4 font-medium">
-                  <FaCheckCircle className="w-5 h-5 mr-2" />
+                <p className="flex items-center text-green-400 mt-2 md:mt-4 font-medium text-sm sm:text-base">
+                  <FaCheckCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   Message sent successfully!
                 </p>
               )}
             </form>
           </motion.div>
 
-          {/* Right: Google Map (smaller & proportional) */}
+          {/* Right: Google Map */}
           <motion.div
-            className="relative h-64 md:h-full p-4 rounded-xl overflow-hidden shadow-2xl border border-red-800/50"
+            className="relative h-64 sm:h-80 md:h-96 lg:h-full p-3 sm:p-4 rounded-xl overflow-hidden shadow-2xl border border-red-800/50"
             initial={{ opacity: 0, x: 50 }}
             animate={isVisible ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
@@ -222,28 +214,29 @@ export default function ContactSection() {
               title="Sharjah Publishing City Free Zone Sharjah, United Arab Emirates"
               className="absolute inset-0"
             ></iframe>
-            <div className="absolute bottom-4 left-4 bg-gray-900/80 backdrop-blur-sm border border-red-800/50 rounded-lg p-3 shadow-md text-sm">
+            <div className="absolute bottom-4 left-4 bg-gray-900/80 backdrop-blur-sm border border-red-800/50 rounded-lg p-2 sm:p-3 shadow-md text-xs sm:text-sm">
               <div className="flex items-start space-x-2">
-                <FaMapMarkerAlt className="w-4 h-4 text-red-500 mt-0.5" />
+                <FaMapMarkerAlt className="w-3 h-3 sm:w-4 sm:h-4 text-red-500 mt-0.5" />
                 <div>
                   <p className="text-white font-semibold">Sharjah Office</p>
-                  <p className="text-gray-300 text-xs">
+                  <p className="text-gray-300 text-xs sm:text-sm">
                     Sharjah Publishing City Free Zone Sharjah,
                   </p>
                 </div>
               </div>
-              <div className="mt-2 text-gray-400 text-xs flex flex-col">
+              <div className="mt-1 sm:mt-2 text-gray-400 flex flex-col text-xs sm:text-sm">
                 <a
                   href="tel:+971562930563"
                   className="flex items-center hover:text-red-500 transition-colors"
                 >
-                  <FaPhone className="w-3 h-3 mr-2" /> +971 56 293 0563
+                  <FaPhone className="w-3 h-3 mr-1 sm:mr-2" /> +971 56 293 0563
                 </a>
                 <a
                   href="mailto:sales@codenergy.ae"
                   className="flex items-center hover:text-red-500 transition-colors mt-1"
                 >
-                  <FaEnvelope className="w-3 h-3 mr-2" /> sales@codenergy.ae
+                  <FaEnvelope className="w-3 h-3 mr-1 sm:mr-2" />{" "}
+                  sales@codenergy.ae
                 </a>
               </div>
             </div>

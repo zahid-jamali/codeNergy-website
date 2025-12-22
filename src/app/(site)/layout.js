@@ -77,14 +77,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black justify-center`}
-        suppressHydrationWarning={true}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}
+        suppressHydrationWarning
       >
-        <Navbar />
-        {children}
-        <div id="floating-root" />
+        {/* App Content */}
+        <div id="app-root">
+          <Navbar />
+          {children}
+          <Footer />
+        </div>
+
         <WhatsAppButton />
-        <Footer />
       </body>
     </html>
   );
