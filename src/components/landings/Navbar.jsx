@@ -143,10 +143,10 @@ const Navbar = () => {
         <div id="main-navbar"></div>
         <div
           className={`bg-black w-full flex items-center justify-between px-5 md:px-16 py-2 transition-all duration-300
-      ${isSticky ? "fixed top-2 left-0 right-0 z-50 shadow-2xl" : "relative"}`}
+      ${isSticky ? "fixed top-0 left-0 right-0 z-50 shadow-2xl" : "relative"}`}
         >
           {/* Logo */}
-          <div className="w-1/3 md:w-auto">
+          <div className="w-1/5 md:w-auto">
             <Image
               src="/logo.jpeg"
               alt="CodeNergy"
@@ -279,7 +279,7 @@ const Navbar = () => {
           {/* Toggle Button (Mobile) */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="text-white text-3xl lg:hidden focus:outline-none z-50"
+            className="text-white text-3xl border-2 border-red-500 rounded-br-md rounded-tl-md p-2 lg:hidden focus:outline-none z-50"
           >
             {menuOpen ? <FaTimes className="text-red-600" /> : <FaBars />}
           </button>
