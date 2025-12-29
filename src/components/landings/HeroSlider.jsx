@@ -219,18 +219,14 @@ export default function HeroSlider() {
                   setSelectedService("");
                 }}
                 required
-                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20
-               text-white focus:ring-2 focus:ring-red-500 outline-none"
+                className="w-full px-4 py-3  rounded-xl bg-white/10 border border-white/20
+               text-white focus:ring-2 focus:ring-red-500 outline-none "
               >
                 <option value="" className="text-black">
                   Select Category
                 </option>
                 {categories.map((cat) => (
-                  <option
-                    key={cat}
-                    value={servicesData[cat].title}
-                    className="text-black"
-                  >
+                  <option key={cat} value={cat} className="text-black">
                     {servicesData[cat].title}
                   </option>
                 ))}

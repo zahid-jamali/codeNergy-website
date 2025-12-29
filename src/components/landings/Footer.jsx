@@ -144,8 +144,14 @@ export default function Footer() {
                 <div>
                   <p className="font-semibold">Office Address</p>
                   <p className="text-gray-300">
-                    Business Center, Sharjah Publishing City Free Zone Sharjah,
-                    United Arab Emirates
+                    <a
+                      href="https://maps.app.goo.gl/XmQbrSpujhi4vSZa7"
+                      target="_blank"
+                      className="text-gray-300 hover:text-red-500 hover:drop-shadow-[0_0_6px_#ff0000] transition-all"
+                    >
+                      Business Center, Sharjah Publishing City Free Zone
+                      Sharjah, United Arab Emirates
+                    </a>
                   </p>
                 </div>
               </div>

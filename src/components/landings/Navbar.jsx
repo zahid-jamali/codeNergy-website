@@ -31,7 +31,7 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    console.log(serviceCategories);
+    console.log(`Service categories: ${JSON.stringify(serviceCategories)}`);
   }, [serviceCategories]);
 
   useEffect(() => {

@@ -12,15 +12,14 @@ export default function NextGenAboutUs() {
 
       {/* Hero Section */}
 
-      <div className="w-full bg-[url('/images/slider2.jpg')] bg-cover bg-center">
+      {/* <div className="w-full bg-[url('/images/slider2.jpg')] bg-cover bg-center">
         <div className="absolute inset-0 bg-black/60"></div>
 
-        {/* <div className=" text-white"> */}
 
         <p className="text-4xl relative z-10 font-bold py-12 px-4 md:py-28 md:px-20 md:text-center">
           About <span className="text-red-500">us</span>
         </p>
-      </div>
+      </div> */}
       <div className="relative z-10 max-w-6xl mx-auto text-center px-6 pt-16 pb-10">
         {/* <motion.p
           initial={{ opacity: 0, y: -20 }}
@@ -94,7 +93,7 @@ export default function NextGenAboutUs() {
       </div>
 
       {/* Mission & Vision Section */}
-      <div className="relative z-10 md:px-16 max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-16">
+      <div className="relative z-10 md:px-16 max-w-7xl md:mt-10 lg:mt-0 mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-16">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
