@@ -31,10 +31,6 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    console.log(`Service categories: ${JSON.stringify(serviceCategories)}`);
-  }, [serviceCategories]);
-
-  useEffect(() => {
     const update = () => {
       const now = new Date();
       const formatted = now.toLocaleString("en-AE", {
@@ -185,7 +181,7 @@ const Navbar = () => {
               </button>
 
               {dropdownOpen === "pages" && (
-                <div className="absolute top-full left-0 flex z-[9999]">
+                <div className="absolute top-full left-0 flex z-[99]">
                   {/* Main Categories */}
                   <div
                     className="bg-black text-base  rounded shadow-lg flex flex-col min-w-[180px]"
@@ -204,13 +200,10 @@ const Navbar = () => {
                           }}
                           className="relative"
                         >
-                          <Link
-                            href={category.href}
-                            className="px-4 py-2 text-white hover:bg-red-500 hover:text-white transition flex items-center justify-between"
-                          >
+                          <span className="px-4 py-2 text-white hover:bg-red-500 hover:text-white transition flex items-center justify-between">
                             <span>{category.title}</span>
                             <span className="ml-2">›</span>
-                          </Link>
+                          </span>
                         </div>
                       )
                     )}

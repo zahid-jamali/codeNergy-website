@@ -1,5 +1,6 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import {
   FaPhone,
@@ -118,10 +119,26 @@ const Contactus = () => {
               </div>
               <div className="flex items-center">
                 <FaMapMarkerAlt className="text-red-500 mr-3" />
-                <p>
-                  Business Center, Sharjah Publishing City Free Zone Sharjah,
-                  United Arab Emirates
-                </p>
+                <a
+                  target="_blank"
+                  href="https://maps.app.goo.gl/XmQbrSpujhi4vSZa7"
+                >
+                  <p className="hover:text-red-500">
+                    Sharjah Publishing City Free Zone Sharjah, UAE
+                  </p>
+                </a>
+              </div>
+
+              <div className="flex items-center">
+                <FaMapMarkerAlt className="text-red-500 mr-3 " />
+                <a
+                  target="_blank"
+                  href="https://maps.app.goo.gl/WdpBk9rS7kJtfutz5"
+                >
+                  <p className="hover:text-red-500">
+                    47-C, Mezz Floor, DHA Phase II Ext, Karachi
+                  </p>
+                </a>
               </div>
             </div>
           </motion.div>
@@ -229,27 +246,110 @@ const Contactus = () => {
             </form>
           </motion.div>
         </div>
+        <div className="w-4/5 h-80 mt-16 mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
+            {/* ================= Head Office ================= */}
+            <motion.div
+              className="relative h-64 sm:h-80 md:h-96 lg:h-full p-3 sm:p-4 pt-10 rounded-xl overflow-hidden shadow-2xl border border-red-800/50"
+              initial={{ opacity: 0, x: 50 }}
+              animate={isVisible ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            >
+              {/* Heading */}
+              <h2 className="absolute top-3 left-4 z-10 text-white text-xl font-semibold bg-black/60 px-3 py-1 rounded-md">
+                Head Office
+              </h2>
 
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-16"
-        >
-          <div className="w-full h-80 border-2 border-red-600 rounded-lg overflow-hidden shadow-lg shadow-red-500/30 relative">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2789.427420517524!2d55.45602357414213!3d25.319909077632165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5f26195b7e6b%3A0xc0f6d4eb509bdf75!2sSPC%20Free%20Zone%20-%20Business%20Setup%20In%20Sharjah%2C%20UAE!5e1!3m2!1sen!2s!4v1764577804696!5m2!1sen!2s"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Sharjah Publishing City Free Zone Sharjah, United Arab Emirates"
-              className="absolute inset-0"
-            ></iframe>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2789.427420517524!2d55.45602357414213!3d25.319909077632165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5f26195b7e6b%3A0xc0f6d4eb509bdf75!2sSPC%20Free%20Zone%20-%20Business%20Setup%20In%20Sharjah%2C%20UAE!5e1!3m2!1sen!2s!4v1764577804696!5m2!1sen!2s"
+                className="absolute inset-0 w-full h-full"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+                title="Sharjah Office"
+              />
+
+              {/* Info Box */}
+              <div className="absolute bottom-4 left-4 z-10 bg-gray-900/40 backdrop-blur-sm border border-red-800/50 rounded-lg p-3 shadow-md text-sm">
+                <div className="flex items-start space-x-2">
+                  <FaMapMarkerAlt className="text-red-500 mt-0.5" />
+                  <div>
+                    <p className="text-white font-semibold">Head Office</p>
+                    <p className="text-gray-300">
+                      Sharjah Publishing City Free Zone, UAE
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-2 text-gray-400 flex flex-col">
+                  <a
+                    href="tel:+971562930563"
+                    className="flex items-center hover:text-red-500"
+                  >
+                    <FaPhone className="mr-2" /> +971 56 293 0563
+                  </a>
+                  <a
+                    href="mailto:sales@codenergy.ae"
+                    className="flex items-center hover:text-red-500 mt-1"
+                  >
+                    <FaEnvelope className="mr-2" /> sales@codenergy.ae
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* ================= Pakistan Branch ================= */}
+            <motion.div
+              className="relative h-64 sm:h-80 md:h-96 lg:h-full p-3 sm:p-4 pt-10 rounded-xl overflow-hidden shadow-2xl border border-green-800/50"
+              initial={{ opacity: 0, x: -50 }}
+              animate={isVisible ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+            >
+              {/* Heading */}
+              <h2 className="absolute top-3 left-4 z-10 text-white text-xl font-semibold bg-black/60 px-3 py-1 rounded-md">
+                Pakistan Branch
+              </h2>
+
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1022.0382655611436!2d67.07052593322841!3d24.83236730298221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2s!4v1767700698039!5m2!1sen!2s"
+                className="absolute inset-0 w-full h-full"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+                title="Pakistan Office"
+              />
+
+              {/* Info Box */}
+              <div className="absolute bottom-4 left-4 z-10 bg-gray-900/40 backdrop-blur-sm border border-green-800/50 rounded-lg p-3 shadow-md text-sm">
+                <div className="flex items-start space-x-2">
+                  <FaMapMarkerAlt className="text-green-500 mt-0.5" />
+                  <div>
+                    <p className="text-white font-semibold">Pakistan Office</p>
+                    <p className="text-gray-300">
+                      47-C, Mezz Floor, DHA Phase II Ext, Karachi
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-2 text-gray-400 flex flex-col">
+                  <a
+                    href="tel:+923378328310"
+                    className="flex items-center hover:text-green-500"
+                  >
+                    <FaPhone className="mr-2" /> 0337-8328310
+                  </a>
+
+                  <a
+                    href="mailto:sales@codenergy.ae"
+                    className="flex items-center hover:text-green-500 mt-1"
+                  >
+                    <FaEnvelope className="mr-2" /> sales@codenergy.ae
+                  </a>
+                </div>
+              </div>
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

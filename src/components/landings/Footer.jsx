@@ -142,15 +142,30 @@ export default function Footer() {
               <div className="flex items-start space-x-3 sm:space-x-4">
                 <FaMapMarkerAlt className="w-5 h-5 sm:w-6 sm:h-6 text-red-500 mt-1 shrink-0" />
                 <div>
-                  <p className="font-semibold">Office Address</p>
+                  <p className="font-semibold">Head Office </p>
                   <p className="text-gray-300">
                     <a
                       href="https://maps.app.goo.gl/XmQbrSpujhi4vSZa7"
                       target="_blank"
                       className="text-gray-300 hover:text-red-500 hover:drop-shadow-[0_0_6px_#ff0000] transition-all"
                     >
-                      Business Center, Sharjah Publishing City Free Zone
-                      Sharjah, United Arab Emirates
+                      Sharjah Publishing City Free Zone, UAE
+                    </a>
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-3 sm:space-x-4">
+                <FaMapMarkerAlt className="w-5 h-5 sm:w-6 sm:h-6 text-red-500 mt-1 shrink-0" />
+                <div>
+                  <p className="font-semibold">Pakistan Branch</p>
+                  <p className="text-gray-300">
+                    <a
+                      href="https://maps.app.goo.gl/WdpBk9rS7kJtfutz5"
+                      target="_blank"
+                      className="text-gray-300 hover:text-red-500 hover:drop-shadow-[0_0_6px_#ff0000] transition-all"
+                    >
+                      47-C, Mezz Floor, DHA Phase II Ext, Karachi
                     </a>
                   </p>
                 </div>
