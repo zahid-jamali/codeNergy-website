@@ -154,6 +154,7 @@ export default function Footer() {
                   </p>
                 </div>
               </div>
+              
 
               <div className="flex items-start space-x-3 sm:space-x-4">
                 <FaMapMarkerAlt className="w-5 h-5 sm:w-6 sm:h-6 text-red-500 mt-1 shrink-0" />

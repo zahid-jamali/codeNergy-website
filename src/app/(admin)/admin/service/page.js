@@ -240,7 +240,7 @@ export default function ServicesPage() {
                 <option value="">Select Category</option>
 
                 {Object.keys(serviceCategories).map((key) => (
-                  <option key={key} value={serviceCategories[key].title}>
+                  <option key={key} value={key.title}>
                     {serviceCategories[key].title}
                   </option>
                 ))}
@@ -254,22 +254,26 @@ export default function ServicesPage() {
                 >
                   <option value="">Select Subcategory</option>
 
-                  {Object.keys(serviceCategories[category].subcategories).map(
-                    (subKey) => (
-                      <option
-                        key={subKey}
-                        value={
-                          serviceCategories[category].subcategories[subKey]
-                            .title
-                        }
-                      >
-                        {
-                          serviceCategories[category].subcategories[subKey]
-                            .title
-                        }
-                      </option>
-                    )
-                  )}
+                  {Object.keys(
+                    Object.values(serviceCategories).find(
+                      (cat) => cat.title === category
+                    ).subcategories
+                  ).map((subKey) => (
+                    <option
+                      key={subKey}
+                      value={
+                        Object.values(serviceCategories).find(
+                          (cat) => cat.title === category
+                        ).subcategories[subKey].title
+                      }
+                    >
+                      {
+                        Object.values(serviceCategories).find(
+                          (cat) => cat.title === category
+                        ).subcategories[subKey].title
+                      }
+                    </option>
+                  ))}
                 </select>
               )}
 

@@ -12,7 +12,7 @@ export default async function AdminLayout({ children }) {
   if (!user) redirect("/login");
   return (
     <html lang="en">
-      <body className="bg-black text-white">
+      <body className="bg-black text-white" suppressHydrationWarning>
         <AdminProvider user={user}>
           <AdminPanelLayoutClient user={user}>
             {children}

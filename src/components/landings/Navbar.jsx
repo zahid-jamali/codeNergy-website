@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import {
@@ -23,6 +23,7 @@ const Navbar = () => {
   const [mobileExpandedSubcategory, setMobileExpandedSubcategory] =
     useState(null);
   const [serviceCategories, setServiceCategories] = useState([]);
+  const closeTimeout = useRef(null);
 
   useEffect(() => {
     fetch("/api/services/forNavbar")
@@ -169,11 +170,16 @@ const Navbar = () => {
 
             <div
               className="relative group z-50"
-              onMouseEnter={() => setDropdownOpen("pages")}
+              onMouseEnter={() => {
+                setDropdownOpen("pages");
+                clearTimeout(closeTimeout.current);
+              }}
               onMouseLeave={() => {
-                setDropdownOpen(null);
-                setActiveSubcategory(null);
-                setActiveService(null);
+                closeTimeout.current = setTimeout(() => {
+                  setDropdownOpen(null);
+                  setActiveSubcategory(null);
+                  setActiveService(null);
+                }, 1500); // 200ms delay
               }}
             >
               <button className="flex items-center gap-1 hover:text-red-500 transition">
@@ -212,11 +218,12 @@ const Navbar = () => {
                   {/* Subcategories and Services in One Box */}
                   {activeSubcategory && (
                     <div
-                      className="bg-black text-base  rounded shadow-lg min-w-[200px] max-w-[350px] ml-0 max-h-[500px] overflow-y-auto"
+                      className="bg-black text-base  rounded shadow-lg min-w-[200px] max-w-[400px] ml-0 max-h-[500px] overflow-y-auto"
                       style={{
                         backgroundColor: "rgba(0,0,0,1)",
                         isolation: "isolate",
                       }}
+                      onMouseEnter={() => clearTimeout(closeTimeout)}
                     >
                       {Object.entries(
                         serviceCategories[activeSubcategory].subcategories
@@ -224,11 +231,11 @@ const Navbar = () => {
                         <div
                           key={subKey}
                           onMouseEnter={() => setActiveService(subKey)}
-                          onMouseLeave={() => setActiveService(null)}
-                          className="border-b text-base border-gray-800 last:border-b-0"
+                          // onMouseLeave={() => setActiveService(null)}
+                          className="border-b text-base border-gray-600 min-w-[200px] max-w-[400px] last:border-b-0"
                         >
                           {/* Subcategory Title */}
-                          <div className="px-4 py-3 text-sm text-red-400  bg-gray-900 cursor-pointer hover:bg-red-500 hover:text-white transition">
+                          <div className="px-2 py-3 text-sm text-red-400  bg-gray-900 cursor-pointer hover:bg-red-500 hover:text-white transition">
                             {subcategory.title}
                           </div>
 
@@ -239,7 +246,7 @@ const Navbar = () => {
                                 <Link
                                   key={idx}
                                   href={service.href}
-                                  className="px-6 py-2 text-gray-300 hover:bg-red-500 hover:text-white transition text-sm border-l-2 border-red-600"
+                                  className="px-3 py-2 text-gray-300 hover:bg-red-500 hover:text-white transition text-sm border-l-2 border-red-600"
                                 >
                                   {service.name}
                                 </Link>
