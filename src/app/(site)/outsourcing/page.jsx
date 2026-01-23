@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import ServiceCards from "@/components/landings/ServiceCards";
 import { FaUsers, FaHandshake, FaGlobe, FaTasks } from "react-icons/fa";
+import Loading from "@/components/Loading";
 
 export default function ServicesPage() {
   const [services, setServices] = useState([]);
@@ -61,7 +62,11 @@ export default function ServicesPage() {
 
   // 🌀 Loader Screen
   if (loading) {
-    return <Loading />;
+    return (
+      <>
+        <Loading />
+      </>
+    );
   }
 
   return (
