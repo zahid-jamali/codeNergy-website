@@ -106,11 +106,7 @@ export default function ServiceDetailPage() {
   };
 
   if (!service) {
-    return (
-      <div className="bg-black text-white flex justify-center items-center min-h-screen">
-        Loading...
-      </div>
-    );
+    return <Loading />;
   }
 
   return (

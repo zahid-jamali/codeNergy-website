@@ -13,6 +13,7 @@ import PricingTeaser from "../../components/landings/PricingTeaser";
 import ServiceCards from "../../components/landings/ServiceCards";
 import ContactSection from "../../components/landings/ContactSection";
 import Footer from "../../components/landings/Footer";
+import Loading from "@/components/Loading";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -46,11 +47,9 @@ export default function Home() {
 
   if (loading) {
     return (
-      <div className="flex flex-col justify-center items-center h-screen bg-black text-white">
-        {/* FIXED: Added transform-none to prevent breaking fixed positioning */}
-        <div className="w-16 h-16 border-4 border-red-600 border-t-transparent rounded-full animate-spin transform-none !important"></div>
-        <p className="mt-4 text-lg tracking-wide">Loading content...</p>
-      </div>
+      <>
+        <Loading />
+      </>
     );
   }
 

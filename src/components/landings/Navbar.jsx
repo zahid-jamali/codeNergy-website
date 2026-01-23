@@ -144,14 +144,16 @@ const Navbar = () => {
         >
           {/* Logo */}
           <div className="w-1/5 md:w-auto">
-            <Image
-              src="/logo.jpeg"
-              alt="CodeNergy"
-              width={400}
-              height={400}
-              className="w-full h-full max-h-30 object-contain"
-              priority
-            />
+            <a href="/">
+              <Image
+                src="/logo.jpeg"
+                alt="CodeNergy"
+                width={400}
+                height={400}
+                className="w-full h-full max-h-30 object-contain"
+                priority
+              />
+            </a>
           </div>
 
           {/* Desktop Menu */}

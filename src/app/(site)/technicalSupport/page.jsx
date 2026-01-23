@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import ServiceCards from "@/components/landings/ServiceCards";
 import { FaHeadset, FaShieldAlt, FaTools, FaServer } from "react-icons/fa";
+import Loading from "@/components/Loading";
 
 export default function ServicesPage() {
   const [services, setServices] = useState([]);
@@ -61,12 +62,7 @@ export default function ServicesPage() {
 
   // 🌀 Loader Screen
   if (loading) {
-    return (
-      <div className="flex flex-col justify-center items-center h-screen bg-black text-white">
-        <div className="w-16 h-16 border-4 border-red-600 border-t-transparent rounded-full animate-spin"></div>
-        <p className="mt-4 text-lg tracking-wide">Loading services...</p>
-      </div>
-    );
+    return <Loading />;
   }
 
   return (

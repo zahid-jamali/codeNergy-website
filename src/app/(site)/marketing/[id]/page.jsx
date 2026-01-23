@@ -4,6 +4,7 @@ import { useRouter, useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import SlateDisplay from "@/components/admin/SlateDisplay";
+import Loading from "@/components/Loading";
 
 /** Utility: Render Slate JSON */
 const renderSlateContent = (content) => {
@@ -105,11 +106,7 @@ export default function ServiceDetailPage() {
   };
 
   if (!service) {
-    return (
-      <div className="bg-black text-white flex justify-center items-center min-h-screen">
-        Loading...
-      </div>
-    );
+    return <Loading />;
   }
 
   return (
