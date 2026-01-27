@@ -86,7 +86,7 @@ export default function PortfolioPage() {
                   {project.service?.title}
                 </p>
 
-                <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+                <p className="text-gray-300 text-sm mb-4 leading-relaxed line-clamp-4">
                   {project.description}
                 </p>
               </div>
