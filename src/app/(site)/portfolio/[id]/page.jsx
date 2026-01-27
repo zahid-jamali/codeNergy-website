@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import Loading from "@/components/Loading";
 
 export default function ProjectPage() {
   const { id } = useParams();
@@ -35,11 +36,7 @@ export default function ProjectPage() {
 
   /* ---------------- LOADING ---------------- */
   if (loading) {
-    return (
-      <div className="bg-black min-h-screen flex items-center justify-center text-gray-400">
-        Loading project...
-      </div>
-    );
+    return <Loading />;
   }
 
   /* ---------------- NOT FOUND ---------------- */

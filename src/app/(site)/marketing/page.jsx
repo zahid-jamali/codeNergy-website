@@ -11,6 +11,7 @@ import {
   FaFileAlt,
   FaShieldAlt,
 } from "react-icons/fa";
+import Loading from "@/components/Loading";
 
 export default function ServicesPage() {
   const [services, setServices] = useState([]);

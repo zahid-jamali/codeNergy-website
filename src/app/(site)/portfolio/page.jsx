@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import Loading from "@/components/Loading";
 
 export default function PortfolioPage() {
   const [projects, setProjects] = useState([]);
@@ -44,9 +45,7 @@ export default function PortfolioPage() {
       </motion.div>
 
       {/* LOADING */}
-      {loading && (
-        <p className="text-center text-gray-400">Loading projects...</p>
-      )}
+      {loading && <Loading />}
 
       {/* EMPTY STATE */}
       {!loading && projects.length === 0 && (
