@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import SlateDisplay from "@/components/admin/SlateDisplay";
 import Loading from "@/components/Loading";
+import PortfolioProjects from "@/components/PortfolioProjects";
 
 /** Utility: Render Slate JSON */
 const renderSlateContent = (content) => {
@@ -136,6 +137,8 @@ export default function ServiceDetailPage() {
             {service.description}
           </p>
         </div>
+
+        <PortfolioProjects />
 
         {/* Two-column layout */}
         <div className="grid md:grid-cols-2 gap-10 items-start">

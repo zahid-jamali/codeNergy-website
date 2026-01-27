@@ -263,6 +263,10 @@ const Navbar = () => {
               )}
             </div>
 
+            <Link href="/portfolio" className="hover:text-red-500 transition">
+              Portfolio
+            </Link>
+
             <Link
               href="/ourphilosophy"
               className="hover:text-red-500 transition"
@@ -352,6 +356,7 @@ const Navbar = () => {
                         {dropdownOpen === "pages" ? "−" : "+"}
                       </span>
                     </button>
+
                     {dropdownOpen === "pages" && (
                       <div className="flex flex-col ml-4 mt-2 space-y-3">
                         {Object.entries(serviceCategories).map(
@@ -434,6 +439,14 @@ const Navbar = () => {
                       </div>
                     )}
                   </div>
+
+                  <Link
+                    href="/portfolio"
+                    onClick={() => setMenuOpen(false)}
+                    className="text-white hover:text-red-600 transition"
+                  >
+                    <button>Portfolio</button>
+                  </Link>
 
                   <Link
                     href="/ourphilosophy"

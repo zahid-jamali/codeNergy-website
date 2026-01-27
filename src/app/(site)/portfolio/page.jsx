@@ -1,45 +1,30 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-const projects = [
-  {
-    id: 1,
-    title: "AI-Powered Chat Assistant",
-    description:
-      "An intelligent chatbot system integrating LangChain and GPT models to handle real-time queries for customers.",
-    image: "/portfolio/ai-chat.png",
-    tech: ["Next.js", "LangChain", "OpenAI API"],
-  },
-  {
-    id: 2,
-    title: "E-Commerce Dashboard",
-    description:
-      "A powerful e-commerce admin panel with analytics, sales tracking, and dynamic inventory management.",
-    image: "/portfolio/ecommerce-dashboard.png",
-    tech: ["React", "Node.js", "MongoDB"],
-  },
-  {
-    id: 3,
-    title: "Digital City Portal",
-    description:
-      "Comprehensive city portal providing healthcare, education, and transport info — designed for Nawabshah.",
-    image: "/portfolio/digital-city.png",
-    tech: ["React", "Express", "MongoDB", "Flutter"],
-  },
-  {
-    id: 4,
-    title: "Smart Attendance System",
-    description:
-      "Location-based attendance tracking system for companies using geolocation and real-time reporting.",
-    image: "/portfolio/attendance.png",
-    tech: ["MERN Stack", "Leaflet", "Railway", "Netlify"],
-  },
-];
-
 export default function PortfolioPage() {
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const res = await fetch("/api/projects");
+        const data = await res.json();
+        setProjects(data);
+      } catch (err) {
+        console.error("Failed to load projects", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
   return (
     <div className="bg-black text-white min-h-screen py-20 px-6 md:px-16">
       {/* HEADER SECTION */}
@@ -58,49 +43,58 @@ export default function PortfolioPage() {
         </p>
       </motion.div>
 
+      {/* LOADING */}
+      {loading && (
+        <p className="text-center text-gray-400">Loading projects...</p>
+      )}
+
+      {/* EMPTY STATE */}
+      {!loading && projects.length === 0 && (
+        <p className="text-center text-gray-400">No projects available yet.</p>
+      )}
+
       {/* PROJECT GRID */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
         {projects.map((project, index) => (
           <motion.div
-            key={project.id}
+            key={project._id}
             className="relative group rounded-2xl overflow-hidden bg-gradient-to-b from-[#111] to-[#000] border border-red-600/30 shadow-lg hover:shadow-red-600/40 transition duration-500 backdrop-blur-md"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.2 }}
+            transition={{ duration: 0.6, delay: index * 0.15 }}
             viewport={{ once: true }}
           >
-            {/* Project Image */}
-            <div className="relative h-56 md:h-64 w-full overflow-hidden">
-              <Image
-                src={"/images/slider3.jpg"}
-                alt={project.title}
-                fill
-                className="object-cover transform group-hover:scale-110 transition duration-700"
-              />
-            </div>
-
-            {/* Project Info */}
-            <div className="p-6">
-              <h2 className="text-2xl font-bold text-red-500 mb-3">
-                {project.title}
-              </h2>
-              <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="text-xs bg-red-600/20 border border-red-500/50 text-red-300 px-3 py-1 rounded-full"
-                  >
-                    {tech}
-                  </span>
-                ))}
+            <Link href={`/portfolio/${project._id}`}>
+              {/* Project Image */}
+              <div className="relative h-56 md:h-64 w-full overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover transform group-hover:scale-110 transition duration-700"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
               </div>
-            </div>
 
-            {/* Glow Effect */}
-            <div className="absolute inset-0 bg-red-600/10 opacity-0 group-hover:opacity-30 transition duration-500" />
+              {/* Project Info */}
+              <div className="p-6">
+                <h2 className="text-2xl font-bold text-red-500 mb-2">
+                  {project.title}
+                </h2>
+
+                {/* Service title */}
+                <p className="text-sm text-red-400 mb-3">
+                  {project.service?.title}
+                </p>
+
+                <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+                  {project.description}
+                </p>
+              </div>
+
+              {/* Glow Effect */}
+              <div className="absolute inset-0 bg-red-600/10 opacity-0 group-hover:opacity-30 transition duration-500" />
+            </Link>
           </motion.div>
         ))}
       </div>

@@ -11,10 +11,6 @@ const Loading = () => {
           playsInline
           className="w-40 h-40 object-contain"
         />
-
-        <p className="mt-4 text-lg tracking-wide opacity-80">
-          Loading content...
-        </p>
       </div>
     </>
   );

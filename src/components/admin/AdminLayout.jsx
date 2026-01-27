@@ -11,6 +11,7 @@ import {
   FaServicestack,
   FaQuestionCircle,
   FaCalendarCheck,
+  FaProjectDiagram,
 } from "react-icons/fa";
 import { MdGroups, MdPeople } from "react-icons/md";
 
@@ -99,6 +100,13 @@ export default function AdminPanelLayoutClient({ children, user }) {
             open={isSidebarOpen}
             href="/admin/service"
           />
+          <SidebarLink
+            icon={<FaProjectDiagram size={20} />}
+            label="Portfolio Projects"
+            open={isSidebarOpen}
+            href="/admin/projects"
+          />
+
           <SidebarLink
             icon={<FaEnvelope size={20} />}
             label="Messages"

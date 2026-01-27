@@ -5,11 +5,16 @@ import { verifyAdmin } from "@/lib/verifyToken";
 import cloudinary from "@/lib/cloudinary";
 
 /* ---------------- GET PROJECTS ---------------- */
-export async function GET() {
+export async function GET(req) {
   await connectDB();
 
-  const projects = await Project.find()
-    .populate("service") // optional but recommended
+  const { searchParams } = new URL(req.url);
+  const serviceId = searchParams.get("service");
+
+  const filter = serviceId ? { service: serviceId } : {};
+
+  const projects = await Project.find(filter)
+    .populate("service")
     .sort({ createdAt: 1 });
 
   return NextResponse.json(projects);
