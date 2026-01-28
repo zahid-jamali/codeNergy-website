@@ -149,7 +149,7 @@ export default function NextGenAboutUs() {
 
       {/* ================= TEAM ================= */}
       <div className="bg-black text-white py-20 px-6 md:px-16">
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: -32 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease }}
@@ -165,7 +165,7 @@ export default function NextGenAboutUs() {
             <span className="text-red-600"> CodeNergy </span>
             transforming ideas into cutting-edge digital realities.
           </p>
-        </motion.div>
+        </motion.div> */}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
           {team.map((member, index) => (
