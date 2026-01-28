@@ -303,7 +303,18 @@ export default function NextGenAboutUs() {
               {/* Close Button */}
               <button
                 onClick={() => setActiveMember(null)}
-                className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition text-xl"
+                aria-label="Close"
+                className="
+                    absolute top-4 right-4 z-20
+                    w-10 h-10
+                    flex items-center justify-center
+                    rounded-full
+                   bg-black/60 backdrop-blur-md
+                    border border-red-700
+                   text-white
+                   hover:bg-red-600 hover:border-red-500
+                    transition
+                 "
               >
                 ✕
               </button>
