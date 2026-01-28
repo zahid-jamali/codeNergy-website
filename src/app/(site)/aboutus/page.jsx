@@ -197,7 +197,10 @@ export default function NextGenAboutUs() {
                   {member.name}
                 </h2>
                 <p className="text-sm text-gray-400 mb-3">
-                  {member.designation}
+                  {member.designation} <br />
+                  <span className="text-zinc-500 text-xs mt-2">
+                    {member.contact}
+                  </span>
                 </p>
                 <p className="text-gray-300 text-sm leading-relaxed line-clamp-3">
                   {member.description}

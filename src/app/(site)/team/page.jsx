@@ -81,7 +81,12 @@ export default function TeamPage() {
               <h2 className="text-2xl font-bold text-red-500 mb-1">
                 {member.name}
               </h2>
-              <p className="text-sm text-gray-400 mb-3">{member.designation}</p>
+              <p className="text-sm text-gray-400 mb-3">
+                {member.designation} <br />
+                <span className="text-zinc-500 text-xs mt-2">
+                  {member.contact}
+                </span>
+              </p>
               <p className="text-gray-300 text-sm leading-relaxed">
                 {member.description}
               </p>
