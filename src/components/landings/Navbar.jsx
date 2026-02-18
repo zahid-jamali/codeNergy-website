@@ -105,10 +105,10 @@ const Navbar = () => {
               <div className="flex items-center gap-2">
                 <SiGmail className="text-white" />
                 <a
-                  href="mailto:sales@codenergy.ae"
+                  href="mailto:hr@codenergy.ae"
                   className="hover:text-gray-200"
                 >
-                  sales@codenergy.ae
+                  hr@codenergy.ae
                 </a>
               </div>
 
