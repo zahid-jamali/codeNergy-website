@@ -72,7 +72,7 @@ export default function NextGenAboutUs() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease }}
           viewport={{ once: true, amount: 0.4 }}
-          className="space-y-6 md:px-8"
+          className="space-y-6 md:px-8 order-2 lg:order-1"
         >
           <h3 className="text-3xl font-semibold text-red-500">CEO’s Message</h3>
           <p className="text-gray-300 leading-relaxed">
@@ -97,7 +97,7 @@ export default function NextGenAboutUs() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease }}
           viewport={{ once: true, amount: 0.4 }}
-          className="flex justify-center"
+          className="flex justify-center order-1 lg:order-2"
         >
           <img
             src="/images/ceo.png"
@@ -187,7 +187,7 @@ export default function NextGenAboutUs() {
                   src={member.image}
                   alt={member.name}
                   fill
-                  className="object-cover group-hover:scale-110 transition duration-700"
+                  className="object-cover px-2 group-hover:scale-110 transition duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
               </div>
@@ -198,9 +198,9 @@ export default function NextGenAboutUs() {
                 </h2>
                 <p className="text-sm text-gray-400 mb-3">
                   {member.designation} <br />
-                  <span className="text-zinc-500 text-xs mt-2">
+                  {/* <span className="text-zinc-500 text-xs mt-2">
                     {member.contact}
-                  </span>
+                  </span> */}
                 </p>
                 <p className="text-gray-300 text-sm leading-relaxed line-clamp-3">
                   {member.description}
@@ -292,58 +292,78 @@ export default function NextGenAboutUs() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-lg px-4"
+            className="
+            fixed inset-0 z-[100]
+            flex md:items-center md:justify-center
+            items-start justify-center
+            bg-black/70 backdrop-blur-lg
+            px-4 py-6
+            overflow-y-auto
+          "
             onClick={() => setActiveMember(null)}
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.4, ease }}
+              initial={{ opacity: 0, y: 30, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 30, scale: 0.96 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
               onClick={(e) => e.stopPropagation()}
-              className="relative bg-gradient-to-b from-[#111] to-[#000] border border-red-600/30 rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl"
+              className="
+  relative
+  w-full max-w-5xl
+  rounded-2xl
+  bg-[#0c0c0c]/95
+  backdrop-blur-2xl
+  border border-white/10
+  shadow-[0_25px_80px_rgba(0,0,0,0.7)]
+  max-h-[90vh]
+  overflow-y-auto
+"
             >
               {/* Close Button */}
               <button
                 onClick={() => setActiveMember(null)}
                 aria-label="Close"
                 className="
-                    absolute top-4 right-4 z-20
-                    w-10 h-10
-                    flex items-center justify-center
-                    rounded-full
-                   bg-black/60 backdrop-blur-md
-                    border border-red-700
-                   text-white
-                   hover:bg-red-600 hover:border-red-500
-                    transition
-                 "
+      absolute top-6 right-6
+      w-9 h-9
+      flex items-center justify-center
+      rounded-full
+      bg-white/10
+      text-white
+      hover:bg-red-600
+      transition-all duration-300
+    "
               >
                 ✕
               </button>
 
-              {/* Image */}
-              <div className="relative h-72 w-full">
-                <Image
-                  src={activeMember.image}
-                  alt={activeMember.name}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-              </div>
+              <div className="grid md:grid-cols-2 gap-10 p-10">
+                {/* Image Section */}
+                <div className="relative w-full h-[380px] rounded-xl overflow-hidden group">
+                  <Image
+                    src={activeMember.image}
+                    alt={activeMember.name}
+                    fill
+                    className="object-cover transition duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                </div>
 
-              {/* Content */}
-              <div className="p-8">
-                <h2 className="text-3xl font-bold text-red-500 mb-2">
-                  {activeMember.name}
-                </h2>
-                <p className="text-sm text-gray-400 mb-4">
-                  {activeMember.designation}
-                </p>
-                <p className="text-gray-300 leading-relaxed">
-                  {activeMember.description}
-                </p>
+                {/* Content Section */}
+                <div className="flex flex-col justify-center">
+                  <h2 className="text-3xl lg:text-4xl font-semibold text-white mb-3 tracking-tight">
+                    {activeMember.name}
+                  </h2>
+
+                  <span className="inline-block text-xs font-semibold uppercase tracking-widest text-red-500 mb-6">
+                    {activeMember.designation}
+                  </span>
+
+                  <p className="text-gray-400 leading-relaxed text-sm lg:text-base">
+                    {activeMember.description}
+                  </p>
+                </div>
               </div>
             </motion.div>
           </motion.div>

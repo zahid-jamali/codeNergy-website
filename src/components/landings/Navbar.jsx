@@ -4,7 +4,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import {
   FaFacebook,
-  FaTwitter,
+  // FaTwitter,
+  FaLinkedin,
+  FaInstagram,
   FaYoutube,
   FaBars,
   FaTimes,
@@ -75,8 +77,25 @@ const Navbar = () => {
           >
             <FaFacebook className="hover:text-blue-400 transition" />
           </a>
-          <FaTwitter className="hover:text-sky-300 transition" />
-          <FaYoutube className="hover:text-red-400 transition" />
+
+          {/* <FaTwitter className="hover:text-sky-300 transition" /> */}
+          <a
+            href="https://www.linkedin.com/company/codenergy-fze/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedin className="hover:text-blue-400 transition" />
+          </a>
+
+          <a
+            href="https://www.instagram.com/codenergy_?igsh=MTBmOTZ5ZjJhbHR4dA=="
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram className="hover:text-red-400 transition" />
+          </a>
+
+          {/* <FaYoutube className="hover:text-red-400 transition" /> */}
         </div>
 
         {/* --------- Desktop Header --------- */}
@@ -118,20 +137,22 @@ const Navbar = () => {
               <FaFacebook />
             </a>
             <a
-              href="https://twitter.com"
+              href="https://www.linkedin.com/company/codenergy-fze/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-black transition"
             >
-              <FaTwitter />
+              <FaLinkedin />
+              {/* <FaTwitter /> */}
             </a>
             <a
-              href="https://youtube.com"
+              href="https://www.instagram.com/codenergy_?igsh=MTBmOTZ5ZjJhbHR4dA=="
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-black transition"
             >
-              <FaYoutube />
+              <FaInstagram />
+              {/* <FaYoutube /> */}
             </a>
           </div>
         </div>

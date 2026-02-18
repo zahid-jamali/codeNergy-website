@@ -64,9 +64,14 @@ export default function Footer() {
                   icon: FaFacebook,
                   link: "https://www.facebook.com/profile.php?id=61583738717575",
                 },
-                { icon: FaTwitter, link: "#" },
-                { icon: FaLinkedin, link: "#" },
-                { icon: FaInstagram, link: "#" },
+                {
+                  icon: FaLinkedin,
+                  link: "https://www.linkedin.com/company/codenergy-fze/posts/?feedView=all",
+                },
+                {
+                  icon: FaInstagram,
+                  link: "https://www.instagram.com/codenergy_?igsh=MTBmOTZ5ZjJhbHR4dA==",
+                },
               ].map((Social, i) => (
                 <a
                   key={i}
@@ -189,10 +194,10 @@ export default function Footer() {
                 <div>
                   <p className="font-semibold">Mail Us</p>
                   <a
-                    href="mailto:sales@codenergy.ae"
+                    href="mailto:hr@codenergy.ae"
                     className="text-gray-300 hover:text-red-500 hover:drop-shadow-[0_0_6px_#ff0000] transition-all"
                   >
-                    sales@codenergy.ae
+                    hr@codenergy.ae
                   </a>
                 </div>
               </div>

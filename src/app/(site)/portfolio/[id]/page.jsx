@@ -56,15 +56,16 @@ export default function ProjectPage() {
   return (
     <div className="bg-black text-white min-h-screen">
       {/* HERO IMAGE */}
-      <div className="relative w-full h-[60vh]">
+      <div className="relative w-full">
         <Image
           src={project.image}
           alt={project.title}
-          fill
+          width={1600}
+          height={900}
           priority
-          className="object-cover"
+          sizes="100vw"
+          className="w-full h-auto object-cover"
         />
-        <div className="absolute inset-0 bg-black/60" />
       </div>
 
       {/* CONTENT */}

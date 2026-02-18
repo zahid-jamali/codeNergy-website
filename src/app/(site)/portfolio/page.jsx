@@ -69,9 +69,10 @@ export default function PortfolioPage() {
                 <Image
                   src={project.image}
                   alt={project.title}
-                  fill
-                  className="object-cover transform group-hover:scale-110 transition duration-700"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  width={300}
+                  height={300}
+                  className="w-full transform group-hover:scale-110 transition duration-700"
+                  // sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
 

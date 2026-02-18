@@ -239,10 +239,10 @@ export default function ContactSection() {
                     <FaPhone className="mr-2" /> +971 56 293 0563
                   </a>
                   <a
-                    href="mailto:sales@codenergy.ae"
+                    href="mailto:hr@codenergy.ae"
                     className="flex items-center hover:text-red-500 mt-1"
                   >
-                    <FaEnvelope className="mr-2" /> sales@codenergy.ae
+                    <FaEnvelope className="mr-2" /> hr@codenergy.ae
                   </a>
                 </div>
               </div>
@@ -290,10 +290,10 @@ export default function ContactSection() {
                   </a>
 
                   <a
-                    href="mailto:sales@codenergy.ae"
+                    href="mailto:hr@codenergy.ae"
                     className="flex items-center hover:text-green-500 mt-1"
                   >
-                    <FaEnvelope className="mr-2" /> sales@codenergy.ae
+                    <FaEnvelope className="mr-2" /> hr@codenergy.ae
                   </a>
                 </div>
               </div>

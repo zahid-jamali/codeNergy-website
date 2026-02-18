@@ -44,7 +44,7 @@ export default function ServicesCarousel(Services) {
           modules={[Navigation, Pagination, Autoplay]}
           navigation={false}
           pagination={false}
-          autoplay={{ delay: 2500, disableOnInteraction: false }}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
           loop
           spaceBetween={35}
           slidesPerView={1}
@@ -58,47 +58,49 @@ export default function ServicesCarousel(Services) {
           {Array.isArray(services) &&
             services.map((service, index) => (
               <SwiperSlide key={index}>
-                <motion.div
-                  whileHover={{ scale: 1.03, y: -6 }}
-                  transition={{ type: "spring", stiffness: 120 }}
-                  className="relative bg-gradient-to-b from-gray-900 to-gray-950 rounded-3xl border border-gray-800 shadow-lg overflow-hidden group h-full flex flex-col"
-                  onClick={() => handleServiceClick(service)}
-                >
-                  {/* Image */}
-                  <div className="h-52 overflow-hidden">
-                    <motion.img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex flex-col justify-between flex-1 p-6">
-                    <div>
-                      <h3 className="text-2xl font-semibold text-white mb-2 group-hover:text-red-500 transition-colors duration-300">
-                        {service.title}
-                      </h3>
-                      <p className="text-gray-400 text-sm leading-relaxed line-clamp-4">
-                        {service.description}
-                      </p>
+                <Link href={`${service.href}`}>
+                  <motion.div
+                    whileHover={{ scale: 1.03, y: -6 }}
+                    transition={{ type: "spring", stiffness: 120 }}
+                    className="relative bg-gradient-to-b from-gray-900 to-gray-950 rounded-3xl border border-gray-800 shadow-lg overflow-hidden group h-full flex flex-col"
+                    // onClick={() => handleServiceClick(service)}
+                  >
+                    {/* Image */}
+                    <div className="h-52 overflow-hidden">
+                      <motion.img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     </div>
 
-                    <Link
-                      href={`/${service.category}/${service._id}`}
-                      className="mt-5"
-                    >
-                      <motion.button
-                        whileHover={{ x: 5 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="w-full flex items-center justify-center gap-2 bg-red-600 hover:bg-red-500 text-white font-semibold py-3 rounded-lg transition-colors duration-300"
+                    {/* Content */}
+                    <div className="flex flex-col justify-between flex-1 p-6">
+                      <div>
+                        <h3 className="text-2xl font-semibold text-white mb-2 group-hover:text-red-500 transition-colors duration-300">
+                          {service.title}
+                        </h3>
+                        <p className="text-gray-400 text-sm leading-relaxed line-clamp-4">
+                          {service.description}
+                        </p>
+                      </div>
+
+                      <Link
+                        href={`/${service.category}/${service._id}`}
+                        className="mt-5"
                       >
-                        View Details <FaArrowRight className="text-sm" />
-                      </motion.button>
-                    </Link>
-                  </div>
-                </motion.div>
+                        <motion.button
+                          whileHover={{ x: 5 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="w-full flex items-center justify-center gap-2 bg-red-600 hover:bg-red-500 text-white font-semibold py-3 rounded-lg transition-colors duration-300"
+                        >
+                          View Details <FaArrowRight className="text-sm" />
+                        </motion.button>
+                      </Link>
+                    </div>
+                  </motion.div>
+                </Link>
               </SwiperSlide>
             ))}
         </Swiper>
