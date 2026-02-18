@@ -11,7 +11,7 @@ export async function PUT(req, context) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { id } = await context.parmas;
+    const { id } = await context.params;
     const data = await req.json();
     const updated = await Faq.findByIdAndUpdate(id, data, { new: true });
 
@@ -33,7 +33,7 @@ export async function DELETE(req, context) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { id } = await context.parmas;
+    const { id } = await context.params;
     const deleted = await Faq.findByIdAndDelete(id);
     if (!deleted) {
       return NextResponse.json({ error: "FAQ not found" }, { status: 404 });
