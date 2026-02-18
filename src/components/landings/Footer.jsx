@@ -41,11 +41,11 @@ export default function Footer() {
       <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-16 pt-8 md:pt-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6 md:gap-x-8 lg:gap-x-12">
           {/* Logo + Description */}
-          <div className="flex flex-col">
+          <div className="flex flex-col md:order-3 lg:order-1">
             <div className="flex items-center mb-4 md:mb-6">
-              <div className="w-16 h-16 md:w-24 md:h-24 flex items-center justify-center mr-3 overflow-hidden">
+              <div className="w-16  h-16 md:w-24 md:h-24 flex items-center justify-center mr-3 overflow-hidden">
                 <Image
-                  src="/logo.jpeg"
+                  src="/logo.png"
                   alt="CodeNergy"
                   width={200}
                   height={200}
@@ -85,11 +85,11 @@ export default function Footer() {
           </div>
 
           {/* Company Links */}
-          <div>
+          <div className="md:order-1 lg:order-2">
             <h4 className="text-lg sm:text-xl md:text-2xl font-semibold text-red-600 mb-4 sm:mb-6">
               Company
             </h4>
-            <ul className="space-y-2 sm:space-y-3">
+            <ul className="space-y-2 sm:space-y-3 ">
               {[
                 { lbl: "Who we are", lnk: "/aboutus" },
                 { lbl: "What we serve", lnk: "/services" },
@@ -112,7 +112,7 @@ export default function Footer() {
           </div>
 
           {/* Services Links */}
-          <div>
+          <div className="md:order-2 lg:order-3">
             <h4 className="text-lg sm:text-xl md:text-2xl font-semibold text-red-600 mb-4 sm:mb-6">
               Services
             </h4>
@@ -139,7 +139,7 @@ export default function Footer() {
           </div>
 
           {/* Contact Info */}
-          <div>
+          <div className="md:order-4 lg:order-4">
             <h4 className="text-lg sm:text-xl md:text-2xl font-semibold text-red-600 mb-4 sm:mb-6">
               Contact Info
             </h4>

@@ -45,18 +45,18 @@ export default function WhoWeAreSection() {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex justify-left lg:justify-end"
+            className="flex justify-center  lg:justify-end"
           >
             <img
               src="/images/services-hero.png"
               alt="Who We Are"
-              className="rounded-2xl shadow-xl w-full pr-12 m-auto md:w-3/4 md:h-3/4"
+              className="rounded-2xl shadow-xl w-full  m-auto md:w-3/4 md:h-3/4"
             />
           </motion.div>
         </div>
 
         {/* Info Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 sm:px-6 md:px-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 sm:px-6 mt-4  md:px-10">
           {[
             {
               title: "Our Vision",
