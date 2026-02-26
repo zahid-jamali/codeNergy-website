@@ -30,14 +30,14 @@ export const metadata = {
     "MERN Stack",
     "Freelance Developer",
   ],
-  authors: [{ name: "Zahid Jamali", url: "https://codenery.ae" }],
+  authors: [{ name: "Zahid Jamali", url: "https://codenergy.ae" }],
   creator: "Zahid Jamali",
-  metadataBase: new URL("https://codenery.ae"),
+  metadataBase: new URL("https://codenergy.ae"),
   openGraph: {
     title: "CodeNergy — Empowering Digital Solutions",
     description:
       "Explore custom web and mobile apps built by CodeNergy. Professional solutions using Next.js and MERN Stack.",
-    url: "https://codenery.ae",
+    url: "https://codenergy.ae",
     siteName: "CodeNergy",
     images: [
       {
@@ -56,7 +56,7 @@ export const metadata = {
     description:
       "Next.js and MERN-based professional solutions by Zahid Jamali.",
     creator: "@ZahidJamali",
-    images: ["/og-image.jpg"],
+    images: ["/logo.jpeg"],
   },
   icons: {
     icon: "/icon.ico",
