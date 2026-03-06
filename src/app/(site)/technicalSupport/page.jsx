@@ -43,7 +43,8 @@ export default function ServicesPage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch("/api/services/category/technicalSupport");
+        const encode = encodeURIComponent("Technical Support");
+        const res = await fetch(`/api/services/category/${encode}`);
         const data = await res.json();
         setServices(data);
       } catch (err) {

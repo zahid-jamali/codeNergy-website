@@ -21,6 +21,7 @@ export default function ServicesPage() {
   const [category, setCategory] = useState("");
   const [subcategory, setSubcategory] = useState("");
   const [sideDescription, setSideDescription] = useState("");
+  const [href, setHref] = useState();
 
   const serviceCategories = {
     development: {
@@ -49,6 +50,53 @@ export default function ServicesPage() {
         },
       },
     },
+
+    "AI & Data Solutions": {
+      title: "AI & Data Solutions",
+      href: "/ai-solutions",
+      subcategories: {
+        "Machine Learning": {
+          title: "Machine Learning",
+          services: [
+            {
+              name: "Custom ML Model Development",
+              href: "/ai/ml-model-development",
+            },
+            { name: "Predictive Analytics", href: "/ai/predictive-analytics" },
+            {
+              name: "Recommendation Systems",
+              href: "/ai/recommendation-systems",
+            },
+          ],
+        },
+        "AI Applications": {
+          title: "AI Applications",
+          services: [
+            { name: "AI Chatbot Development", href: "/ai/chatbot-development" },
+            { name: "Computer Vision Solutions", href: "/ai/computer-vision" },
+            {
+              name: "Natural Language Processing (NLP)",
+              href: "/ai/nlp-solutions",
+            },
+          ],
+        },
+        "Data Science": {
+          title: "Data Science",
+          services: [
+            {
+              name: "Data Analysis & Visualization",
+              href: "/ai/data-analysis",
+            },
+            { name: "Big Data Processing", href: "/ai/big-data" },
+            {
+              name: "Business Intelligence",
+              href: "/ai/business-intelligence",
+            },
+          ],
+        },
+      },
+    },
+
     marketing: {
       title: "Marketing & Branding",
       href: "/marketing",
@@ -58,6 +106,18 @@ export default function ServicesPage() {
           services: [
             { name: "SEO Services", href: "/services/seo" },
             { name: "Social Media Marketing", href: "/services/smm" },
+          ],
+        },
+        "Graphic Design": {
+          title: "Graphic Design",
+          services: [
+            { name: "Logo Design", href: "/marketing/logo-design" },
+            { name: "Banner Design", href: "/marketing/banner-design" },
+            { name: "Poster Design", href: "/marketing/poster-design" },
+            {
+              name: "Social Media Post Design",
+              href: "/marketing/social-media-design",
+            },
           ],
         },
         content: {
@@ -143,8 +203,11 @@ export default function ServicesPage() {
     formData.append("title", title);
     formData.append("description", description);
     formData.append("image", image);
+    formData.append("href", href);
     formData.append("longDescription", longDescription);
     formData.append("sideDescription", sideDescription);
+
+    console.log(href);
 
     const res = await fetch("/api/services", {
       method: "POST",
@@ -232,8 +295,10 @@ export default function ServicesPage() {
               <select
                 value={category}
                 onChange={(e) => {
-                  setCategory(e.target.value);
-                  setSubcategory(""); // reset subcategory on category change
+                  const selectedKey = e.target.value;
+                  setCategory(selectedKey);
+                  setSubcategory("");
+                  setHref(serviceCategories[selectedKey]?.href);
                 }}
                 className="bg-gray-800 text-white"
               >

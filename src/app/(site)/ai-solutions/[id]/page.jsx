@@ -4,8 +4,9 @@ import { useRouter, useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import SlateDisplay from "@/components/admin/SlateDisplay";
-import PortfolioProjects from "@/components/PortfolioProjects";
 import Loading from "@/components/Loading";
+import PortfolioProjects from "@/components/PortfolioProjects";
+
 /** Utility: Render Slate JSON */
 const renderSlateContent = (content) => {
   try {
@@ -53,7 +54,6 @@ export default function ServiceDetailPage() {
   });
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState({ type: "", message: "" });
-
   useEffect(() => {
     fetch(`/api/services/${params.id}`)
       .then((res) => res.json())

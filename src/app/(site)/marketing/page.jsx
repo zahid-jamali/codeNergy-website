@@ -48,7 +48,8 @@ export default function ServicesPage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch("/api/services/category/marketing");
+        const encoded = encodeURIComponent("Marketing & Branding");
+        const res = await fetch(`/api/services/category/${encoded}`);
         const data = await res.json();
         setServices(data);
       } catch (err) {

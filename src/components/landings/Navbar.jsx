@@ -213,7 +213,7 @@ const Navbar = () => {
                 <div className="absolute top-full left-0 flex z-[99]">
                   {/* Main Categories */}
                   <div
-                    className="bg-black text-base  rounded shadow-lg flex flex-col min-w-[180px]"
+                    className="bg-black text-base  rounded shadow-lg flex flex-col min-w-[220px]"
                     style={{
                       backgroundColor: "rgba(0,0,0,1)",
                       isolation: "isolate",

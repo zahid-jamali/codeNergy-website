@@ -5,9 +5,23 @@ export async function GET(req) {
   await connectDB();
 
   try {
-    const services = await Service.find({}).lean(); // fetch all services
+    const services = await Service.find({}).lean();
 
-    // Transform flat services into nested structure
+    const categoryOrder = {
+      development: 1,
+      "ai & data solutions": 2,
+      "marketing & branding": 3,
+      "outsourcing services": 4,
+      "technical support": 5,
+    };
+
+    services.sort((a, b) => {
+      return (
+        categoryOrder[a.category.toLowerCase()] -
+        categoryOrder[b.category.toLowerCase()]
+      );
+    });
+
     const serviceCategories = {};
 
     services.forEach((service) => {

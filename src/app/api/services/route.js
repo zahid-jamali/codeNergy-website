@@ -23,12 +23,13 @@ export async function POST(req) {
     const formData = await req.formData();
     const file = formData.get("image");
     const title = formData.get("title");
+    const href = formData.get("href");
     const description = formData.get("description");
     const longDescription = formData.get("longDescription");
     const category = formData.get("category");
     const subcategory = formData.get("subcategory");
     const sideDescription = formData.get("sideDescription");
-    console.log(sideDescription);
+    // console.log("Href: ", href);
 
     if (!file || !title || !description || !category || !subcategory) {
       return NextResponse.json(
@@ -61,12 +62,13 @@ export async function POST(req) {
       longDescription,
       category,
       subcategory: subcategory,
+      href: "",
     });
-
-    newService.href = `/${category}/${newService._id}`;
+    newService.href = `${href}/${newService._id}`;
     await newService.save();
 
-    return NextResponse.json(newService, { status: 201 });
+    console.log(`After: ${JSON.stringify(newService)}`);
+    return NextResponse.json({ status: 201 });
   } catch (err) {
     console.log("Upload Error:", err);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
