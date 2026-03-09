@@ -93,6 +93,8 @@ export default function Footer() {
               {[
                 { lbl: "Who we are", lnk: "/aboutus" },
                 { lbl: "What we serve", lnk: "/services" },
+
+                { lbl: "Portfolio", lnk: "/portfolio" },
                 { lbl: "Our Team", lnk: "/team" },
                 { lbl: "FAQ", lnk: "/faq" },
               ].map((item) => (
@@ -119,6 +121,7 @@ export default function Footer() {
             <ul className="space-y-2 sm:space-y-3">
               {[
                 { lbl: "Development", lnk: "/development" },
+                { lbl: "AI & Data solutions", lnk: "/ai-solutions" },
                 { lbl: "Marketing & Branding", lnk: "/marketing" },
                 { lbl: "Outsourcing Services", lnk: "/outsourcing" },
                 { lbl: "Technical Support Services", lnk: "/technicalSupport" },

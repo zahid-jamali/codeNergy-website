@@ -32,12 +32,22 @@ export default function AdminProjectsPage() {
         software: "Software Development",
       },
     },
+    ai: {
+      title: "AI & Data Solutions",
+      subcategories: {
+        "Machine Learning": "Machine Learning",
+        "AI Applications": "AI Applications",
+        "Data Science": "Data Science",
+      },
+    },
+
     marketing: {
       title: "Marketing & Branding",
       subcategories: {
         digital: "Digital Marketing",
         content: "Content Marketing",
         branding: "Brand Identity",
+        "Graphic Design": "Graphic Design",
       },
     },
     outsourcing: {
