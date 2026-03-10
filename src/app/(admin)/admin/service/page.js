@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaTrashAlt, FaPlusCircle, FaBuromobelexperte } from "react-icons/fa";
 // import dynamic from "next/dynamic";
 import TextEditor from "@/components/admin/Editor";
+import { FaEdit } from "react-icons/fa";
 
 export const dynamic = "force-dynamic";
 
@@ -22,6 +23,8 @@ export default function ServicesPage() {
   const [subcategory, setSubcategory] = useState("");
   const [sideDescription, setSideDescription] = useState("");
   const [href, setHref] = useState();
+  const [editingId, setEditingId] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
 
   const serviceCategories = {
     development: {
@@ -207,21 +210,29 @@ export default function ServicesPage() {
     formData.append("longDescription", longDescription);
     formData.append("sideDescription", sideDescription);
 
-    console.log(href);
+    const url = isEditing ? `/api/services/${editingId}` : "/api/services";
 
-    const res = await fetch("/api/services", {
-      method: "POST",
+    const method = isEditing ? "PUT" : "POST";
+
+    const res = await fetch(url, {
+      method,
       body: formData,
     });
 
     if (res.ok) {
-      setMsg("✅ Service added successfully!");
+      setMsg(
+        isEditing ? "✅ Service updated!" : "✅ Service added successfully!"
+      );
+
       setTitle("");
       setDescription("");
       setCategory("");
       setImage(null);
       setLongDescription("");
       setSideDescription("");
+      setIsEditing(false);
+      setEditingId(null);
+
       fetchServices();
       setCleanEditor(true);
       setTimeout(() => setCleanEditor(false), 100);
@@ -235,6 +246,20 @@ export default function ServicesPage() {
     if (!confirm("Are you sure you want to delete this service?")) return;
     await fetch(`/api/services/${id}/`, { method: "DELETE" });
     fetchServices();
+  };
+
+  const handleEdit = (service) => {
+    setShowForm(true);
+    setIsEditing(true);
+    setEditingId(service._id);
+
+    setTitle(service.title);
+    setDescription(service.description);
+    setCategory(service.category);
+    setSubcategory(service.subcategory);
+    setSideDescription(service.sideDescription);
+    setLongDescription(service.longDescription);
+    setHref(service.href);
   };
 
   return (
@@ -369,7 +394,11 @@ export default function ServicesPage() {
                 disabled={loading}
                 className="mt-5 px-10 py-3 bg-red-600 rounded-lg font-bold hover:bg-red-500 transition-all"
               >
-                {loading ? "Uploading..." : "Add Service"}
+                {loading
+                  ? "Saving..."
+                  : isEditing
+                  ? "Update Service"
+                  : "Add Service"}
               </button>
             </motion.form>
           )}
@@ -395,12 +424,21 @@ export default function ServicesPage() {
               </h2>
               <p className="text-gray-400 text-sm">{srv.description}</p>
 
-              <button
-                onClick={() => handleDelete(srv._id)}
-                className="mt-4 flex items-center gap-2 text-red-500 hover:text-red-400 text-sm"
-              >
-                <FaTrashAlt /> Delete
-              </button>
+              <div className="flex gap-4 mt-4">
+                <button
+                  onClick={() => handleEdit(srv)}
+                  className="flex items-center gap-2 text-blue-400 hover:text-blue-300 text-sm"
+                >
+                  <FaEdit /> Edit
+                </button>
+
+                <button
+                  onClick={() => handleDelete(srv._id)}
+                  className="flex items-center gap-2 text-red-500 hover:text-red-400 text-sm"
+                >
+                  <FaTrashAlt /> Delete
+                </button>
+              </div>
             </motion.div>
           ))}
         </div>

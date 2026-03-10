@@ -1,18 +1,18 @@
 const Loading = () => {
   return (
-    <>
-      <div className="flex flex-col justify-start items-center h-screen bg-black text-white">
-        {/* Animated Video Loader */}
-        <video
-          src="/images/loading.mp4" // 👈 JUST SET THIS PATH
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-40 h-40 object-contain"
-        />
-      </div>
-    </>
+    <div className="fixed inset-0 flex items-center justify-center bg-black z-50">
+      <video
+        src="/images/loading.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        disablePictureInPicture
+        controlsList="nodownload nofullscreen noremoteplayback"
+        onContextMenu={(e) => e.preventDefault()}
+        className="w-32 md:w-40 h-auto object-contain pointer-events-none select-none"
+      />
+    </div>
   );
 };
 
