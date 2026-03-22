@@ -1,0 +1,345 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+2 0 obj
+<< /Length 3485 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 45 797.00 Tm (CodeNergy Website ? Development Handover Report) Tj
+1 0 0 1 45 783.00 Tm () Tj
+1 0 0 1 45 769.00 Tm (#1\) Project Overview) Tj
+1 0 0 1 45 755.00 Tm (CodeNergy Website is a full-stack Next.js application that includes:) Tj
+1 0 0 1 45 741.00 Tm (- A public marketing site with service pages, portfolio, blog, FAQ, contact, and careers pages.) Tj
+1 0 0 1 45 727.00 Tm (- An admin panel for content and operations management \(services, projects, users, team,) Tj
+1 0 0 1 45 713.00 Tm (testimonials, appointments, messages, FAQs, blog\).) Tj
+1 0 0 1 45 699.00 Tm (- Backend APIs built in the Next.js App Router \(`src/app/api/`\) using MongoDB + Mongoose.) Tj
+1 0 0 1 45 685.00 Tm (- Authentication based on JWT + cookie sessions for admin users.) Tj
+1 0 0 1 45 671.00 Tm () Tj
+1 0 0 1 45 657.00 Tm (#2\) Tech Stack) Tj
+1 0 0 1 45 643.00 Tm (##Frontend) Tj
+1 0 0 1 45 629.00 Tm (- Next.js `^16.0.7`) Tj
+1 0 0 1 45 615.00 Tm (- React / React DOM `^19.2.1`) Tj
+1 0 0 1 45 601.00 Tm (- Tailwind CSS v4 + PostCSS) Tj
+1 0 0 1 45 587.00 Tm (- Framer Motion, Swiper, React Icons, React Modal) Tj
+1 0 0 1 45 573.00 Tm () Tj
+1 0 0 1 45 559.00 Tm (##Backend / Data) Tj
+1 0 0 1 45 545.00 Tm (- Next.js API route handlers \(`route.js`\)) Tj
+1 0 0 1 45 531.00 Tm (- MongoDB with Mongoose) Tj
+1 0 0 1 45 517.00 Tm (- JWT auth \(`jsonwebtoken`, `jose`\)) Tj
+1 0 0 1 45 503.00 Tm (- Password hashing via `bcryptjs`) Tj
+1 0 0 1 45 489.00 Tm (- Email notifications via Nodemailer \(SMTP\)) Tj
+1 0 0 1 45 475.00 Tm (- Cloudinary for image/media hosting) Tj
+1 0 0 1 45 461.00 Tm () Tj
+1 0 0 1 45 447.00 Tm (##State / Tooling) Tj
+1 0 0 1 45 433.00 Tm (- Redux Toolkit + React Redux) Tj
+1 0 0 1 45 419.00 Tm (- ESLint 9 + `eslint-config-next`) Tj
+1 0 0 1 45 405.00 Tm () Tj
+1 0 0 1 45 391.00 Tm (#3\) Repository Structure) Tj
+1 0 0 1 45 377.00 Tm (- `src/app/\(site\)`: Public-facing site routes and layout.) Tj
+1 0 0 1 45 363.00 Tm (- `src/app/\(admin\)`: Admin login + admin dashboard pages.) Tj
+1 0 0 1 45 349.00 Tm (- `src/app/api`: Backend APIs \(App Router route handlers\).) Tj
+1 0 0 1 45 335.00 Tm (- `src/components/landings`: Public site components.) Tj
+1 0 0 1 45 321.00 Tm (- `src/components/admin`: Admin UI shell and editor components.) Tj
+1 0 0 1 45 307.00 Tm (- `src/models`: Mongoose schemas/models.) Tj
+1 0 0 1 45 293.00 Tm (- `src/lib`: shared utilities \(DB, Cloudinary, auth helper, mailer\).) Tj
+1 0 0 1 45 279.00 Tm (- `src/redux`: Redux store and user slice.) Tj
+1 0 0 1 45 265.00 Tm (- `src/configs/middleware.js`: middleware protecting admin dashboard routes.) Tj
+1 0 0 1 45 251.00 Tm (- `public/`: static assets and uploaded media snapshots.) Tj
+1 0 0 1 45 237.00 Tm () Tj
+1 0 0 1 45 223.00 Tm (#4\) Environment Variables \(Required\)) Tj
+1 0 0 1 45 209.00 Tm (Create `.env.local` with at least:) Tj
+1 0 0 1 45 195.00 Tm () Tj
+1 0 0 1 45 181.00 Tm (- `MONGODB_URI`: primary MongoDB connection string.) Tj
+1 0 0 1 45 167.00 Tm (- `JWT_SECRET`: signing secret for JWT token/cookie authentication.) Tj
+1 0 0 1 45 153.00 Tm (- `SMTP_HOST`: SMTP host for outbound mail.) Tj
+1 0 0 1 45 139.00 Tm (- `SMTP_PORT`: SMTP port.) Tj
+1 0 0 1 45 125.00 Tm (- `SMTP_USER`: SMTP username.) Tj
+1 0 0 1 45 111.00 Tm (- `SMTP_PASS`: SMTP password.) Tj
+1 0 0 1 45 97.00 Tm (- `CLOUDINARY_CLOUD`: Cloudinary cloud name.) Tj
+1 0 0 1 45 83.00 Tm (- `CLOUDINARY_API_KEY`: Cloudinary API key.) Tj
+1 0 0 1 45 69.00 Tm (- `CLOUDINARY_API_SECRET`: Cloudinary API secret.) Tj
+ET
+endstream
+endobj
+3 0 obj
+<< /Length 3194 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 45 797.00 Tm () Tj
+1 0 0 1 45 783.00 Tm (Note: a legacy/commented reference to `MONGO_URI` exists in one blog route file, but active DB) Tj
+1 0 0 1 45 769.00 Tm (connection uses `MONGODB_URI` from `src/lib/mongodb.js`.) Tj
+1 0 0 1 45 755.00 Tm () Tj
+1 0 0 1 45 741.00 Tm (#5\) NPM Scripts / Local Runbook) Tj
+1 0 0 1 45 727.00 Tm (- Install: `npm install`) Tj
+1 0 0 1 45 713.00 Tm (- Development: `npm run dev`) Tj
+1 0 0 1 45 699.00 Tm (- Production build: `npm run build`) Tj
+1 0 0 1 45 685.00 Tm (- Start production server: `npm run start`) Tj
+1 0 0 1 45 671.00 Tm (- Lint: `npm run lint`) Tj
+1 0 0 1 45 657.00 Tm () Tj
+1 0 0 1 45 643.00 Tm (#6\) Runtime Architecture and Request Flow) Tj
+1 0 0 1 45 629.00 Tm (1. Browser hits public pages or admin pages.) Tj
+1 0 0 1 45 615.00 Tm (2. Public pages fetch content from `/api/*` routes.) Tj
+1 0 0 1 45 601.00 Tm (3. Admin pages use cookie-based auth \(`userInfo`, `token`\) and call protected APIs.) Tj
+1 0 0 1 45 587.00 Tm (4. API handlers call `connectDB\(\)` and operate through Mongoose models.) Tj
+1 0 0 1 45 573.00 Tm (5. Some mutating endpoints also:) Tj
+1 0 0 1 45 559.00 Tm (   - write audit activity records to `Activities` collection,) Tj
+1 0 0 1 45 545.00 Tm (   - notify admins via SMTP email.) Tj
+1 0 0 1 45 531.00 Tm (6. Uploaded images are stored through Cloudinary and/or local upload paths under `public/uploads`) Tj
+1 0 0 1 45 517.00 Tm (depending on route logic.) Tj
+1 0 0 1 45 503.00 Tm () Tj
+1 0 0 1 45 489.00 Tm (#7\) Authentication & Authorization) Tj
+1 0 0 1 45 475.00 Tm (- Login endpoint validates email/password and sets cookies \(`/api/auth/login`\).) Tj
+1 0 0 1 45 461.00 Tm (- Middleware verifies JWT token cookie and blocks unauthenticated access for dashboard matcher) Tj
+1 0 0 1 45 447.00 Tm (paths.) Tj
+1 0 0 1 45 433.00 Tm (- Server helper `verifyAdmin\(\)` checks `userInfo` cookie and returns parsed user object.) Tj
+1 0 0 1 45 419.00 Tm (- Most admin-write APIs call `verifyAdmin\(\)` and require role `admin`; unauthorized requests return) Tj
+1 0 0 1 45 405.00 Tm (HTTP `401`.) Tj
+1 0 0 1 45 391.00 Tm () Tj
+1 0 0 1 45 377.00 Tm (#8\) Public Site Routes) Tj
+1 0 0 1 45 363.00 Tm (- `/` \(home\)) Tj
+1 0 0 1 45 349.00 Tm (- `/aboutus`) Tj
+1 0 0 1 45 335.00 Tm (- `/blog`, `/blog/[slug]`) Tj
+1 0 0 1 45 321.00 Tm (- `/careers`) Tj
+1 0 0 1 45 307.00 Tm (- `/contactus`) Tj
+1 0 0 1 45 293.00 Tm (- `/development`, `/development/[id]`) Tj
+1 0 0 1 45 279.00 Tm (- `/faq`) Tj
+1 0 0 1 45 265.00 Tm (- `/marketing`, `/marketing/[id]`) Tj
+1 0 0 1 45 251.00 Tm (- `/ourphilosophy`) Tj
+1 0 0 1 45 237.00 Tm (- `/outsourcing`, `/outsourcing/[id]`) Tj
+1 0 0 1 45 223.00 Tm (- `/portfolio`, `/portfolio/[id]`) Tj
+1 0 0 1 45 209.00 Tm (- `/pricing`) Tj
+1 0 0 1 45 195.00 Tm (- `/team`) Tj
+1 0 0 1 45 181.00 Tm (- `/technicalSupport`, `/technicalSupport/[id]`) Tj
+1 0 0 1 45 167.00 Tm () Tj
+1 0 0 1 45 153.00 Tm (#9\) Admin Routes) Tj
+1 0 0 1 45 139.00 Tm (- `/login`) Tj
+1 0 0 1 45 125.00 Tm (- `/admin/dashboard`) Tj
+1 0 0 1 45 111.00 Tm (- `/admin/service`) Tj
+1 0 0 1 45 97.00 Tm (- `/admin/projects`) Tj
+1 0 0 1 45 83.00 Tm (- `/admin/team`) Tj
+1 0 0 1 45 69.00 Tm (- `/admin/testinomials`) Tj
+ET
+endstream
+endobj
+4 0 obj
+<< /Length 3334 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 45 797.00 Tm (- `/admin/blog`) Tj
+1 0 0 1 45 783.00 Tm (- `/admin/users`) Tj
+1 0 0 1 45 769.00 Tm (- `/admin/messages`) Tj
+1 0 0 1 45 755.00 Tm (- `/admin/appointments`) Tj
+1 0 0 1 45 741.00 Tm (- `/admin/faqs`) Tj
+1 0 0 1 45 727.00 Tm () Tj
+1 0 0 1 45 713.00 Tm (#10\) API Inventory \(Methods + Purpose\)) Tj
+1 0 0 1 45 699.00 Tm (##Activities) Tj
+1 0 0 1 45 685.00 Tm (- `GET /api/Activities` ? list latest activities \(admin-only\).) Tj
+1 0 0 1 45 671.00 Tm () Tj
+1 0 0 1 45 657.00 Tm (##Appointments) Tj
+1 0 0 1 45 643.00 Tm (- `GET /api/appointments` ? list appointments \(admin-only, populated service title\).) Tj
+1 0 0 1 45 629.00 Tm (- `POST /api/appointments` ? create appointment \(public\), create activity, email admins.) Tj
+1 0 0 1 45 615.00 Tm (- `PATCH /api/appointments/[id]` ? update appointment \(admin-only\).) Tj
+1 0 0 1 45 601.00 Tm (- `DELETE /api/appointments/[id]` ? delete appointment \(admin-only\).) Tj
+1 0 0 1 45 587.00 Tm () Tj
+1 0 0 1 45 573.00 Tm (##Auth) Tj
+1 0 0 1 45 559.00 Tm (- `POST /api/auth/createUser` ? register user \(public utility endpoint\).) Tj
+1 0 0 1 45 545.00 Tm (- `POST /api/auth/login` ? login and set cookies.) Tj
+1 0 0 1 45 531.00 Tm (- `GET /api/auth/logout` ? clear auth cookies and logout.) Tj
+1 0 0 1 45 517.00 Tm () Tj
+1 0 0 1 45 503.00 Tm (##Blog) Tj
+1 0 0 1 45 489.00 Tm (- `POST /api/blog` ? create blog.) Tj
+1 0 0 1 45 475.00 Tm (- `GET /api/blog/[slug]` ? fetch single blog by slug.) Tj
+1 0 0 1 45 461.00 Tm (- `PUT /api/blog/[slug]` ? update blog by slug.) Tj
+1 0 0 1 45 447.00 Tm (- `DELETE /api/blog/[slug]` ? delete blog by slug.) Tj
+1 0 0 1 45 433.00 Tm () Tj
+1 0 0 1 45 419.00 Tm (##FAQ) Tj
+1 0 0 1 45 405.00 Tm (- `GET /api/faqs` ? list/search/paginate FAQs \(public/admin depending query usage\).) Tj
+1 0 0 1 45 391.00 Tm (- `POST /api/faqs` ? create FAQ \(admin expected\).) Tj
+1 0 0 1 45 377.00 Tm (- `PUT /api/faqs/[id]` ? update FAQ \(admin expected\).) Tj
+1 0 0 1 45 363.00 Tm (- `DELETE /api/faqs/[id]` ? delete FAQ \(admin expected\).) Tj
+1 0 0 1 45 349.00 Tm () Tj
+1 0 0 1 45 335.00 Tm (##Health) Tj
+1 0 0 1 45 321.00 Tm (- `GET /api/health` ? health check endpoint \(currently also touches DB\).) Tj
+1 0 0 1 45 307.00 Tm () Tj
+1 0 0 1 45 293.00 Tm (##Messages) Tj
+1 0 0 1 45 279.00 Tm (- `GET /api/messages` ? list messages \(admin-only\).) Tj
+1 0 0 1 45 265.00 Tm (- `POST /api/messages` ? create message from contact form, notify admins.) Tj
+1 0 0 1 45 251.00 Tm () Tj
+1 0 0 1 45 237.00 Tm (##Projects) Tj
+1 0 0 1 45 223.00 Tm (- `GET /api/projects` ? list projects.) Tj
+1 0 0 1 45 209.00 Tm (- `POST /api/projects` ? create project.) Tj
+1 0 0 1 45 195.00 Tm (- `GET /api/projects/[id]` ? get project detail.) Tj
+1 0 0 1 45 181.00 Tm (- `DELETE /api/projects/[id]` ? delete project.) Tj
+1 0 0 1 45 167.00 Tm () Tj
+1 0 0 1 45 153.00 Tm (##Services) Tj
+1 0 0 1 45 139.00 Tm (- `GET /api/services` ? list all services.) Tj
+1 0 0 1 45 125.00 Tm (- `POST /api/services` ? create service.) Tj
+1 0 0 1 45 111.00 Tm (- `GET /api/services/[id]` ? service by id.) Tj
+1 0 0 1 45 97.00 Tm (- `DELETE /api/services/[id]` ? delete service.) Tj
+1 0 0 1 45 83.00 Tm (- `GET /api/services/category/[category]` ? services by category.) Tj
+1 0 0 1 45 69.00 Tm (- `GET /api/services/forNavbar` ? grouped services response for navigation menu.) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Length 3020 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 45 797.00 Tm () Tj
+1 0 0 1 45 783.00 Tm (##Stats) Tj
+1 0 0 1 45 769.00 Tm (- `GET /api/stats` ? dashboard aggregate counters for entities.) Tj
+1 0 0 1 45 755.00 Tm () Tj
+1 0 0 1 45 741.00 Tm (##Team) Tj
+1 0 0 1 45 727.00 Tm (- `GET /api/team` ? list members.) Tj
+1 0 0 1 45 713.00 Tm (- `POST /api/team` ? create member.) Tj
+1 0 0 1 45 699.00 Tm (- `PUT /api/team/[id]` ? update member.) Tj
+1 0 0 1 45 685.00 Tm (- `DELETE /api/team/[id]` ? delete member.) Tj
+1 0 0 1 45 671.00 Tm () Tj
+1 0 0 1 45 657.00 Tm (##Testimonials) Tj
+1 0 0 1 45 643.00 Tm (- `GET /api/testinomials` ? list testimonials.) Tj
+1 0 0 1 45 629.00 Tm (- `POST /api/testinomials` ? create testimonial.) Tj
+1 0 0 1 45 615.00 Tm (- `PATCH /api/testinomials/[id]` ? update testimonial.) Tj
+1 0 0 1 45 601.00 Tm (- `DELETE /api/testinomials/[id]` ? delete testimonial.) Tj
+1 0 0 1 45 587.00 Tm () Tj
+1 0 0 1 45 573.00 Tm (##Users) Tj
+1 0 0 1 45 559.00 Tm (- `GET /api/users` ? list users \(admin-only\).) Tj
+1 0 0 1 45 545.00 Tm (- `POST /api/users` ? create user \(admin-only\).) Tj
+1 0 0 1 45 531.00 Tm (- `PUT /api/users/[id]` ? update user role \(admin-only\).) Tj
+1 0 0 1 45 517.00 Tm (- `DELETE /api/users/[id]` ? delete user \(admin-only\).) Tj
+1 0 0 1 45 503.00 Tm () Tj
+1 0 0 1 45 489.00 Tm (#11\) Data Model Reference) Tj
+1 0 0 1 45 475.00 Tm (##`User`) Tj
+1 0 0 1 45 461.00 Tm (- `name`, `email` \(unique\), `password` \(hashed\), `role` \(`admin|user`\), `isActive`,) Tj
+1 0 0 1 45 447.00 Tm (`loginDetails[]`, timestamps.) Tj
+1 0 0 1 45 433.00 Tm () Tj
+1 0 0 1 45 419.00 Tm (##`Services`) Tj
+1 0 0 1 45 405.00 Tm (- `image`, `imagePublicId`, `category`, `subcategory`, `title` \(unique\), `href`, `description`,) Tj
+1 0 0 1 45 391.00 Tm (`sideDescription`, `longDescription`, timestamps.) Tj
+1 0 0 1 45 377.00 Tm () Tj
+1 0 0 1 45 363.00 Tm (##`Projects`) Tj
+1 0 0 1 45 349.00 Tm (- `title`, `image`, `description`, `service` \(ref Service\).) Tj
+1 0 0 1 45 335.00 Tm () Tj
+1 0 0 1 45 321.00 Tm (##`Team`) Tj
+1 0 0 1 45 307.00 Tm (- `name`, `contact`, `image`, `designation`, `description`, timestamps.) Tj
+1 0 0 1 45 293.00 Tm () Tj
+1 0 0 1 45 279.00 Tm (##`Testinomials`) Tj
+1 0 0 1 45 265.00 Tm (- `name`, `role`, `comment`, `rating \(1-5\)`, timestamps.) Tj
+1 0 0 1 45 251.00 Tm () Tj
+1 0 0 1 45 237.00 Tm (##`Appointment`) Tj
+1 0 0 1 45 223.00 Tm (- `name`, `email`, `date`, `time`, `message`, `page`, `serviceId` \(ref Service\), `isDone`,) Tj
+1 0 0 1 45 209.00 Tm (timestamps.) Tj
+1 0 0 1 45 195.00 Tm () Tj
+1 0 0 1 45 181.00 Tm (##`Messages`) Tj
+1 0 0 1 45 167.00 Tm (- `name`, `email` \(required\), `message`, `phone`, `seen`, timestamps.) Tj
+1 0 0 1 45 153.00 Tm () Tj
+1 0 0 1 45 139.00 Tm (##`Blog`) Tj
+1 0 0 1 45 125.00 Tm (- `title`, `description`, `content`, `author` \(ref User\), `image`, `slug` \(unique\), timestamps.) Tj
+1 0 0 1 45 111.00 Tm () Tj
+1 0 0 1 45 97.00 Tm (##`Faq`) Tj
+1 0 0 1 45 83.00 Tm (- `question`, `answer`, `visible`, `order`, `category`, timestamps.) Tj
+1 0 0 1 45 69.00 Tm () Tj
+ET
+endstream
+endobj
+6 0 obj
+<< /Length 3857 >>
+stream
+BT
+/F1 10 Tf
+1 0 0 1 45 797.00 Tm (##`Activities`) Tj
+1 0 0 1 45 783.00 Tm (- `content`, `link`, timestamps.) Tj
+1 0 0 1 45 769.00 Tm () Tj
+1 0 0 1 45 755.00 Tm (#12\) Frontend Notes) Tj
+1 0 0 1 45 741.00 Tm (- Global public layout includes SEO metadata, navbar/footer, and WhatsApp floating button.) Tj
+1 0 0 1 45 727.00 Tm (- Home page fetches services + testimonials from APIs and composes multiple landing sections.) Tj
+1 0 0 1 45 713.00 Tm (- Service navigation is dynamic and multi-level in the navbar.) Tj
+1 0 0 1 45 699.00 Tm (- Admin area is rendered through server layout + client provider for Redux hydration.) Tj
+1 0 0 1 45 685.00 Tm (- Rich text/editor related admin components exist \(`Editor.js`, `SlateDisplay.js`\) based on Slate.) Tj
+1 0 0 1 45 671.00 Tm () Tj
+1 0 0 1 45 657.00 Tm (#13\) Operational Notes \(Important for New Developer\)) Tj
+1 0 0 1 45 643.00 Tm (1. Auth cookies are central: keep cookie names/shape consistent \(`token`, `userInfo`\).) Tj
+1 0 0 1 45 629.00 Tm (2. Most admin APIs expect `verifyAdmin\(\)`: maintain that contract for new endpoints.) Tj
+1 0 0 1 45 615.00 Tm (3. DB connection helper is singleton-like \(`isConnected`\) to avoid repeated connects.) Tj
+1 0 0 1 45 601.00 Tm (4. Email notifications are triggered on several write operations; check SMTP in each environment.) Tj
+1 0 0 1 45 587.00 Tm (5. Cloudinary domain is whitelisted in `next.config.mjs` for image rendering.) Tj
+1 0 0 1 45 573.00 Tm (6. Naming inconsistencies exist \(`testinomials` typo, some route naming style differences\). Avoid) Tj
+1 0 0 1 45 559.00 Tm (breaking existing paths unless migrating end-to-end.) Tj
+1 0 0 1 45 545.00 Tm () Tj
+1 0 0 1 45 531.00 Tm (#14\) Known Gaps / Technical Debt) Tj
+1 0 0 1 45 517.00 Tm (- `npm run lint` currently reports multiple errors/warnings; project is functional but not) Tj
+1 0 0 1 45 503.00 Tm (lint-clean.) Tj
+1 0 0 1 45 489.00 Tm (- Some client components use patterns now flagged by stricter React/Next lint rules.) Tj
+1 0 0 1 45 475.00 Tm (- Route and naming consistency can be improved \(`Activities` uppercase route, `testinomials`) Tj
+1 0 0 1 45 461.00 Tm (spelling\).) Tj
+1 0 0 1 45 447.00 Tm (- Error handling and validation depth varies by endpoint.) Tj
+1 0 0 1 45 433.00 Tm (- No automated tests are currently present.) Tj
+1 0 0 1 45 419.00 Tm () Tj
+1 0 0 1 45 405.00 Tm (#15\) Handover Checklist for Incoming Developer) Tj
+1 0 0 1 45 391.00 Tm (- [ ] Copy production `.env.local` equivalents securely.) Tj
+1 0 0 1 45 377.00 Tm (- [ ] Verify DB connectivity and index/unique constraints \(especially `User.email`, `Blog.slug`,) Tj
+1 0 0 1 45 363.00 Tm (`Service.title`\).) Tj
+1 0 0 1 45 349.00 Tm (- [ ] Verify SMTP settings by testing message/appointment notifications.) Tj
+1 0 0 1 45 335.00 Tm (- [ ] Verify Cloudinary credentials and upload/delete behavior.) Tj
+1 0 0 1 45 321.00 Tm (- [ ] Smoke-test key admin CRUD flows.) Tj
+1 0 0 1 45 307.00 Tm (- [ ] Decide lint policy \(fix existing issues vs. relax rule set\).) Tj
+1 0 0 1 45 293.00 Tm (- [ ] Add API/schema validation and test coverage \(recommended next step\).) Tj
+1 0 0 1 45 279.00 Tm () Tj
+1 0 0 1 45 265.00 Tm (#16\) Suggested Immediate Improvements \(First Sprint\)) Tj
+1 0 0 1 45 251.00 Tm (1. Add centralized request validation \(e.g., zod/yup schemas\) for all POST/PUT/PATCH routes.) Tj
+1 0 0 1 45 237.00 Tm (2. Normalize authorization checks into a shared API middleware/helper.) Tj
+1 0 0 1 45 223.00 Tm (3. Add integration tests for critical APIs: auth, services, appointments, users.) Tj
+1 0 0 1 45 209.00 Tm (4. Resolve lint issues and establish CI gate \(`lint + test`\).) Tj
+1 0 0 1 45 195.00 Tm (5. Standardize route naming \(consider alias redirects for backward compatibility\).) Tj
+1 0 0 1 45 181.00 Tm () Tj
+1 0 0 1 45 167.00 Tm (---) Tj
+1 0 0 1 45 153.00 Tm (Prepared for project handover.) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 12 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 2 0 R >>
+endobj
+8 0 obj
+<< /Type /Page /Parent 12 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 3 0 R >>
+endobj
+9 0 obj
+<< /Type /Page /Parent 12 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 4 0 R >>
+endobj
+10 0 obj
+<< /Type /Page /Parent 12 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 5 0 R >>
+endobj
+11 0 obj
+<< /Type /Page /Parent 12 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 1 0 R >> >> /Contents 6 0 R >>
+endobj
+12 0 obj
+<< /Type /Pages /Count 5 /Kids [ 7 0 R 8 0 R 9 0 R 10 0 R 11 0 R ] >>
+endobj
+13 0 obj
+<< /Type /Catalog /Pages 12 0 R >>
+endobj
+xref
+0 14
+0000000000 65535 f 
+0000000009 00000 n 
+0000000079 00000 n 
+0000003616 00000 n 
+0000006862 00000 n 
+0000010248 00000 n 
+0000013320 00000 n 
+0000017229 00000 n 
+0000017356 00000 n 
+0000017483 00000 n 
+0000017610 00000 n 
+0000017738 00000 n 
+0000017866 00000 n 
+0000017952 00000 n 
+trailer
+<< /Size 14 /Root 13 0 R >>
+startxref
+18003
+%%EOF
