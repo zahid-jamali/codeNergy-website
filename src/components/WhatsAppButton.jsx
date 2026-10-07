@@ -35,7 +35,7 @@ export default function WhatsAppButton() {
 
     try {
       const response = await fetch(
-        `http://129.225.119.148/chat?message=${encodeURIComponent(text)}`,
+        `${process.env.CHAT_SERVER}?message=${encodeURIComponent(text)}`,
         {
           method: "POST",
         },
