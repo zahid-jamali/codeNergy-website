@@ -35,7 +35,7 @@ export default function WhatsAppButton() {
 
     try {
       const response = await fetch(
-        `https://chatbot.codenergy.ae?message=${encodeURIComponent(text)}`,
+        `https://chatbot.codenergy.ae/chat?message=${encodeURIComponent(text)}`,
         {
           method: "POST",
         },
