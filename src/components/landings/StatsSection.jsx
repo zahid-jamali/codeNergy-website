@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const stats = [
-  { value: "50+", label: "Project Completed" },
-  { value: "85k", label: "Happy Customer" },
-  { value: "65+", label: "Experienced Staff" },
+  { value: "500+", label: "Project Completed" },
+  { value: "200", label: "Happy Customer" },
+  { value: "30+", label: "Experienced Staff" },
   { value: "100+", label: "Ongoing projects" },
 ];
 
